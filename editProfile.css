@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "IBM Plex Sans", Arial, sans-serif !important;
+    margin-top:  2vh !important;
+    background-color: #00523E !important;
+}
+
+.ui-w-80 {
+    width : 80px !important;
+    height: auto;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light-small-mt-1 {
+    color: black !important;
+    font-size: smaller;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+
+h4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+}
+
+h4 img {
+    width: 128px;
+    height: 64px;
+}
+
+/* @media (min-width: 768px) {
+    h4 img {
+        width: 45%;
+        height: auto;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    h4 img {
+        width: 45%;
+        height: auto;
+        margin-right: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    h4 img {
+        width: 45%;
+        height: auto;
+        margin-right: 40px;
+    }
+} */
+
+.tab {
+    position: relative;
+    left: 100px;
+    top: 20px;
+    font-weight: bold;
+}

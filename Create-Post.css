@@ -1,0 +1,372 @@
+
+header {
+    height: 200px;
+}
+.main_create {
+    background-color: #00523E;
+    position: absolute;
+    width:100%;
+}
+
+    .create-post-cointainer{
+        
+        background-color: white;
+        width: 740px;
+        height: 628.812px;
+        border-width: 1px;
+        display: block;
+        line-height: 16px;
+        margin-left: 25%;
+        border-radius: 5px;
+    }
+
+    .create-draft-container{
+        display: flex;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        padding: 4px;
+        width: 732.014px;
+        height: 34.2014px;
+        border-bottom-width: 1.11111px;
+        border-bottom-style: solid;
+        border-bottom-color: white;
+    }
+
+    .create-a-post-container{
+        margin-left:10px;
+        display: block;
+        height: 34.2014px;
+        width: 622.118px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        font-family: 'IBM Plex Sans', Arial, sans-serif;
+        font-size: 16px;
+        margin-top: 13px;
+        color: #BEBEBE;
+    }
+
+    .draft-button{
+        align-items: center;
+        border-radius: 9999px;
+        border-style: solid;
+        border-color: rgba(135, 138, 140, 0.5);
+        border-width: 1.11111px;
+        color: #00523E;
+        cursor: pointer;
+        display: flex;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        justify-content: center;
+        letter-spacing: 0.5px;
+        line-height: 24px;
+        margin-left: 10px;
+        text-align: center;
+        width: 99.8958px;
+        padding: 16px;
+        padding-inline-start: 16px;
+        padding-inline-end: 16px;
+        vertical-align: baseline;
+        
+    }
+
+    .dropdown-container{
+        align-items: center;
+        display: flex;
+        font-size: Arial, sans-serif;
+        height: 40px;
+        margin-bottom: 8px;
+        width: 600px;
+    }
+
+    .dlsu-logo-container{
+        border-style: solid;
+        border-bottom-color: rgb(237, 239, 241);
+        border-color: rgb(237, 239, 241);
+        border-radius: 4px;
+        border-bottom-width: 1.11111px;
+        display: block;
+        height: 40px;
+        width: 300px;
+        margin-right: 16px;
+    }
+
+    .logo-holder{
+        align-items: center;
+        display: flex;
+        border-radius: 9999px;
+        height: 37.7778px;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 281.806px;
+    }
+
+    .dlsu-logo{
+        background-color: #00523E;
+        width: 21.9965px;
+        border-radius: 100%;
+        display: block;
+    }
+
+    .dlsu-text-holder{
+        display: inline-block;
+        height: 18.4375px;
+        padding-left: 8px;
+        width: 229.601px;
+    }
+
+    .discordname{
+        display: inline-block;
+        font-size: 14px;
+        height: 17.9861px;
+        line-height: 18px;
+        vertical-align: middle;
+        width: 229.0601px;
+    }
+
+    .main{
+        border-radius: 5px;
+        border-color: rgb(237, 239, 241);
+        border-style: solid;
+        display: block;
+        font-family: Arial, sans-serif;
+        height: 510.538px;
+        width: 734px;
+        margin-bottom: 15px;
+    }
+
+    .post-icon-container{
+        border-radius: 5px;
+        display: block;
+        height: 51.1111px;
+        margin-bottom: 12px;
+        width: 730px;
+    }
+
+    .post-icon-holder{
+        align-items: stretch;
+        display: flex;
+        height: 51.1111px;
+        width: 737px;
+    }
+
+    .post-button{
+        align-items: center;
+        border-style: solid;
+        border-width: 1.1111px;
+        border-color: rgb(237, 239, 241);
+        color: rgb(135, 138, 140);
+        cursor: pointer;
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        height: 51.1111px;
+        line-height: 18px;
+        outline-color: rgb(135, 138, 140);
+        padding-block-end: 15px;
+        padding-block-start: 15px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-inline-end: 17px;
+        padding-inline-start: 17px;
+        padding-left: 17px;
+        padding-right: 17px;
+        width: 740px;
+        background-color: white;
+    }
+
+    .post-text{
+        vertical-align: top;
+        color:#BEBEBE;
+        font-size: 14px;;
+    }
+
+    .text-box-container{
+        display: block;
+        height: 229.533px;
+        margin: 16px;
+        width: 708.021px;
+    }
+
+    .title-box-container{
+        display: block;
+        height: 39.2188px;
+        margin-bottom: 8px;
+        width: 708.021px;
+    }
+
+    .title-box-holder{
+        display: block;
+        height: 39.2188px;
+        width: 708.021px;
+    }
+
+    .title-box{
+        overflow-x: hidden;
+        overflow-wrap: break-word;
+        height: 39.2188px;
+        resize: none;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1.11111px;
+        font-size: 14px;
+        line-height: 21px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 68px;
+        text-align: start;
+        width: 618px;
+        display: block;
+    }
+
+    .body-box-container, .body-box-container-1{
+        display: block;
+        height: 182.738px;
+        width: 708.021px;
+    }
+
+    .body-box-container-2{
+        background-attachment: scroll;
+        border-radius: 4px;
+        border-width: 1.11111px;
+        border-style: solid;
+        border-color: rgb(237, 239, 241);
+        height: 180.156px;
+        width: 701.799px;
+        margin-top: 30px;
+    }
+
+    .icon-holder{
+        align-items: center;
+        border-radius: 4px;
+        display: flex;
+        height: 42.1875px;
+        position: sticky;
+        top: 48px;
+        width: 705.799px;
+        z-index: 8;
+    }
+
+    .body-box{
+        width: 696.799px;
+        height: 133.993px;
+        resize: none;
+    }
+
+    .tag-post-container{
+        align-items: flex-start;
+        display: block;
+        flex-direction: column;
+        height: 97.0486px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 703.021px;
+        padding-top: 7px;
+    }
+
+    .tag-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 39.9826px;
+        max-width: 100%;
+        width: 708.021px;
+    }
+
+    .tag-button-container{
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        height: 39.9826px;
+        max-width: 530px;
+        width: 530px;
+        margin-top: 5px;
+    }
+
+    .oc-button, .spoiler-button, .nsfw-button{
+        align-items: center;
+        background-attachment: scroll;
+        border-radius: 9999px;
+        border-style: solid;
+        border-width: 1.11111px;
+        border-color: rgba(135, 138, 140, 0.5);
+        color: rgba(135, 138, 140, 0.5);
+        cursor: pointer;
+        display: flex;
+        fill: rgba(135, 138, 140, 0.5);
+        filter: grayscale(1);
+        font-size: 14px;
+        height: 31.9965px;
+        justify-content: center;
+        line-height: 17px;
+        margin-bottom: 8px;
+        margin-right: 4px;
+        min-height: 32px;
+        overflow-y: visible;
+        overflow-x: visible;
+        padding-block-end: 4px;
+        padding-block-start: 4px;
+        padding-bottom: 4px;
+        padding-inline-start: 16px;
+        padding-inline-end: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 4px;
+        width: 75px;
+    }
+
+    .oc-button, .spoiler-button, .nsfw-button {
+    position: relative; 
+    }
+
+    .oc-button:hover::before {
+    content: "Mark post as OC";
+    position: absolute;
+    top: -30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    }
+
+    .spoiler-button:hover::before {
+    content: "Mark post as Spoiler";
+    position: absolute;
+    top: -30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    }
+
+    .nsfw-button:hover::before {
+    content: "Mark post as NSFW";
+    position: absolute;
+    top: -30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    }
+
+    .divider{
+        width: 738.412px;
+        color:rgba(135, 138, 140, 0.5);
+        margin: 0px;
+        margin-bottom: 5px;
+    }

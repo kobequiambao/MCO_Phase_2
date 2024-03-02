@@ -1,0 +1,298 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #00523E;
+  }
+  /* DELETE POPUP */
+  .delete-popup {
+    display: none;
+    position: fixed;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    color: #00523E;
+  }
+
+  #delbox{
+    color: #00523E;
+  }
+  .form-container {
+    max-width: 200px;
+    background-color: white;
+    padding: 10px;
+  } 
+
+  .form-container .del-btn {
+    background-color: #f2f2f2;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  .form-container .cancel {
+    background-color: #00523E;
+  }
+
+  .title_profile {
+    font-weight: bold;
+    width: fit-content; /* Adjust width as needed */
+    margin: 0 auto;
+  }
+  
+  .navbar {
+    background-color: white;
+    padding: 2px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  
+  .logo {
+    flex-grow: 0;
+    margin-right: auto;
+  }
+  
+  .search-container-viewallpost{
+    flex-grow: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-container-viewuserprofile {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 180px;
+  }
+  
+  .search-bar input[type="text"], .search-bar input[type="submit"] {
+    padding: 10px;
+  }
+  
+  .search-bar input[type="submit"] {
+    background-color: #00523E;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 15px;
+    background-color: #f2f2f2; /* Light grey background */
+    color: black; /* Black text */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #ddd; /* Border added here */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #ddd;
+    border-color: #ccc;
+  }
+  
+  .post-list { 
+    list-style-type: none; 
+    padding: 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .post { 
+    background-color: white;
+    border: 1px solid #ddd; 
+    margin-top: 10px; 
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px; /* Space between posts */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    position: relative;
+    }
+
+    .posts-container {
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+  
+  .post-header { 
+    display: flex; 
+    text-align: center;
+    align-items: center; 
+  }
+  
+  .vote {
+    margin-top: 10px; 
+    margin-right: 15px; 
+    justify-content: start;
+    padding-left: 10px; /* Adds some space from the left edge */
+    margin-top: 10px; /* Adds space between the title and the vote buttons */
+    position: absolute;
+    left: 10px; /* Positions the vote buttons to the left */
+    top: 10px; /* Adjust as needed to align properly */
+  }
+  
+  .vote button { 
+    cursor: pointer; 
+    margin-top: 10px;
+  }
+  
+  .post-header-viewallpost .title { 
+    font-weight: bold; 
+    flex-grow: 1; /* This will make the title grow to occupy maximum space */
+    text-align: center; /* This will center the title text if there's space on both sides */
+  }
+  
+  .comments {
+    border-top: 1px solid #ccc; /* Adds a top border to the comments section */
+    margin-top: 15px;
+    padding-top: 15px;
+}
+  
+  .comments-section {
+    margin-top: 10px;
+}
+
+.comment {
+    background-color: #f9f9f9; /* Light background for each comment */
+    border: 1px solid #ddd; /* Border around each comment */
+    padding: 10px;
+    border-radius: 4px; /* Slightly rounded corners for the border */
+    margin-bottom: 10px; /* Space between comments */
+    position: relative; /* Position relative for absolute positioning of buttons or icons */
+}
+
+
+.deletebutton {
+    /* Style for your icons, e.g., a trash bin for delete */
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 100;
+    /* Add specific icon styles or use an <img> tag with src attribute pointing to your icon image */
+}
+
+.comment-img-btn {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-img-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.post-image {
+  display: flex; /* Use flexbox to center the image */
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically, if needed */
+  overflow: hidden; /* Prevents the image from overflowing its container */
+  max-width: 100%; /* Ensures the image container does not exceed the width of the post */
+  margin: 20px auto; /* Adds margin on the top and bottom and auto margins on the sides to center it within the post */
+  border-radius: 10px; /* Optional: Rounds the corners of the image container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
+}
+
+.post-image img {
+  max-width: 100%; /* Ensures the image is responsive and does not exceed the width of its container */
+  height: auto; /* Keeps the image's aspect ratio */
+  display: block; /* Ensures no extra space at the bottom of the image */
+}
+  .profile-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-picture {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    border-radius: 50%; /* Creates the circle shape */
+    border: 3px solid #fff; /* Optional: adds a border around the picture */
+    box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+.delete-post-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-post-btn img { /* Adjust the delete button image styling if necessary */
+  width: 20px;
+  height: 20px;
+}
+
+.edit-profile-btn {
+    padding: 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* For Edit Profile Button */
+}
+
+.edit-profile-btn:hover, .delete-post-btn:hover {
+    background-color: #00523E; /* Darker green on hover */
+}
+
+.post-header-viewuserprofile {
+  display: flex;
+  justify-content: center; /* Centers the title */
+  align-items: center;
+  width: 100%; /* Ensure the header takes up full width */
+}
+
+
+.post-header-viewallpost {
+  display: flex;
+  justify-content: center; /* Centers the title */
+  align-items: center;
+  width: 100%; /* Ensure the header takes up full width */
+}
+
+.profile-navbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-bottom: 2px ; /* Bottom border to match the uploaded image */
+    padding: 10px 0;
+}
+.profile-navbar a {
+    text-decoration: none;
+    color: #00523E; /* Blue color for the text */
+    margin: 0 15px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 3px solid transparent; /* Transparent border, will be blue on active */
+}
+.profile-navbar a:hover,.profile-navbar a.active {
+    border-bottom: 3px solid #00523E; /* Blue border on hover/active */
+}
+
+h1{
+  color:white;
+}
+
+.context{
+  margin-left: 80px;
+  display: flex;
+}

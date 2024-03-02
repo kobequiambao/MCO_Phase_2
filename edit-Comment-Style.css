@@ -1,0 +1,709 @@
+
+
+
+div, h3{
+    font-family: Arial, sans-serif;
+}
+.delete-popup {
+    display: none;
+    position: fixed;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    color: #00523E;
+  }
+
+  #delbox{
+    color: #00523E;
+  }
+  .form-container {
+    max-width: 200px;
+    background-color: white;
+    padding: 10px;
+  } 
+
+  .form-container .del-btn {
+    background-color: #f2f2f2;
+    color: black;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  .form-container .cancel {
+    background-color: #00523E;
+  }
+
+.main_postedit{
+    background-color: #00523E;
+    width:100%;
+}
+/*Drop Down*/
+.save-change{
+    background-image: url('CCAPDEV-LOGO-2/Sedit.png');
+    border-radius: 15%;
+    margin-left: auto;
+    width: 80px;
+    height:  30px;
+    background-size: cover;
+    background-position: center;
+}
+
+.save-change:hover{
+    background-image: url('CCAPDEV-LOGO-2/HSedit.png');
+}
+
+.dropdown-more{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-more-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-more-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.dropdown-more-content a:hover {
+    background-color: #f1f1f1;
+    bottom:100%;
+}
+.dropdown-more:hover .dropdown-more-content {
+display: block;
+}
+/*upvote downvote*/
+.upvote:hover {
+    content: url("CCAPDEV-LOGO-2/Hupvote.png");
+}
+
+.downvote:hover {
+    content: url("CCAPDEV-LOGO-2/Hdownvote.png")
+}
+
+.upvButton{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dnvButton{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+[type=radio].vote-radio {
+    display: none; /* hide default radio buttons */
+}
+
+[type=radio] + img {
+    cursor: pointer;
+}
+
+.post-container{
+    margin-left: 270px;
+    margin-bottom: 20px;
+    width: 948px;
+    margin-top: 20px;
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.vote-container{
+    display: inline-block;
+    width: 5%;
+}
+
+.upvote, .downvote{
+    width: 20px;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+}
+
+.upvote:hover{
+    background-image: url(CCAPDEV-LOGO-2\17.png);
+}
+
+.votes{
+    margin-left: 14px;
+}
+
+/* Bell icon */
+
+.bell-container{
+    display: inline-block;
+    width: 5%;
+    vertical-align: top;
+}
+
+.bell{
+    align-items: center;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.bell-icon{
+    width: 20px;
+    margin-right: 5px;
+}
+
+.top-part{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.text-comment-container{
+    display: inline-block;
+    vertical-align: top;
+    width: 88%;
+}
+
+.dlsu-logo{
+    width: 20px;
+    background-color: rgb(8, 120, 48)
+;       border-bottom: rgb(26, 26, 26);
+    border-radius: 10px;
+    margin-top: 10px;   
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.profile-container{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.post-info-container{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+.post-info{
+    margin-top: 2px;
+    font-size: 12px;
+    display: inline-block;
+    color: gray;
+}
+
+strong{
+    color: black;
+}
+
+.posted-by, .posted-time{
+    color: gray;
+    transition: text-decoration 0.15s;
+}
+
+.posted-by:hover{
+    text-decoration: underline;
+}
+
+.college{
+    background-color: #00523E;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #00523E;
+    margin-right: 5px;
+}
+
+
+.post-title{
+    margin-left: 20px;
+    margin-top: 0px;
+}
+
+.title{
+    margin-top: 0px;
+    font-size: 20px;
+}
+
+.post-type{
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.type-background{
+    background-color: rgb(255, 214, 53);
+    display: inline;
+    border-radius: 2px;
+}
+
+.type{
+    font-size: 12px;
+    margin-top: 0px;
+    color: black;
+}
+
+.post-content{
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.content{
+    font-size: 14px;
+    color: rgb(26, 26, 26);
+}
+
+/* All icons at the bottom (comment, share, save, more) */
+
+.icon-container{
+    margin-left: 20px;
+    display: flex;
+}
+
+/* Comment icon */
+
+.comment-icon-container{
+    align-items: center;
+    padding: 4px;
+    padding-left: 0px;
+    display: flex;
+    margin-right: 5px;
+}   
+
+.comment-icon{
+    width: 30px;
+    margin-right: 8px;
+}
+
+.comment-count{
+    color: rgb(135, 138, 140);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+
+}
+
+/* Share Button */
+
+.share{
+    display: inline-block;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.share:hover{
+    background-color: rgb(178, 181, 184);
+}
+.share-icon{
+    width: 30px;
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+
+.share-text{
+    color: rgb(135, 138, 140);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Save Button */
+
+.save{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.save:hover{
+    background-color: rgb(178, 181, 184);
+}
+
+.save-icon{
+    width: 30px;
+    margin-right: 8px;
+}
+
+.save-text{
+    color: rgb(135, 138, 140);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* more button */
+.more{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.more:hover{
+    background-color: rgb(178, 181, 184);
+}
+
+.more-icon{
+    width: 15px;
+}
+
+.divider{
+    height: 8px;
+    background-color: rgb(218, 224, 230);
+}
+
+/* Comment text box  */
+
+.comment-part-container{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.viewer{
+    margin-left: 20px;
+}
+
+.comment-as{
+    font-size: 12px;
+}
+
+.user-ign-part{
+    text-decoration: none;
+    color: rgb(115, 173, 52);
+    transition: text-decoration 0.15s;
+}
+
+.user-ign-part:hover{
+    text-decoration: underline;
+}
+
+.comment-box{
+    margin-left: 20px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    width: 88%;
+    height: 150px;
+    resize: none;
+}
+
+/* Sort-Search */
+
+.sort-search-part{
+    margin-left: 57px;
+    margin-right: 57px;
+    margin-bottom: 4px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+}
+
+.sort-search-container{
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+.sort-by{
+    align-items: center;
+    display: flex;
+}
+
+.sort-button{
+    font-size: 14px;
+    font-family: arial, sans-serif;
+    color: rgb(115, 173, 52);
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.drop-down-button{
+    font-size: 14px;
+    font-family: arial, sans-serif;
+    color: rgb(115, 173, 52);
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0px;
+}
+
+.sort-search-divider{
+    color: rgb(237, 239, 241);
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.search-container{
+    align-items: center;
+    display: flex;
+    padding-left: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: rgb(237, 239, 241);
+}
+
+.search-icon{
+    width: 20px;
+}
+
+.search-box{
+    border: none;
+}
+
+/* Comment Section */
+
+.comment-section-container{
+    width: 88px;
+}
+
+.comment-container{
+    padding-top: 10px;
+}
+
+.comment-profile{
+    width: 5%;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.userpf{
+    width: 28px;
+}
+
+.threadline{
+    margin: 12px;
+    margin-top: 10px;
+    width: 50px;
+    color: rgb(237, 239, 241);
+    height: 50px;
+}
+
+.info-comment{
+    width: 98%;
+}
+
+.comment-info-container{
+    display: inline-block;
+    vertical-align: top;
+    width: 80%;
+}
+
+.comment-by{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.comment-body{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+/* ============================================================================================================= */
+.comment-text{  
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 130px;
+    border: 2px solid black;
+}
+/* ============================================================================================================= */
+/* ============================================================================================================= */
+/* ============================================================================================================= */
+/* ============================================================================================================= */
+/* ============================================================================================================= *//* ============================================================================================================= */
+
+
+.comment-section-icons{
+    align-items: center;
+    display: flex;
+}
+
+/* upvote */
+
+.upvote-container{
+    display: inline-block;
+}
+
+.upvote-button{
+    align-items: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.upvote-icon{
+    width: 20px;
+}
+
+.vote-count{
+    color: rgb(135, 138, 140);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.downvote-container{
+    display: inline-block;
+}
+
+.downvote-button{
+    align-items: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.downvote-icon{
+    width: 20px;
+}
+
+/* reply-button */
+
+.reply-container{
+    align-items: center;
+    display: flex;
+}
+
+.reply-container{
+    display: inline-block;
+}
+
+.reply-button{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    margin-right: 15px;
+}
+
+.reply-button:hover{
+    background-color: rgb(178, 181, 184);
+}
+
+.reply-icon{
+    width: 20px;
+    margin-right: 5px;
+}
+
+.reply-text{
+    color: rgb(135, 138, 140);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* share button */
+
+.share-container{
+    align-items: center;
+    display: flex;
+}
+
+.share-button{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    margin-right: 15px;
+}
+
+.share-button:hover{
+    background-color: rgb(178, 181, 184);
+}
+
+/* more button */
+
+.more-container{
+    align-items: center;
+    display: flex;
+}
+
+.more-button{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.15s;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    margin-right: 5px;
+}
+
+.more-button:hover{
+    background-color: rgb(178, 181, 184);
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Edit Comment</title>
+    <link rel="stylesheet" href="edit-Comment-Style.css">
+    <script type = "text/javascript" src="general.js"></script>
+    <link rel="stylesheet" href="general.css">
+</head>
+<body>
+    <header>
+        <div class="header_1">
+            <div class = "header_1-logo" onclick="navigateToPost('general.html')"></div>
+            <div class="header_1-search"onclick="toggleDropdown_search()">Search
+                <div class="dropdown-content_search">
+                    <a href="Post4.html">grammarly</a>
+                    <a href="Post3.html">LF peeps to party with lol</a>
+                    <a href="Post1.html">Lf swimming kasama</a>
+                </div>
+            </div>
+            
+            
+            <div class="header_1-user" onclick="toggleDropdown_user()">
+                <div class="header_1-user-pic"></div>
+                <div class="header_1-user-info">
+                    <div class="header_1-user-name">Michael Angelo Depasucat</div>
+                    <div class="header_1-user-id">ID122-CCS</div>
+                </div>
+                <div class="dropdown-content_user">
+                    <a href="viewprofile.html">View Profile</a>
+                    <a href="editProfile.html">Edit Profile</a>
+                    <a href="index.html">Log Out</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="header_2">
+            <div class="color1"></div>
+            <div class="color2"></div>
+            <div class="header_2-channel">
+                <div class="header_2-channel-pic"></div>
+                <div class="header_2-channel-info">
+                    <div class ="header_2-channel-info-1">De La Salle University</div>
+                    <div class ="header_2-channel-info-2">A place for De La Salle University - Manila students, faculty, alumni, and fans! Animo La Salle! 🏹</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class = "main_postedit">
+    <div class="post-container">
+        <div class="vote-container">
+            
+            <input type="radio" name="votebtn" id="upvote" class="vote-radio">
+            <label for="upvote"><img class="upvote" src="CCAPDEV-LOGO-2/2.png"></label>
+
+            <span class="votes" id="vote-count">5</span>
+            
+            <input type="radio" name="votebtn" id="downvote" class="vote-radio">
+            <label for="downvote"><img class="downvote" src="CCAPDEV-LOGO-2/3.png"></label>
+            
+        </div>
+        <script>
+            const upvoteRadio = document.getElementById('upvote');
+            const downvoteRadio = document.getElementById('downvote');
+            const upvoteImage = document.querySelector('.upvote');
+            const downvoteImage = document.querySelector('.downvote');
+            const voteCount = document.getElementById('vote-count');
+
+            let voteInt = 5;
+            let voteNum = voteInt;
+
+            upvoteRadio.addEventListener('change', function() {
+                if (this.checked) {
+                    upvoteImage.src = 'CCAPDEV-LOGO-2/Hupvote.png'; 
+                    downvoteImage.src = 'CCAPDEV-LOGO-2/3.png'; 
+                    voteNum = voteInt;
+                    voteNum++; 
+                    updateVoteCount();
+                }
+            });
+
+            downvoteRadio.addEventListener('change', function() {
+                if (this.checked) {
+                    downvoteImage.src = 'CCAPDEV-LOGO-2/Hdownvote.png';
+                    upvoteImage.src = 'CCAPDEV-LOGO-2/2.png'; 
+                    voteNum = voteInt;
+                    voteNum--; 
+                    updateVoteCount();
+                }
+            });
+
+            function updateVoteCount() {
+                voteCount.textContent = voteNum; 
+            }
+        </script>
+        <div class="text-comment-container">
+            <div class="top-part">
+                <div class="profile-container">
+                    <img class="dlsu-logo" src="CCAPDEV-LOGO-2/1.png">
+                </div>
+                <div class="post-info-container">
+                    <p class="post-info"><strong>r/dlsu</strong> &#xb7; Posted by <span class="posted-by">u/RobloxQtSushi5</span> <span class="college">College of Science </span> <span class="posted-time">1 Day ago</span></p>
+                </div>
+            </div>
+            <div class="post-title">
+                    <h1 class="title">LF peeps to party with lol</h1>
+            </div>  
+            <div class="post-type">
+                <div class="type-background">
+                    <span class="type">Discussion</span>
+                </div>
+            </div>
+            <div class="post-content">
+                <p class="content">^Looking for fellow lasallians to party/get drinks with!!! Im an ID121 btw (F) 😆😆 We could go bgc, or even just borro, u name it!! Just trynna look for some new friends hehe.</p>
+                
+            </div>
+            <div class="icon-container">
+                <div class="comment-icon-container">
+                    <img class="comment-icon" src="CCAPDEV-LOGO-2/4.png">
+                    <span class="comment-count">5 comments</span>
+                </div>
+
+                <button href="" class="share">
+                    <img class="share-icon" src="CCAPDEV-LOGO-2/5.png">
+                    <span class="share-text">Share</span>
+                </button>
+                
+                <button href="" class="save">
+                    <img class="save-icon" src="CCAPDEV-LOGO-2/6.png">
+                    <span class="save-text">Save</span>
+                </button>
+
+                <div class="dropdown-more">
+                    <button href="" class="more">
+                        <img class="more-icon" src="CCAPDEV-LOGO-2/7.png">
+                    </button>
+                    <div class="dropdown-more-content">
+                        <a href="edit-post3.html">Edit Post</a>
+                        <a href="#" onclick="openForm()">Delete Comment</a>
+                                </div>
+                                <div class="delete-popup" id="popup">
+                                    <form action="general.html" class="form-container">
+                                        <h2 id="delbox">Are you Sure You Want to Delete This?</h2>
+                                        <button type="submit" class="del-btn">Yes</button>
+                                        <button type="button" class="del-btn cancel" onclick="closeForm()">No</button>
+                                    </form>
+                                    </div>
+                                    <script>
+                                    function openForm() {
+                                        
+                                        document.getElementById("popup").style.display = "block";
+                                    }
+                                    
+                                    function closeForm() {
+                                        document.getElementById("popup").style.display = "none";
+                                    }
+                                    </script>
+                    </div>
+            </div>
+        </div>
+        <div class="bell-container">
+            <button class="bell">
+                <img class="bell-icon" src="CCAPDEV-LOGO-2/13.png">
+            </button>
+        </div>
+        <div class="divider">
+
+        </div>
+        
+        <div class="sort-search-part">
+            <div class="sort-search-container">
+                <div class="sort-by">
+                    <button class="sort-button">Sort By: Best</button>
+                    <button class="drop-down-button">V</button>
+                </div>
+                <span class="sort-search-divider">|</span>
+                <div class="search-container">
+                    <img class="search-icon" src="CCAPDEV-LOGO-2/10.png">
+                    <input type="search" class="search-box" placeholder="Search comments">
+                </div>
+            </div>
+        </div>
+        <div class="comment-section">
+            <div class="comment-container">
+                 <div class="comment-profile">
+                    <img class=userpf src="CCAPDEV-LOGO-2/user3.png">
+                    <span class="threadline">|</span>
+                </div>
+                <div class="comment-info-container">
+                    <div class="info-comment">
+                        <p class="comment-by">tbhchikalng<span class="posted-time">&#xb7; 1 day ago</span></p>
+                    </div>
+                    <div class="comment-body">
+                        <p contenteditable="true" class="comment-text">ID121 here!! G!! Pmm</p>
+                    </div>
+                    <div class="comment-section-icons">
+                        <button class="upvote-button">
+                            <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
+                        </button>
+
+                        <span class="vote-count">1</span>
+
+                        <button class="downvote-button">
+                            <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
+                        </button>
+                        
+                        <div class="reply-container">
+                            <button class="reply-button">
+                                <img class="reply-icon" src="CCAPDEV-LOGO-2/4.png">
+                                <span class="reply-text">Reply</span>
+                            </button>
+                        </div>
+
+                        <div class="share-container">
+                            <button href="" class="share-button">
+                                <span class="share-text">Share</span>
+                            </button>
+                        </div>
+                            <div>
+                            <button href="" class="more">
+                                <img class="more-icon" src="CCAPDEV-LOGO-2/7.png">
+                            </button>
+                            </div>
+                        <div class="save-change" onclick="navigateToPost('Post3.html')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body> 
+</html>
