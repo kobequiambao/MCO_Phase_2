@@ -131,6 +131,10 @@ body{
         width: 737px;
     }
 
+    .post-icon{
+        width: 20px;
+    }
+
     .post-button{
         align-items: center;
         border-style: solid;
