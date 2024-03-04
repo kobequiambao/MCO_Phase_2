@@ -59,7 +59,6 @@
                 <div class="create-a-post-container">
                     Create a Post
                 </div>
-                <button class="draft-button">Drafts 0</button>
             </div>
             <hr class="divider">
             <div class="dropdown-container"> <!--Can think of any name-->
@@ -92,15 +91,28 @@
                 <div class="tag-post-container">
                     <div class="tag-container">
                         <div class="tag-button-container">
-                            <button role="button" tabindex="0" aria-label="Mark as Orginal Content" class="oc-button">
-                                <span class="OC">OC</span>
-                            </button>
-                            <button role="button" tabindex="0" aria-label="Mark Spoler" class="spoiler-button">
-                                <span class="OC">Spoiler</span>
-                            </button>
-                            <button role="button" tabindex="0" aria-label="Mark as NSFW" class="nsfw-button">
-                                <span class="OC">NSFW</span>
-                            </button>
+                            <form>
+                                <input type="radio" name="flair" value="General Question">
+                                <label class="flair" id="general-question">General Question</label>
+
+                                <input type="radio" name="flair" value="Discussion">
+                                <label class="flair" id="discussion">Discussion</label>
+
+                                <input type="radio" name="flair" value="Admissions">
+                                <label class="flair" id="admissions">Admissions</label>
+
+                                <input type="radio" name="flair" value="Scholarships">
+                                <label class="flair" id="scholarships">Scholarships</label> <br>
+
+                                <input type="radio" name="flair" value="Student Life">
+                                <label class="flair" id="student-life">Student Life</label>
+
+                                <input type="radio" name="flair" value="News/Articles">
+                                <label class="flair" id="new-articles">News/Articles</label>
+
+                                <input type="radio" name="flair" value="Meme">
+                                <label class="flair" id="meme">MEME</label>
+                              </form>
                         </div>
                     </div>
                 </div>
