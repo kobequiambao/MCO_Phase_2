@@ -199,7 +199,9 @@ main {
 .main_feed-post{
     margin-top:20px;
     height:1000px;
-    width:640px;
+    width:720px;
+    margin-right:auto;
+    margin-left: auto;
 }
 
 .main_about{
