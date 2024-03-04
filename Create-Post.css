@@ -2,6 +2,10 @@
 header {
     height: 200px;
 }
+body{
+    background-color: #00523E;
+}
+
 .main_create {
     background-color: #00523E;
     position: absolute;
@@ -43,32 +47,7 @@ header {
         font-family: 'IBM Plex Sans', Arial, sans-serif;
         font-size: 16px;
         margin-top: 13px;
-        color: #BEBEBE;
-    }
-
-    .draft-button{
-        align-items: center;
-        border-radius: 9999px;
-        border-style: solid;
-        border-color: rgba(135, 138, 140, 0.5);
-        border-width: 1.11111px;
-        color: #00523E;
-        cursor: pointer;
-        display: flex;
-        font-family: Arial, sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        justify-content: center;
-        letter-spacing: 0.5px;
-        line-height: 24px;
-        margin-left: 10px;
-        text-align: center;
-        width: 99.8958px;
-        padding: 16px;
-        padding-inline-start: 16px;
-        padding-inline-end: 16px;
-        vertical-align: baseline;
-        
+        color: rgb(124, 124, 124);
     }
 
     .dropdown-container{
@@ -116,13 +95,14 @@ header {
         width: 229.601px;
     }
 
-    .discordname{
+    .discord-name{
         display: inline-block;
         font-size: 14px;
         height: 17.9861px;
         line-height: 18px;
         vertical-align: middle;
         width: 229.0601px;
+        color: rgb(124, 124, 124);
     }
 
     .main{
@@ -149,6 +129,10 @@ header {
         display: flex;
         height: 51.1111px;
         width: 737px;
+    }
+
+    .post-icon{
+        width: 20px;
     }
 
     .post-button{
@@ -178,7 +162,7 @@ header {
 
     .post-text{
         vertical-align: top;
-        color:#BEBEBE;
+        color:rgb(124, 124, 124);
         font-size: 14px;;
     }
 
@@ -286,82 +270,44 @@ header {
         margin-top: 5px;
     }
 
-    .oc-button, .spoiler-button, .nsfw-button{
-        align-items: center;
-        background-attachment: scroll;
-        border-radius: 9999px;
-        border-style: solid;
-        border-width: 1.11111px;
-        border-color: rgba(135, 138, 140, 0.5);
-        color: rgba(135, 138, 140, 0.5);
-        cursor: pointer;
-        display: flex;
-        fill: rgba(135, 138, 140, 0.5);
-        filter: grayscale(1);
-        font-size: 14px;
-        height: 31.9965px;
-        justify-content: center;
-        line-height: 17px;
-        margin-bottom: 8px;
-        margin-right: 4px;
-        min-height: 32px;
-        overflow-y: visible;
-        overflow-x: visible;
-        padding-block-end: 4px;
-        padding-block-start: 4px;
-        padding-bottom: 4px;
-        padding-inline-start: 16px;
-        padding-inline-end: 16px;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 4px;
-        width: 75px;
+    .flair{
+        border-radius: 2px;
+        font-size: 12px;
+        padding: 0px 4px;
+        padding-bottom: 2px;
+        font-weight: bold;
     }
 
-    .oc-button, .spoiler-button, .nsfw-button {
-    position: relative; 
+    #general-question{
+        background-color: rgb(255, 214, 53);
     }
 
-    .oc-button:hover::before {
-    content: "Mark post as OC";
-    position: absolute;
-    top: -30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 12px;
-    white-space: nowrap;
+    #discussion{
+       background-color: rgb(13, 211, 187); 
     }
 
-    .spoiler-button:hover::before {
-    content: "Mark post as Spoiler";
-    position: absolute;
-    top: -30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 12px;
-    white-space: nowrap;
+    #admissions{
+        background-color: rgb(0, 82, 62);
+        color: white;
     }
 
-    .nsfw-button:hover::before {
-    content: "Mark post as NSFW";
-    position: absolute;
-    top: -30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 12px;
-    white-space: nowrap;
+    #scholarships{
+        background-color: rgb(234, 0, 39);
+        color: white;
+    }
+
+    #student-life{
+        background-color: rgb(204, 82, 137);
+        color: white;
+    }
+
+    #new-articles{
+        background-color: purple;
+        color: white;
+    }
+
+    #meme{
+        background-color: orangered;
     }
 
     .divider{

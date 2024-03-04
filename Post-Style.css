@@ -145,31 +145,6 @@
         margin-left: 14px;
     }
 
-    /* Bell icon */
-
-    .bell-container{
-        display: inline-block;
-        width: 5%;
-        vertical-align: top;
-    }
-
-    .bell{
-        align-items: center;
-        display: inline-block;
-        margin-top: 10px;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    .bell-icon{
-        width: 20px;
-        margin-right: 5px;
-    }
-
     .top-part{
         display: inline-block;
         vertical-align: top;
@@ -206,7 +181,7 @@
         margin-top: 2px;
         font-size: 12px;
         display: inline-block;
-        color: gray;
+        color: rgb(124, 124, 124);
     }
 
     strong{
@@ -214,7 +189,7 @@
     }
 
     .posted-by, .posted-time{
-        color: gray;
+        color: rgb(124, 124, 124);
         transition: text-decoration 0.15s;
     }
 
@@ -287,7 +262,7 @@
     }   
 
     .comment-icon{
-        width: 30px;
+        width: 25px;
         margin-right: 8px;
     }
 
@@ -311,13 +286,14 @@
         background-color: white;
         border: none;
         cursor: pointer;
+        padding-bottom: 4px;
     }
 
     .share:hover{
         background-color: rgb(178, 181, 184);
     }
     .share-icon{
-        width: 30px;
+        width: 25px;
         margin-right: 8px;
         margin-bottom: 2px;
     }
@@ -341,6 +317,7 @@
         border: none;
         cursor: pointer;
         margin-right: 4px;
+        padding-bottom: 4px;
     }
 
     .save:hover{
@@ -348,7 +325,7 @@
     }
 
     .save-icon{
-        width: 30px;
+        width: 25px;
         margin-right: 8px;
     }
 
@@ -358,29 +335,9 @@
         font-size: 10px;
         font-weight: bold;
     }
-
-    /* more button */
-    .more{
-        align-items: center;
-        display: flex;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    .more:hover{
-        background-color: rgb(178, 181, 184);
-    }
-
-    .more-icon{
-        margin-top:45%;
-        width: 15px;
-    }
-
+    
     .divider{
+        margin-top: 15px;
         height: 8px;
         background-color: rgb(218, 224, 230);
     }
@@ -449,30 +406,6 @@
         border: none;
         cursor: pointer;
         font-weight: bold;
-    }
-
-    .sort-search-divider{
-        color: rgb(237, 239, 241);
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    .search-container{
-        align-items: center;
-        display: flex;
-        padding-left: 2px;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 2px;
-        border-color: rgb(237, 239, 241);
-    }
-
-    .search-icon{
-        width: 20px;
-    }
-
-    .search-box{
-        border: none;
     }
 
     /* Comment Section */
