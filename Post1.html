@@ -6,7 +6,9 @@
         <title>Post</title>
         <link rel="stylesheet" href="Post-Style.css">
         <script type = "text/javascript" src="general.js"></script>
+        <script type = "text/javascript" src="Post-JS.js"></script>
         <link rel="stylesheet" href="general.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -127,7 +129,8 @@
                     </button>
                     
                     <button href="" class="save">
-                        <img class="save-icon" src="CCAPDEV-LOGO-2\6.png">
+                        <img class="save-icon" src="CCAPDEV-LOGO-2\6.png" id="save">
+                        <img src="CCAPDEV-LOGO-2\20.png" alt="" hidden id="save-filled">
                         <span class="save-text">Save</span>
                     </button>
                 </div>
@@ -228,6 +231,20 @@
             }
           }
         }
+
+        $(document).ready(function () {
+            $(".save").click(function(){
+                toggleSave();
+            });
+
+
+            function toggleSave() {
+                $('#save').toggle();
+                $('#save-filled').toggle();
+            }
+
+
+        });
       </script>
 
     </html>

@@ -335,6 +335,11 @@
         font-size: 10px;
         font-weight: bold;
     }
+
+    #save-filled{
+        width: 25px;
+        margin-right: 8px;
+    }
     
     .divider{
         margin-top: 15px;
