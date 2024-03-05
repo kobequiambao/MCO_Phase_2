@@ -103,7 +103,7 @@
         border: none;
         cursor: pointer;
     }
-    [type=radio].vote-radio {
+    [type=radio].vote-radio, [type=radio].vote-radio-cs {
         display: none; /* hide default radio buttons */
     }
 
@@ -188,9 +188,11 @@
         color: black;
     }
 
-    .posted-by, .posted-time{
+    .posted-by, .posted-time, .info-comment{
         color: rgb(124, 124, 124);
         transition: text-decoration 0.15s;
+        font-weight: bold;
+        font-size: 14px;
     }
 
     .posted-by:hover{
@@ -303,6 +305,8 @@
         display: inline-block;
         font-size: 10px;
         font-weight: bold;
+        margin: 0px;
+        padding: 2px;
     }
 
     /* Save Button */
@@ -335,6 +339,11 @@
         font-size: 10px;
         font-weight: bold;
     }
+
+    #save-filled{
+        width: 25px;
+        margin-right: 8px;
+    }
     
     .divider{
         margin-top: 15px;
@@ -349,6 +358,7 @@
         margin-right: 40px;
         margin-top: 24px;
         margin-bottom: 24px;
+        width: 789.838px;
     }
 
     .viewer{
@@ -373,7 +383,7 @@
         margin-left: 20px;
         font-size: 14px;
         font-family: Arial, sans-serif;
-        width: 88%;
+        width: 97%;
         height: 150px;
         resize: none;
     }
@@ -426,8 +436,10 @@
         margin-left: 20px;
     }
 
-    .userpf{
+    .userpfp{
+        height: 28px;
         width: 28px;
+        border-radius: 999px;
     }
 
     .threadline{
@@ -448,10 +460,16 @@
         width: 80%;
     }
 
-    .comment-by{
+    .comment-by, .replying-to{
         display: inline-block;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
+        color: black;
+        margin: 0px;
+    }
+
+    .replying-to{
+        font-style: italic;
     }
 
     .comment-body{
@@ -471,26 +489,9 @@
     }
 
     /* upvote */
-
-    .upvote-container{
-        display: inline-block;
-    }
-
-    .upvote-button{
-        align-items: center;
-        display: inline-block;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        padding: 0px;
+    .upvote-icon{
         margin-top: 5px;
         margin-right: 5px;
-    }
-
-    .upvote-icon{
         width: 20px;
     }
 
@@ -502,26 +503,11 @@
         margin-right: 5px;
     }
 
-    .downvote-container{
-        display: inline-block;
-    }
-
-    .downvote-button{
-        align-items: center;
-        display: inline-block;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        padding: 0px;
+    .downvote-icon{
         margin-top: 5px;
         margin-right: 5px;
-    }
-
-    .downvote-icon{
         width: 20px;
+        margin-left: 5px;
     }
 
     /* reply-button */
@@ -546,6 +532,7 @@
         cursor: pointer;
         padding: 0px;
         margin-right: 15px;
+        margin-left: 10px;
     }
 
     .reply-button:hover{
@@ -554,7 +541,7 @@
 
     .reply-icon{
         width: 20px;
-        margin-right: 5px;
+        margin-right: 0px;
     }
 
     .reply-text{
@@ -581,7 +568,7 @@
         border: none;
         cursor: pointer;
         padding: 0px;
-        margin-right: 15px;
+        margin-right: 0px;
     }
 
     .share-button:hover{
@@ -637,3 +624,81 @@
           background-color: #ddd;
           
         }
+
+    .reply-textarea{
+        display: block;
+        resize: none;
+        width: 737.838px;
+        border-radius: 25px;
+        padding: 5px 10px;
+        border-width: 1px;
+        margin-bottom: 3px;
+        display: none;
+    }
+
+    .comment-button, .submit-comment-button{
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        font-size: 12px;
+        height: 31.9886px;
+        background-color: rgb(0, 82, 62);
+        padding: 0px 10px;
+        width: 76.3636px;
+        float: right;
+        margin-left: 2px;
+    }  
+
+    .cancel-button, .cancel-comment-button{
+        background-color: rgb(151, 254, 171);
+        border: none;
+        padding: 0px 10px;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+        font-weight: 600px;
+        width: 57.2727px;
+        height: 31.9886px;
+        border-radius: 999px;
+        float: right;
+        margin-left: 0px;
+    }
+
+    .user-reply-container{
+        margin-top: 10px;
+    }
+
+    .reply-userpfp-container{
+        display: inline-block;
+    }
+
+    .reply-userpfp{
+        height: 28px;
+        width: 28px;
+        border-radius: 999px;
+    }
+
+    .reply-user-info{
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .comment-content{
+        margin-left: 37px;
+    }
+
+    .post-interaction-bar{
+        display: flex;
+        margin-left: 36px;
+        padding-top: 5px;
+    }
+
+    .upvote-img, .downvote-img{
+        width: 20px;
+    }
+
+    #voteCount {
+        margin: 0px 5px;
+        padding-top: 3px;
+    }
