@@ -17,11 +17,14 @@
 
         currentDate = day + " " + month + " " + year;
 
+        var userPic = $('.header_1-user-pic').css('background-image');
+        userPic = userPic.split('/').slice(-2).join('/');
+
         if(comment !== "") {
         $('.comment-section').append(`
         <div class="comment-container">
                     <div class="comment-profile">
-                        <img class=userpf src="CCAPDEV-LOGO-2/user1.png">
+                        <img class=userpfp src="${userPic}">
                         <span class="threadline">|</span>
                     </div>
                     <div class="comment-info-container">
@@ -105,11 +108,14 @@
         var commentByValue = $(reply).closest(".comment-container").find(".comment-by").text();
         var comment = $(reply).closest(".comment-container").find(".reply-textarea").val();
 
+        var userPic = $('.header_1-user-pic').css('background-image');
+        userPic = userPic.split('/').slice(-2).join('/');
+
         if(comment !== "") {
           $('.comment-section').append(`
           <div class="comment-container">
                     <div class="comment-profile">
-                        <img class=userpf src="CCAPDEV-LOGO-2/user1.png">
+                        <img class=userpfp src="${userPic}">
                         <span class="threadline">|</span>
                     </div>
                     <div class="comment-info-container">
