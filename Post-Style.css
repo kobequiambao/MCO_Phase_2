@@ -188,9 +188,11 @@
         color: black;
     }
 
-    .posted-by, .posted-time{
+    .posted-by, .posted-time, .info-comment{
         color: rgb(124, 124, 124);
         transition: text-decoration 0.15s;
+        font-weight: bold;
+        font-size: 14px;
     }
 
     .posted-by:hover{
@@ -303,6 +305,8 @@
         display: inline-block;
         font-size: 10px;
         font-weight: bold;
+        margin: 0px;
+        padding: 2px;
     }
 
     /* Save Button */
@@ -454,10 +458,16 @@
         width: 80%;
     }
 
-    .comment-by{
+    .comment-by, .replying-to{
         display: inline-block;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
+        color: black;
+        margin: 0px;
+    }
+
+    .replying-to{
+        font-style: italic;
     }
 
     .comment-body{
@@ -529,7 +539,7 @@
 
     .reply-icon{
         width: 20px;
-        margin-right: 5px;
+        margin-right: 0px;
     }
 
     .reply-text{
@@ -556,7 +566,7 @@
         border: none;
         cursor: pointer;
         padding: 0px;
-        margin-right: 15px;
+        margin-right: 0px;
     }
 
     .share-button:hover{
@@ -651,4 +661,42 @@
         border-radius: 999px;
         float: right;
         margin-left: 0px;
+    }
+
+    .user-reply-container{
+        margin-top: 10px;
+    }
+
+    .reply-userpfp-container{
+        display: inline-block;
+    }
+
+    .reply-userpfp{
+        height: 28px;
+        width: 28px;
+        border-radius: 999px;
+    }
+
+    .reply-user-info{
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .comment-content{
+        margin-left: 37px;
+    }
+
+    .post-interaction-bar{
+        display: flex;
+        margin-left: 36px;
+        padding-top: 5px;
+    }
+
+    .upvote-img, .downvote-img{
+        width: 20px;
+    }
+
+    #voteCount {
+        margin: 0px 5px;
+        padding-top: 3px;
     }
