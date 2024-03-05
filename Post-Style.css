@@ -7,12 +7,71 @@
     div, h3{
         font-family: Arial, sans-serif;
     }
+    .delete{
+        display: inline-block;
+        align-items: center;
+        display: flex;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: background-color 0.15s;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .delete:hover{
+        background-color: rgb(178, 181, 184);
+    }
+    .delete-icon{
+        width: 30px;
+        margin-right: 8px;
+        margin-bottom: 2px;
+    }
+    
+    .delete-text{
+        color: rgb(135, 138, 140);
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    
+    .edit{
+        display: inline-block;
+        align-items: center;
+        display: flex;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: background-color 0.15s;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .edit:hover{
+        background-color: rgb(178, 181, 184);
+    }
+    .edit-icon{
+        width: 30px;
+        margin-right: 8px;
+        margin-bottom: 2px;
+    }
+    
+    .edit-text{
+        color: rgb(135, 138, 140);
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+    }
     .delete-popup {
         display: none;
         position: fixed;
         border: 3px solid #f1f1f1;
         z-index: 9;
         color: #00523E;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
       }
     
       #delbox{
@@ -436,10 +495,8 @@
         margin-left: 20px;
     }
 
-    .userpfp{
-        height: 28px;
+    .userpf{
         width: 28px;
-        border-radius: 999px;
     }
 
     .threadline{

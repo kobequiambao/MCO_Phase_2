@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Pogi ako -->
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,6 +7,8 @@
     <link rel="stylesheet" href="edit-Comment-Style.css">
     <script type = "text/javascript" src="general.js"></script>
     <link rel="stylesheet" href="general.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="Post-JS.js"></script>
 </head>
 <body>
     <header>
@@ -130,32 +133,33 @@
                     <span class="save-text">Save</span>
                 </button>
 
-                <div class="dropdown-more">
-                    <button href="" class="more">
-                        <img class="more-icon" src="CCAPDEV-LOGO-2/7.png">
-                    </button>
-                    <div class="dropdown-more-content">
-                        <a href="edit-Post1.html">Edit Post</a>
-                        <a href="#" onclick="openForm()">Delete Comment</a>
-                    </div>
-                    <div class="delete-popup" id="popup">
-                        <form action="general.html" class="form-container">
-                            <h2 id="delbox">Are you Sure You Want to Delete This?</h2>
-                            <button type="submit" class="del-btn">Yes</button>
-                            <button type="button" class="del-btn cancel" onclick="closeForm()">No</button>
-                        </form>
-                        </div>
-                        <script>
-                        function openForm() {
-                            
-                            document.getElementById("popup").style.display = "block";
-                        }
-                        
-                        function closeForm() {
-                            document.getElementById("popup").style.display = "none";
-                        }
-                        </script>
-                    </div>
+                <button onclick="location.href='edit-Post1.html'" class="edit">
+                    <img class="edit-icon" src="CCAPDEV-LOGO-2/8.png">
+                    <span class="edit-text">Edit</span>
+                </button>
+
+                <button class="delete" onclick="openForm()">
+                    <img class="delete-icon" src="CCAPDEV-LOGO-2/9.png" alt="Delete Icon">
+                    <span class="delete-text">Delete</span>
+                </button>
+                
+                <div class="delete-popup" id="popup">
+                    <form action="general.html" class="form-container">
+                        <h2 id="delbox">Are you Sure You Want to Delete This?</h2>
+                        <button type="submit" class="del-btn">Yes</button>
+                        <button type="button" class="del-btn cancel" onclick="closeForm()">No</button>
+                    </form>
+                </div>
+                
+                <script>
+                    function openForm() {
+                        document.getElementById("popup").style.display = "block";
+                    }
+                
+                    function closeForm() {
+                        document.getElementById("popup").style.display = "none";
+                    }
+                </script>
             </div>
         </div>
         <div class="bell-container">
