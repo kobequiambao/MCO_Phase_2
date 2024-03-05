@@ -103,7 +103,7 @@
         border: none;
         cursor: pointer;
     }
-    [type=radio].vote-radio {
+    [type=radio].vote-radio, [type=radio].vote-radio-cs {
         display: none; /* hide default radio buttons */
     }
 
@@ -354,6 +354,7 @@
         margin-right: 40px;
         margin-top: 24px;
         margin-bottom: 24px;
+        width: 789.838px;
     }
 
     .viewer{
@@ -378,7 +379,7 @@
         margin-left: 20px;
         font-size: 14px;
         font-family: Arial, sans-serif;
-        width: 88%;
+        width: 97%;
         height: 150px;
         resize: none;
     }
@@ -476,26 +477,9 @@
     }
 
     /* upvote */
-
-    .upvote-container{
-        display: inline-block;
-    }
-
-    .upvote-button{
-        align-items: center;
-        display: inline-block;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        padding: 0px;
+    .upvote-icon{
         margin-top: 5px;
         margin-right: 5px;
-    }
-
-    .upvote-icon{
         width: 20px;
     }
 
@@ -507,26 +491,11 @@
         margin-right: 5px;
     }
 
-    .downvote-container{
-        display: inline-block;
-    }
-
-    .downvote-button{
-        align-items: center;
-        display: inline-block;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        padding: 0px;
+    .downvote-icon{
         margin-top: 5px;
         margin-right: 5px;
-    }
-
-    .downvote-icon{
         width: 20px;
+        margin-left: 5px;
     }
 
     /* reply-button */
@@ -551,6 +520,7 @@
         cursor: pointer;
         padding: 0px;
         margin-right: 15px;
+        margin-left: 10px;
     }
 
     .reply-button:hover{
@@ -642,3 +612,43 @@
           background-color: #ddd;
           
         }
+
+    .reply-textarea{
+        display: block;
+        resize: none;
+        width: 737.838px;
+        border-radius: 25px;
+        padding: 5px 10px;
+        border-width: 1px;
+        margin-bottom: 3px;
+        display: none;
+    }
+
+    .comment-button, .submit-comment-button{
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        font-size: 12px;
+        height: 31.9886px;
+        background-color: rgb(0, 82, 62);
+        padding: 0px 10px;
+        width: 76.3636px;
+        float: right;
+        margin-left: 2px;
+    }  
+
+    .cancel-button, .cancel-comment-button{
+        background-color: rgb(151, 254, 171);
+        border: none;
+        padding: 0px 10px;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+        font-weight: 600px;
+        width: 57.2727px;
+        height: 31.9886px;
+        border-radius: 999px;
+        float: right;
+        margin-left: 0px;
+    }

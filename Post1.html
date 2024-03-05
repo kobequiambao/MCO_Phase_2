@@ -6,9 +6,9 @@
         <title>Post</title>
         <link rel="stylesheet" href="Post-Style.css">
         <script type = "text/javascript" src="general.js"></script>
-        <script type = "text/javascript" src="Post-JS.js"></script>
         <link rel="stylesheet" href="general.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script type = "text/javascript" src="Post-JS.js"></script>
     </head>
     <body>
         <header>
@@ -143,6 +143,8 @@
                     <span class="comment-as">Comment as <a href="" class="user-ign-part">BusinessSignature600</a></span>
                 </div>
                 <textarea class="comment-box" placeholder="What are your thoughts?"></textarea>
+                <button class="submit-comment-button">Comment</button>
+                <button class="cancel-comment-button">Cancel</button>
             </div>
             <div class="sort-search-part">
                 <div class="sort-search-container">
@@ -159,6 +161,7 @@
                 </div>
             </div>
             <div class="comment-section">
+
                 <div class="comment-container">
                     <div class="comment-profile">
                         <img class=userpf src="CCAPDEV-LOGO-2/user1.png">
@@ -172,17 +175,19 @@
                             <p class="comment-text">heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
                         </div>
                         <div class="comment-section-icons">
-                            <button class="upvote-button" onclick="upvote()">
-                                <img class="upvote-icon" src="CCAPDEV-LOGO-2\2.png">
-                            </button>
+                            <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#upvote-cs">
+                            <label for="upvote"><img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
+                                <img class="upvote-icon" src="CCAPDEV-LOGO-2\Hupvote.png" hidden>
+                            </label>
 
                             <span class="vote-count">2</span>
 
-                            <button class="downvote-button">
+                            <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#downvote-cs">
+                            <label for="downvote">
                                 <img class="downvote-icon" src="CCAPDEV-LOGO-2\3.png">
-                            </button>
+                                <img class="downvote-icon" src="CCAPDEV-LOGO-2\Hdownvote.png" hidden>
+                            </label>
 
-                            
                             <div class="reply-container">
                                 <button class="reply-button">
                                     <img class="reply-icon" src="CCAPDEV-LOGO-2\4.png">
@@ -196,8 +201,12 @@
                                 </button>
                             </div>                     
                         </div>
+                        <textarea class="reply-textarea" hidden></textarea>
+                        <button class="comment-button" hidden>Comment</button>
+                        <button class="cancel-button" hidden>Cancel</button>
                     </div>
                 </div>
+                
             </div>
         </div>
     </body>
@@ -231,20 +240,5 @@
             }
           }
         }
-
-        $(document).ready(function () {
-            $(".save").click(function(){
-                toggleSave();
-            });
-
-
-            function toggleSave() {
-                $('#save').toggle();
-                $('#save-filled').toggle();
-            }
-
-
-        });
-      </script>
-
-    </html>
+    </script>
+</html>
