@@ -549,7 +549,7 @@
     }
 
     /* upvote */
-    .upvote-icon, .downvote-icon{
+    .upvote-icon, .downvote-icon, .upvote-icon-filled, .downvote-icon-filled{
         width: 20px;
         cursor: pointer;
         border-radius: 2px;

@@ -36,13 +36,13 @@ $(document).ready(function () {
                       </div>
                       <div class="comment-section-icons">
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
                           <span class="vote-count">2</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -124,13 +124,13 @@ $(document).ready(function () {
                       </div>
                       <div class="comment-section-icons">
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
                           <span class="vote-count">2</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -171,16 +171,52 @@ $(document).ready(function () {
       $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
   });
 
-  
-  $(".comment-section").on("click", ".upvote-icon", function () {
-      upvoteAction($(this).closest('.comment-container'));
+    $(".comment-section").on("click", ".upvote-icon, .upvote-icon-filled", function () {
+        upvoteAction($(this).closest('.comment-container'));
     });
 
-  function upvoteAction(upvote) {
-      
-      comment.find('.comment-info-container .cancel-button').toggle();
-      
-  }
+    function upvoteAction(upvote) {
+        upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
+        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
+        
+        if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
+            upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
+            newVoteCount = currentVoteCount + 2;
+            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+        } else {
+            if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
+                newVoteCount = currentVoteCount + 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount - 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+        }
+    }
 
+    $(".comment-section").on("click", ".downvote-icon, .downvote-icon-filled", function () {
+        downvoteAction($(this).closest('.comment-container'));
+    });
+
+    function downvoteAction(upvote) {
+        upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
+        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
+        
+        if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
+            upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
+            newVoteCount = currentVoteCount - 2;
+            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+        } else {
+            if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
+                newVoteCount = currentVoteCount - 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount + 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+        }
+    }
 
 });
