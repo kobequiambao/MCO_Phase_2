@@ -1,3 +1,4 @@
+// TODO: Write your code below
 $(document).ready(function () {
     $(".save").click(function(){
       $('#save').toggle();
@@ -16,11 +17,14 @@ $(document).ready(function () {
 
       currentDate = day + " " + month + " " + year;
 
+      var userPic = $('.header_1-user-pic').css('background-image');
+      userPic = userPic.split('/').slice(-2).join('/');
+
       if(comment !== "") {
       $('.comment-section').append(`
       <div class="comment-container">
                   <div class="comment-profile">
-                      <img class=userpf src="CCAPDEV-LOGO-2/user1.png">
+                      <img class=userpfp src="${userPic}">
                       <span class="threadline">|</span>
                   </div>
                   <div class="comment-info-container">
@@ -31,18 +35,15 @@ $(document).ready(function () {
                           <p class="comment-text">${comment}</p>
                       </div>
                       <div class="comment-section-icons">
-                          <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#upvote-cs">
-                          <label for="upvote"><img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                              <img class="upvote-icon" src="CCAPDEV-LOGO-2/Hupvote.png" hidden>
-                          </label>
+                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
+                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
 
-                          <span class="vote-count">0</span>
+                          <span class="vote-count">2</span>
 
-                          <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#downvote-cs">
-                          <label for="downvote">
-                              <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                              <img class="downvote-icon" src="CCAPDEV-LOGO-2/Hdownvote.png" hidden>
-                          </label>
+
+                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
+                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+
 
                           <div class="reply-container">
                               <button class="reply-button">
@@ -104,11 +105,14 @@ $(document).ready(function () {
       var commentByValue = $(reply).closest(".comment-container").find(".comment-by").text();
       var comment = $(reply).closest(".comment-container").find(".reply-textarea").val();
 
+      var userPic = $('.header_1-user-pic').css('background-image');
+      userPic = userPic.split('/').slice(-2).join('/');
+
       if(comment !== "") {
         $('.comment-section').append(`
         <div class="comment-container">
                   <div class="comment-profile">
-                      <img class=userpf src="CCAPDEV-LOGO-2/user1.png">
+                      <img class=userpfp src="${userPic}">
                       <span class="threadline">|</span>
                   </div>
                   <div class="comment-info-container">
@@ -119,18 +123,15 @@ $(document).ready(function () {
                           <p class="comment-text">${comment}</p>
                       </div>
                       <div class="comment-section-icons">
-                          <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#upvote-cs">
-                          <label for="upvote"><img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                              <img class="upvote-icon" src="CCAPDEV-LOGO-2/Hupvote.png" hidden>
-                          </label>
+                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
+                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
 
                           <span class="vote-count">2</span>
 
-                          <input type="radio" name="votebtn-cs" class="vote-radio-cs" id="#downvote-cs">
-                          <label for="downvote">
-                              <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                              <img class="downvote-icon" src="CCAPDEV-LOGO-2/Hdownvote.png" hidden>
-                          </label>
+
+                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
+                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+
 
                           <div class="reply-container">
                               <button class="reply-button">
@@ -156,4 +157,30 @@ $(document).ready(function () {
       $(reply).closest(".comment-container").find(".reply-textarea").val('');
       toggleReply($(reply).closest('.comment-container'));
     }
+
+    
+  $(document).on('mouseenter', '.upvote-icon', function() {
+      $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
+  }).on('mouseleave', '.upvote-icon', function() {
+      $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
+  });
+
+  $(document).on('mouseenter', '.downvote-icon', function() {
+      $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
+  }).on('mouseleave', '.downvote-icon', function() {
+      $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
+  });
+
+  
+  $(".comment-section").on("click", ".upvote-icon", function () {
+      upvoteAction($(this).closest('.comment-container'));
+    });
+
+  function upvoteAction(upvote) {
+      
+      comment.find('.comment-info-container .cancel-button').toggle();
+      
+  }
+
+
 });
