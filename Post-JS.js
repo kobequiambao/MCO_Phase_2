@@ -1,5 +1,66 @@
 // TODO: Write your code below
 $(document).ready(function () {
+
+    $(document).on('mouseenter', '.upvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
+    }).on('mouseleave', '.upvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
+    });
+  
+    $(document).on('mouseenter', '.downvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
+    }).on('mouseleave', '.downvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
+    });
+
+    $(".post-container").on("click", ".upvote, .upvote-filled", function () {
+        $('.upvote').toggle();
+        $('.upvote-filled').toggle();
+
+        var currentVoteCount = parseInt($('.votes').text());
+        var newVoteCount;
+        
+        if($('.downvote').is(":hidden")){
+            $('.downvote').toggle();
+            $('.downvote-filled').toggle();
+            newVoteCount = currentVoteCount + 2;
+            $('.votes').text(newVoteCount);
+        } else {
+            if($('.upvote').is(":hidden")){
+                newVoteCount = currentVoteCount + 1;
+                $('.votes').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount - 1;
+                $('.votes').text(newVoteCount);
+            }
+        }
+    });
+
+    $(".post-container").on("click", ".downvote, .downvote-filled", function () {
+        $('.downvote').toggle();
+        $('.downvote-filled').toggle();
+
+        var currentVoteCount = parseInt($('.votes').text());
+        var newVoteCount;
+        
+        if($('.upvote').is(":hidden")){
+            $('.upvote').toggle();
+            $('.upvote-filled').toggle();
+            newVoteCount = currentVoteCount - 2;
+            $('.votes').text(newVoteCount);
+        } else {
+            if($('.downvote').is(":hidden")){
+                newVoteCount = currentVoteCount - 1;
+                $('.votes').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount + 1;
+                $('.votes').text(newVoteCount);
+            }
+        }
+    });
+
     $(".save").click(function(){
       $('#save').toggle();
       $('#save-filled').toggle();
@@ -38,7 +99,7 @@ $(document).ready(function () {
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
                           <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
-                          <span class="vote-count">2</span>
+                          <span class="vote-count">0</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
@@ -64,9 +125,12 @@ $(document).ready(function () {
                   </div>
               </div>
       `);
+
+      
+      $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
       }
       
-
+      
       $(".comment-box").val("");
     });
 
@@ -126,7 +190,7 @@ $(document).ready(function () {
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
                           <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
-                          <span class="vote-count">2</span>
+                          <span class="vote-count">0</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
@@ -152,6 +216,7 @@ $(document).ready(function () {
                   </div>
               </div>
         `);
+        $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
       }
 
       $(reply).closest(".comment-container").find(".reply-textarea").val('');
@@ -172,10 +237,10 @@ $(document).ready(function () {
   });
 
     $(".comment-section").on("click", ".upvote-icon, .upvote-icon-filled", function () {
-        upvoteAction($(this).closest('.comment-container'));
+        upvoteActionComment($(this).closest('.comment-container'));
     });
 
-    function upvoteAction(upvote) {
+    function upvoteActionComment(upvote) {
         upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
         currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
         
@@ -196,10 +261,10 @@ $(document).ready(function () {
     }
 
     $(".comment-section").on("click", ".downvote-icon, .downvote-icon-filled", function () {
-        downvoteAction($(this).closest('.comment-container'));
+        downvoteActionComment($(this).closest('.comment-container'));
     });
 
-    function downvoteAction(upvote) {
+    function downvoteActionComment(upvote) {
         upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
         currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
         
