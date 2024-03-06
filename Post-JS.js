@@ -1,5 +1,66 @@
 // TODO: Write your code below
 $(document).ready(function () {
+
+    $(document).on('mouseenter', '.upvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
+    }).on('mouseleave', '.upvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
+    });
+  
+    $(document).on('mouseenter', '.downvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
+    }).on('mouseleave', '.downvote', function() {
+        $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
+    });
+
+    $(".post-container").on("click", ".upvote, .upvote-filled", function () {
+        $('.upvote').toggle();
+        $('.upvote-filled').toggle();
+
+        var currentVoteCount = parseInt($('.votes').text());
+        var newVoteCount;
+        
+        if($('.downvote').is(":hidden")){
+            $('.downvote').toggle();
+            $('.downvote-filled').toggle();
+            newVoteCount = currentVoteCount + 2;
+            $('.votes').text(newVoteCount);
+        } else {
+            if($('.upvote').is(":hidden")){
+                newVoteCount = currentVoteCount + 1;
+                $('.votes').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount - 1;
+                $('.votes').text(newVoteCount);
+            }
+        }
+    });
+
+    $(".post-container").on("click", ".downvote, .downvote-filled", function () {
+        $('.downvote').toggle();
+        $('.downvote-filled').toggle();
+
+        var currentVoteCount = parseInt($('.votes').text());
+        var newVoteCount;
+        
+        if($('.upvote').is(":hidden")){
+            $('.upvote').toggle();
+            $('.upvote-filled').toggle();
+            newVoteCount = currentVoteCount - 2;
+            $('.votes').text(newVoteCount);
+        } else {
+            if($('.downvote').is(":hidden")){
+                newVoteCount = currentVoteCount - 1;
+                $('.votes').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount + 1;
+                $('.votes').text(newVoteCount);
+            }
+        }
+    });
+
     $(".save").click(function(){
       $('#save').toggle();
       $('#save-filled').toggle();
@@ -36,13 +97,13 @@ $(document).ready(function () {
                       </div>
                       <div class="comment-section-icons">
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
-                          <span class="vote-count">2</span>
+                          <span class="vote-count">0</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -64,9 +125,12 @@ $(document).ready(function () {
                   </div>
               </div>
       `);
+
+      
+      $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
       }
       
-
+      
       $(".comment-box").val("");
     });
 
@@ -124,13 +188,13 @@ $(document).ready(function () {
                       </div>
                       <div class="comment-section-icons">
                           <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
 
-                          <span class="vote-count">2</span>
+                          <span class="vote-count">0</span>
 
 
                           <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -152,6 +216,7 @@ $(document).ready(function () {
                   </div>
               </div>
         `);
+        $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
       }
 
       $(reply).closest(".comment-container").find(".reply-textarea").val('');
@@ -171,16 +236,81 @@ $(document).ready(function () {
       $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
   });
 
-  
-  $(".comment-section").on("click", ".upvote-icon", function () {
-      upvoteAction($(this).closest('.comment-container'));
+    $(".comment-section").on("click", ".upvote-icon, .upvote-icon-filled", function () {
+        upvoteActionComment($(this).closest('.comment-container'));
     });
 
-  function upvoteAction(upvote) {
-      
-      comment.find('.comment-info-container .cancel-button').toggle();
-      
-  }
+    function upvoteActionComment(upvote) {
+        upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
+        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
+        
+        if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
+            upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
+            newVoteCount = currentVoteCount + 2;
+            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+        } else {
+            if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
+                newVoteCount = currentVoteCount + 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount - 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+        }
+    }
 
+    $(".comment-section").on("click", ".downvote-icon, .downvote-icon-filled", function () {
+        downvoteActionComment($(this).closest('.comment-container'));
+    });
 
+    function downvoteActionComment(upvote) {
+        upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
+        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
+        
+        if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
+            upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
+            newVoteCount = currentVoteCount - 2;
+            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+        } else {
+            if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
+                newVoteCount = currentVoteCount - 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+            else {
+                newVoteCount = currentVoteCount + 1;
+                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            }
+        }
+    }
+
+    $(document).on('click', '.best', function() {
+        $('.sort-button').text('Sort By: Best');
+        var commentContainers = $('.comment-container');
+    
+        commentContainers.sort(function(a, b) {
+            var voteCountA = parseInt($(a).find('.vote-count').text());
+            var voteCountB = parseInt($(b).find('.vote-count').text());
+    
+            return voteCountB - voteCountA;
+        });
+    
+        $('.comment-section').empty();
+    
+        $('.comment-section').append(commentContainers);
+    });
+
+    $(document).on('click', '.new', function() {
+        $('.sort-button').text('Sort By: New');
+        var commentContainers = $('.comment-container');
+    
+        commentContainers.sort(function(a, b) {
+            var timeA = new Date($(a).find('.posted-time').text());
+            var timeB = new Date($(b).find('.posted-time').text());
+    
+            return timeB - timeA; 
+        });
+    
+        $('.comment-section').empty().append(commentContainers);
+    });
 });

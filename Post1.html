@@ -53,49 +53,16 @@
     <div class="post-container">
         <div class="vote-container">
             
-            <input type="radio" name="votebtn" id="upvote" class="vote-radio">
-            <label for="upvote"><img class="upvote" src="CCAPDEV-LOGO-2/2.png"></label>
+            <img class="upvote" src="CCAPDEV-LOGO-2/2.png">
+            <img class="upvote-filled" src="CCAPDEV-LOGO-2\16.png" alt="" hidden>
 
-            <span class="votes" id="vote-count">2</span>
+            <span class="votes">2</span>
             
-            <input type="radio" name="votebtn" id="downvote" class="vote-radio">
-            <label for="downvote"><img class="downvote" src="CCAPDEV-LOGO-2/3.png"></label>
-            
+
+            <img class="downvote" src="CCAPDEV-LOGO-2/3.png">
+            <img class="downvote-filled" src="CCAPDEV-LOGO-2\17.png" alt="" hidden>
+
         </div>
-        <script>
-            const upvoteRadio = document.getElementById('upvote');
-            const downvoteRadio = document.getElementById('downvote');
-            const upvoteImage = document.querySelector('.upvote');
-            const downvoteImage = document.querySelector('.downvote');
-            const voteCount = document.getElementById('vote-count');
-
-            let voteInt = 2;
-            let voteNum = voteInt;
-
-            upvoteRadio.addEventListener('change', function() {
-                if (this.checked) {
-                    upvoteImage.src = 'CCAPDEV-LOGO-2/Hupvote.png'; 
-                    downvoteImage.src = 'CCAPDEV-LOGO-2/3.png'; 
-                    voteNum = voteInt;
-                    voteNum++; 
-                    updateVoteCount();
-                }
-            });
-
-            downvoteRadio.addEventListener('change', function() {
-                if (this.checked) {
-                    downvoteImage.src = 'CCAPDEV-LOGO-2/Hdownvote.png';
-                    upvoteImage.src = 'CCAPDEV-LOGO-2/2.png'; 
-                    voteNum = voteInt;
-                    voteNum--; 
-                    updateVoteCount();
-                }
-            });
-
-            function updateVoteCount() {
-                voteCount.textContent = voteNum; 
-            }
-        </script>
         <div class="text-comment-container">
             <div class="top-part">
                 <div class="profile-container">
@@ -120,7 +87,7 @@
             <div class="icon-container">
                 <div class="comment-icon-container">
                     <img class="comment-icon" src="CCAPDEV-LOGO-2\4.png">
-                    <span class="comment-count">5 comments</span>
+                    <span class="comment-count">2</span> <span class="comments">comments</span>
                 </div>
 
                 <button href="" class="share">
@@ -167,7 +134,7 @@
         </div>
         <div class="comment-part-container">
             <div class="viewer">
-                <span class="comment-as">Comment as <a href="" class="user-ign-part">BusinessSignature600</a></span>
+                <span class="comment-as">Comment as <a href="viewprofile.html" class="user-ign-part">Michael Angelo Depasucat</a></span>
             </div>
             <textarea class="comment-box" placeholder="What are your thoughts?"></textarea>
             <button class="submit-comment-button">Comment</button>
@@ -179,11 +146,10 @@
                     <div class="dropdown">
                         <button class="sort-button" onclick="toggleDropdown()">Sort By: Best</button>
                         <div class="dropdown-content" id="sortOptions">
-                          <a href="#">Best</a>
-                          <a href="#">Top</a>
-                          <a href="#">New</a>
+                          <a class="best" href="#">Best</a>
+                          <a class="new" href="#">New</a>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,20 +162,62 @@
                 </div>
                 <div class="comment-info-container">
                     <div class="info-comment">
-                        <p class="comment-by">stargirlfromscosmos</p> <span class="posted-time">&#xb7; 2 days ago</span>
+                        <p class="comment-by">stargirlfromscosmos</p> <span class="posted-time">&#xb7; 3 Nov 2023</span>
                     </div>
                     <div class="comment-body">
                         <p class="comment-text">heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
                     </div>
                     <div class="comment-section-icons">
                         <img class="upvote-icon" src="CCAPDEV-LOGO-2\2.png">
-                        <img class="upvote-icon" src="CCAPDEV-LOGO-2\16.png" hidden>
+                        <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2\16.png" hidden>
+
+                        <span class="vote-count">0</span>
+
+
+                        <img class="downvote-icon" src="CCAPDEV-LOGO-2\3.png">
+                        <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2\17.png" hidden>
+
+
+                        <div class="reply-container">
+                            <button class="reply-button">
+                                <img class="reply-icon" src="CCAPDEV-LOGO-2\4.png">
+                                <span class="reply-text">Reply</span>
+                            </button>
+                        </div>
+
+                        <div class="share-container">
+                            <button href="" class="share-button">
+                                <span class="share-text">Share</span>
+                            </button>
+                        </div>                     
+                    </div>
+                    <textarea class="reply-textarea" hidden></textarea>
+                    <button class="comment-button" hidden>Comment</button>
+                    <button class="cancel-button" hidden>Cancel</button>
+                </div>
+            </div>
+
+            <div class="comment-container">
+                <div class="comment-profile">
+                    <img class=userpfp src="CCAPDEV-LOGO-2/user1.png">
+                    <span class="threadline">|</span>
+                </div>
+                <div class="comment-info-container">
+                    <div class="info-comment">
+                        <p class="comment-by">stargirlfromscosmos</p> <span class="posted-time">&#xb7; 6 Jan 2024</span>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">NYE  heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
+                    </div>
+                    <div class="comment-section-icons">
+                        <img class="upvote-icon" src="CCAPDEV-LOGO-2\2.png">
+                        <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2\16.png" hidden>
 
                         <span class="vote-count">2</span>
 
 
                         <img class="downvote-icon" src="CCAPDEV-LOGO-2\3.png">
-                        <img class="downvote-icon" src="CCAPDEV-LOGO-2\17.png" hidden>
+                        <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2\17.png" hidden>
 
 
                         <div class="reply-container">
