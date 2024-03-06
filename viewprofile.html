@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Profile</title>
 <link rel="stylesheet" href="view.css"> <!-- Ensure this path is correct -->
+<link rel="stylesheet" href="general.css"> <!-- Ensure this path is correct -->
+
 <script type = "text/javascript" src="general.js"></script>
 </head>
 <body>
@@ -29,14 +31,14 @@
     </div>
 
     <div class="profile-navbar">
-        <a href="viewprofile.html" class="active">OVERVIEW</a>
-        <a href="viewprofile.html">POSTS</a>
-        <a href="viewprofile.html">COMMENTS</a>
-        <a href="viewprofile.html">HISTORY</a>
-        <a href="viewprofile.html">SAVED</a>
-        <a href="viewprofile.html">HIDDEN</a>
-        <a href="viewprofile.html">UPVOTED</a>
-        <a href="viewprofile.html">DOWNVOTED</a>
+        <a href="#" class="active">OVERVIEW</a>
+        <a href="#">POSTS</a>
+        <a href="#">COMMENTS</a>
+        <a href="#">HISTORY</a>
+        <a href="#">SAVED</a>
+        <a href="#">HIDDEN</a>
+        <a href="#">UPVOTED</a>
+        <a href="#">DOWNVOTED</a>
     </div>
 
 <ul class="post-list">
@@ -44,9 +46,10 @@
     <li class="post">
       <div class="post-header-viewuserprofile">
         <div class="vote">
-          <button>↑</button>
-          <button>↓</button>
-        </div>
+<button><img src="CCAPDEV-LOGO-2/2.png"></button>
+<button><img src="CCAPDEV-LOGO-2/3.png"></button>
+
+      </div>
         <button class="delete-post-btn"><img src="CCAPDEV-LOGO-2/9.png" width="20" onclick="openForm()"></button>
         <div class="delete-popup" id="popup">
           <form action="general.html" class="form-container">

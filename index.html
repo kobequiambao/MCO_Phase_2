@@ -1,4 +1,3 @@
-<!-- CHECK -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,273 +5,424 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>View all post</title>
 <link rel="stylesheet" href="view.css">
+<link rel="stylesheet" href="general.css">
+
 <script type = "text/javascript" src="general.js"></script>
  
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="logo"><img src="CCAPDEV-LOGO-1/1.png" width="200" height="100"onclick="navigateToPost('index.html')"></div>
-        <!-- Ensure the search bar is centered -->
-        <div class="search-container-viewallpost ">
-          <form class="search-bar" action="/search" method="GET">
-            <input type="text" name="query" placeholder="Search...">
-            <input type="submit" value="Search">
-          </form>
-        </div>
-        <!-- Updated login and signup buttons -->
+    <div class="header_1">
+        <div class = "header_1-logo" onclick="navigateToPost('viewallpost.html')"></div>
+        <div class="header_1-search"onclick="toggleDropdown_search()">Search</div>
         <div class="auth-buttons">
           <a href="#" class="button login" onclick="navigateToPost('login.html')">Login</a>
           <a href="#" class="button signup" onclick="navigateToPost('register.html')">Signup</a>
         </div>
       </div>
+      
+      <div class="header_2">
+        <div class="color1"></div>
+        <div class="color2"></div>
+        <div class="header_2-channel">
+            <div class="header_2-channel-pic"></div>
+            <div class="header_2-channel-info">
+                <div class ="header_2-channel-info-1">De La Salle University</div>
+                <div class ="header_2-channel-info-2">A place for De La Salle University - Manila students, faculty, alumni, and fans! Animo La Salle! 🏹</div>
+            </div>
+        </div>
+    </div>
+
     
-      <ul class="post-list">
-     <li class="post">
-      <div class="post-header-viewallpost">
-        <div class="vote">
-          <button>↑</button>
-          <button>↓</button>
-        </div>
-        <div class="title">Bye bye amphi pond
-        </div>
-      </div>
-      <div class="context">^ removing the post cause I don't want to get doxxed XO but feel free to answer the question !
+    <main>
+        <div class = "main_feed"> 
 
-      </div>
-      <!-- Image link -->
-      <div class="post-image">
-        <a href="#" onclick="return false;"><img src="CCAPDEV-LOGO-1/post 1.jpeg" alt="Post 1"></a>
-    </div>
-    </li>
-    <li class="post">
-      <div class="post-header-viewallpost">
-        <div class="vote">
-          <button>↑</button>
-          <button>↓</button>
-        </div>
-        <div class="title">DLSU blocking games?
-        </div>
-      </div>
-      <div class="context">hello, is it just me or is the wifi blocking the downloads/updates of games?
-        Like ive been trying to open my star rail/updating my league using uni wifi and its not working until i downloaded a vpn.
-      </div>
-    </li>
-
-        
-    <li class="post">
-          <div class="post-header-viewallpost">
-            <div class="vote">
-              <button>↑</button>
-              <button>↓</button>
-            </div>
-            <div class="title">LF peeps to party with lol
-            </div>
-          </div>
-          <div class="context">Looking for fellow lasallians to party/get drinks with!!! Im an ID121 btw (F) 😆😆 We could go bgc, or even just borro, u name it!! Just trynna look for some new friends hehe.
-          </div>
-          </li>
-
-          <li class="post">
-            <div class="post-header-viewallpost">
-               <div class="vote">
-                <button>↑</button>
-                <button>↓</button>
-              </div>
-              <div class="title">Lf swimming kasama
-              </div>
-            </div> 
-                   <div class="context">
-                                    Hi!! Are there people interested in swimming at razon every Wednesday and Thursday?
-                                  </div>
-                        </li>
-
-
-          <li class="post">
-            <div class="post-header-viewallpost">
-               <div class="vote">
-                <button>↑</button>
-                <button>↓</button>
-              </div>
-              <div class="title">Lf swimming kasama
-              </div>
-            </div> 
-                   <div class="context">Swimming
-                                    Hi!! Are there people interested in swimming at razon every Wednesday and Thursday?
-                                  </div>
-                                  </li>
-      
-<li class="post">
-  <div class="post-header-viewallpost">
-    <div class="vote">
-      <button>↑</button>
-      <button>↓</button>
-    </div>
-    <div class="title">pls help me find my lost stuffed toy
-    </div>
-  </div>
-  <div class="context">
-
-  </div>
-  <!-- Image link -->
-  <div class="post-image">
-    <a href="#" onclick="return false;"><img src="CCAPDEV-LOGO-1/post 2.jpeg" alt="Post 1"></a>
-</div>
-</li>
-  
-<li class="post">
-  <div class="post-header-viewallpost">
-    <div class="vote">
-      <button>↑</button>
-      <button>↓</button>
-    </div>
-    <div class="title">grammarly
-    </div>
-  </div>
-  <div class="context">meron ba dito nawalan ng premium access sa grammarly??
-  </div>
-  </li>
-
-
-  <li class="post">
-    <div class="post-header-viewallpost">
-      <div class="vote">
-        <button>↑</button>
-        <button>↓</button>
-      </div>
-      <div class="title">Do minor courses really matter?
-      </div>
-    </div>
-    <div class="context">To those who finished and are in the industry, did your minor affect your capabilities to apply for work?
-
-      Did it give you an advantage?
-      
-      Im asking cause Im at the crossroads on whether or not extending my stay for a minor or not, this is important as financially we are just getting by and the new increase in tuition isnt exactly helping.
-      
-      Would like your thoughts, thank you!
-    </div>
-    </li>
-
-    <li class="post">
-      <div class="post-header-viewallpost">
-        <div class="vote">
-          <button>↑</button>
-          <button>↓</button>
-        </div>
-        <div class="title">Tuition fee increase
-        </div>
-      </div>
-      <div class="context">Why in the hell would dlsu decide to reflect the tuition fee increase now??? In the middle of the term?? Ganun ba sila ka-excited or what
-      </div>
-      </li>
-
-      <li class="post">
-        <div class="post-header-viewallpost">
-          <div class="vote">
-            <button>↑</button>
-            <button>↓</button>
-          </div>
-          <div class="title">salad places / healthy food
-          </div>
-        </div>
-        <div class="context">any salad recos in taft? or kahit healthy food in general 🙏🏻 any budget is fine, pero student budget po sana preferably
-
-
-        </div>
-        </li>
-
-        <li class="post">
-          <div class="post-header-viewallpost">
-            <div class="vote">
-              <button>↑</button>
-              <button>↓</button>
-            </div>
-            <div class="title">how to earn money as a broke college student?
-            </div>
-          </div>
-          <div class="context">Hi! I'm an id122 student in need of earning funds to help my family financially, especially with the tuition increase . I'm looking for ways to earn money digitally and/or passively, para hindi magoverlap sa studies ko. For context: I'm a psych student, willing to take writing jobs, decent photographer, decent canva user, willing to take clerical jobs. I'm willing to take in whatever side hustle, as long as it somehow guarantees that I'll be able to earn money, regardless of amount.
-
-            Any recommendations on where to start? Also, does the university offer such opportunities to lasallians?
-          </div>
-          </li>
-
-          <li class="post">
-            <div class="post-header-viewallpost">
-              <div class="vote">
-                <button>↑</button>
-                <button>↓</button>
-              </div>
-              <div class="title">favor
-              </div>
-            </div>
-            <div class="context">Hello, i badly need tutor in math for free:( im a little bit struggling to learn math and im preparing for my upcoming dcat on june pa naman but still, dw i can do you favor too:) para fair!
-            </div>
-            </li>
-
-            <li class="post">
-              <div class="post-header-viewallpost">
-                <div class="vote">
-                  <button>↑</button>
-                  <button>↓</button>
-                </div>
-                <div class="title">Batch Ranking
-                </div>
-              </div>
-              <div class="context">Hii just curious since I requested for a certificate of batch ranking by degree program for some applications (further studies). Is the ranking based on the students remaining in your batch for your degree program (those who have not graduated/just about to graduate) or does it include those who have graduated as well as long as you have the same ID no? For context, I will be graduating a term later than my previous blockmates and for example, let’s say there are only 20 of us left is the ranking just based on those 20 people left? (Only the percentage is disclosed like if you’re part of the Top __% and it says “as of Term #”)
-              </div>
-              </li>
-
-              <li class="post">
-                <div class="post-header-viewallpost">
-                  <div class="vote">
-                    <button>↑</button>
-                    <button>↓</button>
-                  </div>
-                  <div class="title">What happens if you submit a corrupted file on Canvas?
-                  </div>
-                </div>
-                <div class="context">I think i did it but accidentally. what can i explain to my prof? will I get a 0 ba :,( I didn't do it on purpose I can't edit it out now or resubmit cause the activities closed na. Should I just wait until she asks me for the file or baka she'll just grade me a 0 agad-agad.
-                </div>
-                </li>
-
-                <li class="post">
-                  <div class="post-header-viewallpost">
-                    <div class="vote">
-                      <button>↑</button>
-                      <button>↓</button>
+            <div class = "main_feed-post">
+                <!-- POST 1--------------------------------------------------------------->
+                <div class="main_post" id="post-1">
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="toggleImage(this)"></div>
+                        <div class="num_vote">10</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
                     </div>
-                    <div class="title">Hiking
+                    
+                    <div class = "main_post-right " onclick="navigateToPost('Post1 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/Kooky_Marketing_3807</div>
+                            <div class = "main_post-desc-title">
+                                Lf swimming kasama</div>
+                            <div class = "main_post-desc-content">
+                                Swimming
 
-                    </div>
-                  </div>
-                  <div class="context">Who here is into nature stuff like hiking, trekking, climbing etc? Looking for travel buddies i wanna go on a hike at least once a month. Im so desperate to go outside and see pure nature 😝
-                  </li>
-
-                  <li class="post">
-                    <div class="post-header-viewallpost">
-                      <div class="vote">
-                        <button>↑</button>
-                        <button>↓</button>
-                      </div>
-                      <div class="title">grammarly
-                      </div>
-                    </div>
-                    <div class="context">meron ba dito nawalan ng premium access sa grammarly??
-                    </div>
-                    </li>
-
-                    <li class="post">
-                      <div class="post-header-viewallpost">
-                        <div class="vote">
-                          <button>↑</button>
-                          <button>↓</button>
+                                Hi!! Are there people interested in swimming at razon every Wednesday and Thursday?
+                            </div>
                         </div>
-                        <div class="title">Is SAS3000 offered every term?
+                
+                    </div>
+                </div>
+                <!-- POST 2--------------------------------------------------------------->
+                <div class = "main_post" id = "post-2">
+
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="none"></div>
+                        <div class="num_vote">55</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
+                    </div>
+                    
+                    <div class = "main_post-right" onclick="navigateToPost('Post2 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/Reasonable_Worry_385
+                            </div>
+                            <div class = "main_post-desc-title">
+                                How to deal with flaky group members?
+                            </div>
+                            <div class = "main_post-desc-content">
+                                ^ removing the post cause I don't want to get doxxed XO but feel free to answer the question !
+                            </div>
                         </div>
+                        
+                    </div>
+                </div>
+                <!-- POST 3--------------------------------------------------------------->
+                <div class = "main_post" id = "post-3">
+
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="toggleImage(this)"></div>
+                        <div class="num_vote">1</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
+                    </div>
+                    
+                    <div class = "main_post-right" onclick="navigateToPost('Post3 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/RobloxQtSushi
+                            </div>
+                            <div class = "main_post-desc-title">
+                                LF peeps to party with lol
+                            </div>
+                            <div class = "main_post-desc-content">
+                                Looking for fellow lasallians to party/get drinks with!!! Im an ID121 btw (F) 
+                                We could go bgc, or even just borro, u name it!! Just trynna look for some new friends hehe.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POST 4--------------------------------------------------------------->
+                <div class = "main_post" id = "post-4">
+
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="toggleImage(this)"></div>
+                        <div class="num_vote">5</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
+                    </div>
+                    
+                    <div class = "main_post-right" onclick="navigateToPost('Post4 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/depressedvice
+                            </div>
+                            <div class = "main_post-desc-title">
+                                grammarly
+                            </div>
+                            <div class = "main_post-desc-content">
+                                meron ba dito nawalan ng premium access sa grammarly??
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- POST 5--------------------------------------------------------------->
+                <div class = "main_post" id = "post-5">
+
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="toggleImage(this)"></div>
+                        <div class="num_vote">6</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
+                    </div>
+                    
+                    <div class = "main_post-right" onclick="navigateToPost('Post5 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/K3nny_TR
+                            </div>
+                            <div class = "main_post-desc-title">
+                                DLSU blocking games?
+                            </div>
+                            <div class = "main_post-desc-content">
+                                hello, is it just me or is the wifi blocking the downloads/updates of games?
+                                Like ive been trying to open my star rail/updating my league using uni wifi and its not working until i downloaded a vpn.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POST 6--------------------------------------------------------------->
+                <div class = "main_post" id = "post-6">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">3</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post6 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/Thrifty_Student_98
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Affordable eats around campus?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Anyone knows good and affordable places to eat around campus? On a tight budget this semester!
+                          </div>
                       </div>
-                      <div class="context">I’m kinda worried lang kasi my practicum is 2 terms from now and pre-req daw ito, which is why my only choice is to take it next term. Is it offered every term? Or like seasonal lang din sya?
+                  </div>
+              </div>
+              <!-- POST 7--------------------------------------------------------------->
+              <div class = "main_post" id = "post-7">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">8</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post7 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/EarlyBirdLearner
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Morning study groups?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Are there any morning study groups? I'm most productive in the early hours and looking to join or start a group.
+                          </div>
                       </div>
-                      </li>
-  </ul>
+                  </div>
+              </div>
+              <!-- POST 8--------------------------------------------------------------->
+              <div class = "main_post" id = "post-8">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">12</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post8 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/CodingConundrum
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Debugging partner needed!
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Stuck on a coding project and could use a fresh pair of eyes for debugging. Anyone interested?
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 9--------------------------------------------------------------->
+              <div class = "main_post" id = "post-9">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">7</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post9 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/ArtisticSoul_07
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Art exhibit buddies?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              There's an art exhibit happening this weekend. Looking for someone to go with. Anyone interested?
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 10--------------------------------------------------------------->
+              <div class = "main_post" id = "post-10">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">4</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post10 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/HealthHacks101
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Weekly jogging group?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Looking to start a weekly jogging group for early mornings or late evenings. Anyone interested?
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 11--------------------------------------------------------------->
+              <div class = "main_post" id = "post-11">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">15</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post11 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/QuantumLeap
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Study partners for quantum mechanics?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Quantum mechanics is bending my brain. Looking for study partners to tackle it together!
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 12--------------------------------------------------------------->
+              <div class = "main_post" id = "post-12">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">9</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post12 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/EnviroWarrior22
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Environmental club meet-up?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Our environmental club is meeting this week to discuss new sustainability projects. All are welcome!
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 13--------------------------------------------------------------->
+              <div class = "main_post" id = "post-13">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">2</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post13 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/GamerGuildMaster
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Weekend gaming marathon?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Planning a weekend gaming marathon. We're playing a mix of old and new titles. Gamers unite!
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- POST 14--------------------------------------------------------------->
+              <div class = "main_post" id = "post-14">
+                  <div class="main_vote">
+                      <div class="up_vote" onclick="toggleImage(this)"></div>
+                      <div class="num_vote">11</div>
+                      <div class="down_vote" onclick="toggleImage(this)"></div>
+                  </div>
+                  <div class = "main_post-right" onclick="navigateToPost('Post14 copy.html')">
+                      <div class = "main_post-desc">
+                          <div class = "main_post-desc-poster">
+                              Posted by u/FilmFanaticFreds
+                          </div>
+                          <div class = "main_post-desc-title">
+                              Movie night suggestions?
+                          </div>
+                          <div class = "main_post-desc-content">
+                              Hosting a movie night and looking for film suggestions. Any genre is welcome!
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+                <!-- POST 15--------------------------------------------------------------->
+                <div class = "main_post" id = "post-15">
+                    <div class="main_vote">
+                        <div class="up_vote" onclick="toggleImage(this)"></div>
+                        <div class="num_vote">20</div>
+                        <div class="down_vote" onclick="toggleImage(this)"></div>
+                    </div>
+                    <div class = "main_post-right" onclick="navigateToPost('Post15 copy.html')">
+                        <div class = "main_post-desc">
+                            <div class = "main_post-desc-poster">
+                                Posted by u/BookwormBuddies
+                            </div>
+                            <div class = "main_post-desc-title">
+                                Monthly book club picks?
+                            </div>
+                            <div class = "main_post-desc-content">
+                                Our book club is picking the next few months' reads. Open to all genres - suggestions welcome!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class = "main_about">
+                <div class = "main_about-info">
+                    <div class = "main_about-info-title">About DLSU</div>
+                    <div class = "main_about-info-pic"></div>
+                    <div class = "main_about-info-desc">De La Salle University positions itself as a leader in molding human 
+                        resources who serve the church and the nation. It is a Catholic 
+                        coeducational institution founded in 1911 by the Brothers of the 
+                        Christian Schools. The University is a hub for higher education 
+                        training renowned for its academic excellence, prolific and relevant 
+                        research, and involved community service.
+                        <p>
+                        Nestled in the heart of Manila, De La Salle University is home to local 
+                        and international students seeking quality education for a brighter 
+                        future ahead. It is situated in a vibrant city where culture and diversity 
+                        is well manifested.</div>
+                </div>
+
+            </div>
+        </div>
 </body>
 </html>
