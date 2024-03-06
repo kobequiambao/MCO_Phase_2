@@ -284,4 +284,33 @@ $(document).ready(function () {
         }
     }
 
+    $(document).on('click', '.best', function() {
+        $('.sort-button').text('Sort By: Best');
+        var commentContainers = $('.comment-container');
+    
+        commentContainers.sort(function(a, b) {
+            var voteCountA = parseInt($(a).find('.vote-count').text());
+            var voteCountB = parseInt($(b).find('.vote-count').text());
+    
+            return voteCountB - voteCountA;
+        });
+    
+        $('.comment-section').empty();
+    
+        $('.comment-section').append(commentContainers);
+    });
+
+    $(document).on('click', '.new', function() {
+        $('.sort-button').text('Sort By: New');
+        var commentContainers = $('.comment-container');
+    
+        commentContainers.sort(function(a, b) {
+            var timeA = new Date($(a).find('.posted-time').text());
+            var timeB = new Date($(b).find('.posted-time').text());
+    
+            return timeB - timeA; 
+        });
+    
+        $('.comment-section').empty().append(commentContainers);
+    });
 });
