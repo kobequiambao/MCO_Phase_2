@@ -229,19 +229,22 @@ body{
         height: 42.1875px;
         position: sticky;
         top: 48px;
-        width: 705.799px;
+        width: 695.799px;
         z-index: 8;
         padding: 0px 5px;
         margin-right: 5px;
     }
 
-    .image-video-container{
+    .image-video-container, .post-container{
         display: flex;
         color: rgb(135, 138, 140);
         font-weight: bold;
+        cursor: pointer;
+        margin: 0px 120px;
+        font-size: 15px;
     }
 
-    .image-video-icon{
+    .image-video-icon, .post-icon{
         margin-left: 5px;
         width: 20px;
     }
