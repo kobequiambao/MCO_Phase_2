@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Create-Post</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- ?testing -->
+    <link rel="stylesheet" href="Create-Post.css">
+    <script type = "text/javascript" src="general.js"></script>
+    <link rel="stylesheet" href="general.css">
+    
+
+</head>
+<body>
+   {{> header}}
+
+    <div class="main_create" >
+        <div class="create-post-cointainer">
+            <div class="create-draft-container">
+                <div class="create-a-post-container">
+                    Create a Post
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="dropdown-container"> <!--Can think of any name-->
+                <div class="dlsu-logo-container">
+                    <div class="logo-holder">
+                        <img class="dlsu-logo" src="CCAPDEV-LOGO-2\1.png">
+                        <div class="dlsu-text-holder">
+                            <span class="discord-name">r/dlsu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="text-box-container">
+                    <div class="title-box-container">
+                        <div class="title-box-holder">
+                            <textarea maxlength="300" placeholder="Title" class="title-box" rows="1"></textarea>
+                        </div>
+                    </div>
+                    <div class="body-box-container">
+                        <div class="body-box-container-1">
+                            <div class="body-box-container-2">
+                                <div class="icon-holder">
+                                    <div class="post-container">
+                                        Post
+                                        <img src="CCAPDEV-LOGO-2\19.png" alt="" class="post-icon">
+                                    </div>
+                                    <div class="image-video-container">
+                                        Images & Videos
+                                        <img src="CCAPDEV-LOGO-2\18.png" alt="" class="image-video-icon">
+                                    </div>
+                                </div>
+                                <textarea placeholder="Text (required)" class="body-box"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tag-post-container">
+                    <div class="tag-container">
+                        <div class="tag-button-container">
+                            <form>
+                                <input type="radio" name="flair" value="General Question">
+                                <label class="flair" id="general-question">General Question</label>
+
+                                <input type="radio" name="flair" value="Discussion">
+                                <label class="flair" id="discussion">Discussion</label>
+
+                                <input type="radio" name="flair" value="Admissions">
+                                <label class="flair" id="admissions">Admissions</label>
+
+                                <input type="radio" name="flair" value="Scholarships">
+                                <label class="flair" id="scholarships">Scholarships</label> <br>
+
+                                <input type="radio" name="flair" value="Student Life">
+                                <label class="flair" id="student-life">Student Life</label>
+
+                                <input type="radio" name="flair" value="News/Articles">
+                                <label class="flair" id="new-articles">News/Articles</label>
+
+                                <input type="radio" name="flair" value="Meme">
+                                <label class="flair" id="meme">MEME</label>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-icon-container" onclick="navigateToPost('/general')">
+                    <div class="post-icon-holder">
+                        <button class="post-button">
+                            <img src="CCAPDEV-LOGO-2\19.png" class="post-icon">
+                            <span class="post-text">Post</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

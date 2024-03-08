@@ -1,0 +1,28 @@
+<!-- To put files in each other -->
+{{> header}}
+<div class="main">
+  <p>Resulting Data</p>
+  <div class="jumbotron">
+  <table> 
+    <tr> 
+      <td><label>Name</label></td> 
+      <!-- the content can be accessed though the use of the object like so -->
+      <td><strong>{{vname}}</strong></td> 
+    </tr> <tr> 
+      <td><label>Pass</label></td> 
+      <td><strong>{{vpass}}</strong></td> 
+    </tr>
+  </table>
+  </div>
+<p>
+<!-- It is possible to use conditions and loops in handlebars -->
+{{#each vlist}}
+{{#if check}}
+<u>{{letter}}</u>
+<!-- It is possible to use "else if <condition>" -->{{else}}
+<b>{{letter}}</b>
+{{/if}}
+{{/each}}
+</p>
+</div>
+{{> footer}}
