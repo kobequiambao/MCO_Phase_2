@@ -62,6 +62,14 @@ server.get('/editProfile', function(req, resp){
     });
 });
 
+server.get('/post', function(req, resp){
+    resp.render('post', {
+        layout: 'index',
+        title: 'Post',
+        n: req.params.n 
+    });
+});
+
 
 const port = process.env.PORT | 3000;
 server.listen(port, function(){

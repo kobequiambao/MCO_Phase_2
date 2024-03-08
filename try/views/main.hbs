@@ -8,17 +8,16 @@
 
             <div class = "index_main_feed-post">
                 {{!-- POSTS --}}
-                <div class="main_post" id="post-1">
-                    <div class="main_vote">
-                        <div class="up_vote" onclick="toggleImage(this)"></div>
-                        <div class="num_vote">10</div>
-                        <div class="down_vote" onclick="toggleImage(this)"></div>
-                    </div>
-                    
-                    <div class = "main_post-right " onclick="navigateToPost('Post1 copy.html')">
+                <div class="main_post" id="post-1">    
+                    <div class = "main_post-top " onclick="navigateToPost('/post')">
                         <div class = "main_post-desc">
                             <div class = "main_post-desc-poster">
-                                Posted by u/Kooky_Marketing_3807</div>
+                                <div class = "main_post-desc-poster-pic"></div>
+                                <div class = "main_post-desc-poster-name">
+                                u/Kooky_Marketing_3807</div>
+                                <div class = "main_post-desc-banner">General Question</div>
+                            </div>
+                            
                             <div class = "main_post-desc-title">
                                 Lf swimming kasama</div>
                             <div class = "main_post-desc-content">
@@ -27,7 +26,23 @@
                                 Hi!! Are there people interested in swimming at razon every Wednesday and Thursday?
                             </div>
                         </div>
-                
+
+                        <div class="main_post-buttons">
+                            <div class="main_vote">
+                                <div class="up_vote" onclick="toggleImage(this)"></div>
+                                <span class = "num_vote">10</span>
+                                <div class="down_vote" onclick="toggleImage(this)"></div>
+                            </div>
+                            <div class="button-container">
+                                <div class="main_post-buttons-comment"></div>
+                                <span>Comment</span>
+                            </div>
+                            <div class="button-container">
+                                <div class="main_post-buttons-share"></div>
+                                <span>Share</span>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 

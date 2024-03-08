@@ -352,7 +352,10 @@ main {
     background-color: #BEBEBE; /* Change background color on hover */
     color: #00523E;
 }
-
+.main_vote .up_vote,
+.main_vote .down_vote {
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
 .main_post {
     margin-top: 20px;
     border-radius: 10px;
@@ -364,44 +367,111 @@ main {
     align-items: center;
     padding:0;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
+    color: #00523E;
 }
 
-.main_post-right:hover {
+.main_post-top:hover {
     background-color: #00523E;
+    color:white;
     opacity:50%;
 }
-.main_vote {
-    width: 7%;
-    
-    margin:auto;
-    margin-top:0;
-    margin-bottom:0;
-    padding:0;
+.main_post:hover .button-container {
+    background-color: white;
+    opacity:80%;
+}
+.main_post:hover .main_vote {
+    background-color: white;
+}
+.main_post:hover span {
+    color: #00523E;
+}
+.main_post:hover .up_vote {
+    background-image: url('CCAPDEV-LOGO-2/upvote_green.png');
+}
+.main_post:hover .down_vote {
+    background-image: url('CCAPDEV-LOGO-2/downvote_green.png');
+}
+.main_post:hover .main_post-buttons-share {
+    background-image: url('CCAPDEV-LOGO-2/share_green.png');
+}
+.main_post:hover .main_post-buttons-comment {
+    background-image: url('CCAPDEV-LOGO-2/comment_green.png');
 }
 
-.main_post-right{
-    width:93%;
+
+.main_post:hover .button-container:hover {
+    opacity: 0.6;
+}
+.main_post:hover .main_vote:hover {
+    opacity: 0.6;
+}
+.main_post:hover .main_post-desc-banner {
+    color:white;
+}
+.main_vote {
+    display:flex;
+    border-radius:20px;
+    background-color: #00523E;
+    height:30px;
+    padding: 5px;
+    margin-right:5px;
+
+    
+}
+
+.main_vote:hover {
+    background-color: black; /* Change background color on hover */
+    opacity: 20%;
+    border-radius: 20px;
+}
+
+.main_post-top{
+    width:100%;
+    height:93%;
+    margin-top: 0;
     background-color: #f6fff6;
     padding:0;
     /* margin-right:0; */
 }
 
+.main_post-desc-poster-pic{
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    border-radius:50%;
+}
+
 .main_post-desc-poster{
+    margin-top:5px;
+    margin-left:10px;
+    display:flex;
+    align-items: center;
+}
+.main_post-desc-poster-name{
     margin:10px;
     margin-top:10px;
     font-family:IBMPlexSans, Arial, Sans-Serif;
-    color: #BEBEBE;
-    font-size: 12px;
+    
+    font-size: 14px;
     text-align: justify;
 
 }
 
+.main_post-desc-banner{
+    background-color: yellow;
+    font-family:IBMPlexSans, Arial, Sans-Serif;
+    font-size: 10px;
+    text-align: justify;
+    border-radius:20px;
+    padding:5px;
+}
 .main_post-desc-title{
     margin:10px;
     margin-top:10px;
     font-family:IBMPlexSans, Arial, Sans-Serif;
-    color: #BEBEBE;
-    font-size: 18px;
+    
+    font-size: 20px;
     font-weight:bold;
     text-align: justify;
 }
@@ -411,15 +481,16 @@ main {
     margin-top:10px;
     margin-bottom: 15px;
     font-family: Noto Sans,Arial,sans-serif;
-    color: #BEBEBE;
-    font-size: 14px;
+    
+    font-size: 16px;
     text-align: justify;
 }
 
 
 .up_vote {
     margin: 0 auto;
-    margin-top: 12px;
+    margin-top: 6px;
+    margin-right:5px;
     height: 25px;
     width: 25px;
     background-image: url('CCAPDEV-LOGO-2/2.png');
@@ -430,19 +501,17 @@ main {
 .num_vote {
     height: 20px;
     margin: auto;
-    margin-top: 10px;
-    font-family: IBMPlexSans, Arial, Sans-Serif;
-    color: #BEBEBE;
-    font-size: 18px;
-    font-weight: bold;
+    margin-top: 6px;
+    margin-left:5px;
     text-align: center;
     line-height: 20px;
 }
 
 .down_vote {
     margin: 0 auto;
-    margin-top: 12px;
+    margin-top: 6px;
     margin-bottom: 12px;
+    margin-left:5px;
     height: 25px;
     width: 25px;
     background-image: url('CCAPDEV-LOGO-2/3.png');
@@ -450,10 +519,9 @@ main {
     cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
-
-
 .main_post-buttons {
-    height:50px;
+    margin:10px;
+    height:7%;
     display: flex;
     align-items: center;
     margin-bottom:5px;
@@ -461,22 +529,24 @@ main {
 
 .button-container {
     height:30px;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     align-items: center;
+    border-radius:20px;
+    padding: 5px;
+    background-color: #00523E;
 }
 .button-container:hover {
-    background-color: black; /* Change background color on hover */
+    background-color: black;
     opacity: 20%;
-    border-radius: 20%;
 }
+.up_vote, .down_vote,
 .main_post-buttons-comment,
-.main_post-buttons-share,
-.main_post-buttons-save,
-.main_post-buttons-burger {
+.main_post-buttons-share {
     height: 20px;
     width: 20px;
     background-size: cover;
+    margin-right:1px;
 }
 
 .main_post-buttons-comment {
@@ -487,20 +557,13 @@ main {
     background-image: url('CCAPDEV-LOGO-2/5.png');
 }
 
-.main_post-buttons-save {
-    background-image: url('CCAPDEV-LOGO-2/6.png');
-}
-
-.main_post-buttons-burger {
-    background-image: url('CCAPDEV-LOGO-2/7.png');
-}
-
 span {
     margin-left: 5px; /* Adjust this value according to your preference */
     font-family:IBMPlexSans, Arial, Sans-Serif;
-    color: #BEBEBE;
+    color: white;
     font-size: 12px;
     text-align: justify;
+    font-weight: bold;
 }
 
 .dropdown-content_search {

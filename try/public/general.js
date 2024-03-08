@@ -45,7 +45,9 @@ function updateVoteCount(post,increment) {
 
 
 function navigateToPost(url) {
-    window.location.href = url;
+    if(!event.target.classList.contains('up_vote') && !event.target.classList.contains('down_vote')) {
+        window.location.href = url;
+    }
   }
 
 function toggleDropdown_user() {
@@ -57,3 +59,4 @@ function toggleDropdown_search() {
     var dropdownContent = document.querySelector('.dropdown-content_search');
     dropdownContent.classList.toggle('show_search');
 }
+
