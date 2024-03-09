@@ -375,28 +375,6 @@ main {
     color:white;
     opacity:50%;
 }
-.main_post:hover .button-container {
-    background-color: white;
-    opacity:80%;
-}
-.main_post:hover .main_vote {
-    background-color: white;
-}
-.main_post:hover span {
-    color: #00523E;
-}
-.main_post:hover .up_vote {
-    background-image: url('CCAPDEV-LOGO-2/upvote_green.png');
-}
-.main_post:hover .down_vote {
-    background-image: url('CCAPDEV-LOGO-2/downvote_green.png');
-}
-.main_post:hover .main_post-buttons-share {
-    background-image: url('CCAPDEV-LOGO-2/share_green.png');
-}
-.main_post:hover .main_post-buttons-comment {
-    background-image: url('CCAPDEV-LOGO-2/comment_green.png');
-}
 
 
 .main_post:hover .button-container:hover {
@@ -411,7 +389,7 @@ main {
 .main_vote {
     display:flex;
     border-radius:20px;
-    background-color: #00523E;
+    background-color: #949494;
     height:30px;
     padding: 5px;
     margin-right:5px;
@@ -419,11 +397,7 @@ main {
     
 }
 
-.main_vote:hover {
-    background-color: black; /* Change background color on hover */
-    opacity: 20%;
-    border-radius: 20px;
-}
+
 
 .main_post-top{
     width:100%;
@@ -502,7 +476,7 @@ main {
     height: 20px;
     margin: auto;
     margin-top: 6px;
-    margin-left:5px;
+    
     text-align: center;
     line-height: 20px;
 }
@@ -534,7 +508,7 @@ main {
     align-items: center;
     border-radius:20px;
     padding: 5px;
-    background-color: #00523E;
+    background-color: #949494;
 }
 .button-container:hover {
     background-color: black;
@@ -546,7 +520,7 @@ main {
     height: 20px;
     width: 20px;
     background-size: cover;
-    margin-right:1px;
+    padding:1px
 }
 
 .main_post-buttons-comment {
@@ -558,7 +532,8 @@ main {
 }
 
 span {
-    margin-left: 5px; /* Adjust this value according to your preference */
+    margin-left:5px;
+    margin-right:5px;
     font-family:IBMPlexSans, Arial, Sans-Serif;
     color: white;
     font-size: 12px;
