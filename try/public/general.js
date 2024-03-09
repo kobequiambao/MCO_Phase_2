@@ -1,4 +1,4 @@
-$(document).ready(function(){    
+    
     function navigateToPost(url) {
         if(!event.target.classList.contains('up_vote') && !event.target.classList.contains('down_vote')) {
             window.location.href = url;
@@ -36,5 +36,5 @@ $(document).ready(function(){
           modal.style.display = "none";
         }
       }
-});
+
   
