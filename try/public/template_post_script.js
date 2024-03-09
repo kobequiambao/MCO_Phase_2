@@ -58,4 +58,6 @@
             }).on('mouseleave', '.down_vote', function() {
                 $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
             });
+
+            
         }); 
