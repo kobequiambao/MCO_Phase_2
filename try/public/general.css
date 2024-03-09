@@ -133,7 +133,7 @@ main {
     display: block;
 }
 
-.dropdown-content_useer a:hover {
+.dropdown-content_user a:hover {
     background-color: #f1f1f1;
 }
 
@@ -328,30 +328,32 @@ main {
 
 .main_createPost {
     height: 60px;
-    background-color: white;
+    background-color: #BEBEBE;
     border: none;
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Change cursor to pointer on hover */
     outline: none; /* Remove outline when clicked */
-    font-family: Noto Sans,Arial,sans-serif;
-    font-size: 18px; /* Adjust font size */
-    color: #BEBEBE; /* Text color */
-    font-weight: lighter; /* Bold text */
+    font-size: 18px;
+    font-family: IBMPlexSans, Arial, Sans-Serif;
+    color: white;
+    font-weight: bold;
     text-align: left;
+    font-style: italic;
     transition: background-color 0.3s ease; /* Smooth transition for background color */
     background-image: url('CCAPDEV-LOGO-2/14.png'); /* Path to your search icon */
     background-repeat: no-repeat; /* Prevent the icon from repeating */
     background-position: 20px center; /* Position the icon 20px from the left and vertically centered */
-    background-size: 30px; /* Set the size of the background image */
+    background-size: 20px; /* Set the size of the background image */
     padding-left: 60px; /* Add padding to the left of the button to accommodate the icon */
     display: flex;
     align-items: center; /* Align text vertically center */
+    opacity: 0.9;
 }
 
 .main_createPost:hover {
-    background-color: #BEBEBE; /* Change background color on hover */
-    color: #00523E;
+    opacity:0.5;
 }
+
 .main_vote .up_vote, .up_vote_filled,
 .main_vote .down_vote, .down_vote_filled {
     cursor: pointer; /* Add cursor pointer to indicate it's clickable */
@@ -584,7 +586,7 @@ span {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
   }
   
   .modal-content {

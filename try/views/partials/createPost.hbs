@@ -40,41 +40,63 @@
                         </div>
                     </div>
                 </div>
+
+                <div class = "create-Post-buttons-container" id = "cPb-container">
                 
-                <div class="tag-post-container">
-                    <div class="tag-container">
-                        <div class="tag-button-container">
-                            <form>
-                                <input type="radio" name="flair" value="General Question">
-                                <label class="flair" id="general-question">General Question</label>
+                    <label for="imageUpload" class = "create-Post-buttons">
+                        <div class = "addImage"> </div>
+                        <span>Add Image</span>
+                        <input type="file" id="imageUpload" style="display: none;">
+                    </label>
+                
+                    <div class="create-Post-buttons" onclick="toggleDropdown_banner()">
+    <div class="addBanner"></div>
+    <span>Flair</span>
+    <div class="dropdown-content_banner">
+        <form>
+            <ul>
+                <li>
+                    <input type="radio" name="flair" value="General Question" checked>
+                    <label class="flair" id="general-question">General Question</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="Discussion">
+                    <label class="flair" id="discussion">Discussion</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="Admissions">
+                    <label class="flair" id="admissions">Admissions</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="Scholarships">
+                    <label class="flair" id="scholarships">Scholarships</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="Student Life">
+                    <label class="flair" id="student-life">Student Life</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="News/Articles">
+                    <label class="flair" id="new-articles">News/Articles</label>
+                </li>
+                <li>
+                    <input type="radio" name="flair" value="Meme">
+                    <label class="flair" id="meme">MEME</label>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
 
-                                <input type="radio" name="flair" value="Discussion">
-                                <label class="flair" id="discussion">Discussion</label>
-
-                                <input type="radio" name="flair" value="Admissions">
-                                <label class="flair" id="admissions">Admissions</label>
-
-                                <input type="radio" name="flair" value="Scholarships">
-                                <label class="flair" id="scholarships">Scholarships</label> <br>
-
-                                <input type="radio" name="flair" value="Student Life">
-                                <label class="flair" id="student-life">Student Life</label>
-
-                                <input type="radio" name="flair" value="News/Articles">
-                                <label class="flair" id="new-articles">News/Articles</label>
-
-                                <input type="radio" name="flair" value="Meme">
-                                <label class="flair" id="meme">MEME</label>
-                              </form>
-                        </div>
-                    </div>
                 </div>
-               <div class="post-box-container">
-                    <div class="post-box-holder">
-                            Post
-                    </div>
+
+
                 </div>
-            </div>
+
+                <div class="post-box-container">
+                    Post
+                </div>
+                    
         </div>
 
 

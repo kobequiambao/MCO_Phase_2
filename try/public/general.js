@@ -14,7 +14,10 @@
         var dropdownContent = document.querySelector('.dropdown-content_search');
         dropdownContent.classList.toggle('show_search');
     }
-    
+    function toggleDropdown_banner() {
+      var dropdownContent = document.querySelector('.dropdown-content_banner');
+      dropdownContent.classList.toggle('show_banner');
+  }
     // ------------------------------------------------------------------
     function openLoginForm() {
         var modal = document.getElementById("loginFormModal");
