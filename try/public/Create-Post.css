@@ -1,96 +1,51 @@
 
-header {
-    height: 200px;
-}
 
-.main_create {
-    background-color: #00523E;
-    position: absolute;
-    width:100%;
-}
 
     .create-post-cointainer{
-        
+
         background-color: white;
-        width: 740px;
-        height: 628.812px;
+        width: 600px;
+        height: 400px;
         border-width: 1px;
         display: block;
         line-height: 16px;
-        margin-left: 25%;
+        margin-left: auto;
+        margin-right:auto;
         border-radius: 5px;
+        margin-top:80px;
+
     }
 
     .create-draft-container{
         display: flex;
-        margin-top: 16px;
+        margin-top: 5px;
         margin-bottom: 16px;
         padding: 4px;
-        width: 732.014px;
-        height: 34.2014px;
+        width: 100%;
+        height: 100%;
         border-bottom-width: 1.11111px;
         border-bottom-style: solid;
         border-bottom-color: white;
     }
 
     .create-a-post-container{
-        margin-left:10px;
+        margin-top:20px;
         display: block;
-        height: 34.2014px;
-        width: 622.118px;
+        height: 10%;
+        width: 80%;
         font-size: 18px;
         font-weight: 500;
         line-height: 22px;
         font-family: 'IBM Plex Sans', Arial, sans-serif;
-        font-size: 16px;
-        margin-top: 13px;
-        color: rgb(124, 124, 124);
-    }
+        font-size: 24px;
+        font-weight: bold;
+        color: #00523E;
 
-    .dropdown-container{
-        align-items: center;
-        display: flex;
-        font-size: Arial, sans-serif;
-        height: 40px;
-        margin-bottom: 8px;
-        width: 600px;
+        margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     }
-
-    .dlsu-logo-container{
-        border-style: solid;
-        border-bottom-color: rgb(237, 239, 241);
-        border-color: rgb(237, 239, 241);
-        border-radius: 4px;
-        border-bottom-width: 1.11111px;
-        display: block;
-        height: 40px;
-        width: 300px;
-        margin-right: 16px;
-    }
-
-    .logo-holder{
-        align-items: center;
-        display: flex;
-        border-radius: 9999px;
-        height: 37.7778px;
-        padding-left: 8px;
-        padding-right: 8px;
-        width: 281.806px;
-    }
-
-    .dlsu-logo{
-        background-color: #00523E;
-        width: 21.9965px;
-        border-radius: 100%;
-        display: block;
-    }
-
-    .dlsu-text-holder{
-        display: inline-block;
-        height: 18.4375px;
-        padding-left: 8px;
-        width: 229.601px;
-    }
+   
 
     .discord-name{
         display: inline-block;
@@ -102,16 +57,6 @@ header {
         color: rgb(124, 124, 124);
     }
 
-    .main{
-        border-radius: 5px;
-        border-color: rgb(237, 239, 241);
-        border-style: solid;
-        display: block;
-        font-family: Arial, sans-serif;
-        height: 510.538px;
-        width: 734px;
-        margin-bottom: 15px;
-    }
 
     .post-icon-container{
         border-radius: 5px;
@@ -163,61 +108,92 @@ header {
         font-size: 14px;;
     }
 
-    .text-box-container{
+    .text-box-container {
         display: block;
-        height: 229.533px;
-        margin: 16px;
-        width: 708.021px;
+        height: 70%;
+        margin: auto;
+        width: 90%;
+        background-color: aqua;
+        overflow: hidden; /* Prevents child elements from overflowing */
     }
-
-    .title-box-container{
+    
+    .title-box-container {
         display: block;
-        height: 39.2188px;
-        margin-bottom: 8px;
-        width: 708.021px;
+        height: 100%; /* Set height to 100% */
+        width: 100%;
+        text-align: center; /* Center the content horizontally */
     }
-
-    .title-box-holder{
+    
+    .title-box-holder {
         display: block;
-        height: 39.2188px;
-        width: 708.021px;
+        height: 100%; /* Set height to 100% */
+        width: 100%;
     }
-
-    .title-box{
+    
+    .title-box {
         overflow-x: hidden;
         overflow-wrap: break-word;
-        height: 39.2188px;
+        height: calc(100% - 20px); /* Adjust height to accommodate padding and borders */
         resize: none;
         border-radius: 4px;
-        border-style: solid;
-        border-width: 1.11111px;
+        border: 1px solid black; /* Adjust border style */
         font-size: 14px;
         line-height: 21px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 16px;
-        padding-right: 68px;
+        padding: 8px 68px 8px 16px; /* Adjust padding */
         text-align: start;
-        width: 618px;
-        display: block;
+        width: 100%;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
     }
+    
 
-    .body-box-container, .body-box-container-1{
+    .body-box-container,
+    .body-box-container-1 {
         display: block;
-        height: 182.738px;
+        height: auto; /* Adjusted height to fit content */
+        margin-bottom: 8px;
         width: 708.021px;
+        border-radius: 4px;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
     }
-
-    .body-box-container-2{
+    
+    .body-box-container-2 {
         background-attachment: scroll;
         border-radius: 4px;
-        border-width: 1.11111px;
+        border-width: 1px; /* Adjusted border width */
         border-style: solid;
         border-color: rgb(237, 239, 241);
-        height: 180.156px;
-        width: 701.799px;
+        height: auto; /* Adjusted height to fit content */
         margin-top: 30px;
+        display: block;
+        margin-bottom: 8px;
+        width: 701.021px;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    
+        /* Modern scrollbar styles */
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f5f5f5;
     }
+    
+    .body-box-container-2::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .body-box-container-2::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+    }
+    
+    .body-box-container-2::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+    
+    .body-box-container-2::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+    }
+    
+    
+    
+    
 
     .icon-holder{
         align-items: center;
@@ -324,8 +300,31 @@ header {
     }
 
     .divider{
-        width: 738.412px;
+        width: 99.8%;
         color:rgba(135, 138, 140, 0.5);
         margin: 0px;
         margin-bottom: 5px;
     }
+
+    
+    .close {
+        margin:7px;
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .create-post-top {
+        display: flex;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    
