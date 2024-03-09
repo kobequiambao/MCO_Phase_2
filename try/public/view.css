@@ -3,13 +3,7 @@ body {
     /* background-color: #00523E; */
   }
   /* DELETE POPUP */
-  .delete-popup {
-    display: none;
-    position: fixed;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-    color: #00523E;
-  }
+
 
   #delbox{
     color: #00523E;
@@ -225,33 +219,7 @@ body {
     box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
 }
 
-.delete-post-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 
-.delete-post-btn img { /* Adjust the delete button image styling if necessary */
-  width: 20px;
-  height: 20px;
-}
-
-.edit-profile-btn {
-    padding: 10px;
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px; /* For Edit Profile Button */
-}
-
-.edit-profile-btn:hover, .delete-post-btn:hover {
-    background-color: #00523E; /* Darker green on hover */
-}
 
 .post-header-viewuserprofile {
   display: flex;
@@ -272,20 +240,20 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: #00523E; /* Light grey background */
     border-bottom: 2px ; /* Bottom border to match the uploaded image */
     padding: 10px 0;
 }
 .profile-navbar a {
     text-decoration: none;
-    color: #00523E; /* Blue color for the text */
+    color: white; /* Blue color for the text */
     margin: 0 15px;
     padding-bottom: 5px;
     font-size: 16px;
     border-bottom: 3px solid transparent; /* Transparent border, will be blue on active */
 }
 .profile-navbar a:hover,.profile-navbar a.active {
-    border-bottom: 3px solid #00523E; /* Blue border on hover/active */
+    border-bottom: 3px solid #BEBEBE; /* Blue border on hover/active */
 }
 
 h1{

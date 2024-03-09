@@ -423,6 +423,7 @@ main {
     margin-left:10px;
     display:flex;
     align-items: center;
+    position: relative;
 }
 .main_post-desc-poster-name{
     margin:10px;
@@ -601,7 +602,81 @@ span {
     max-width: 600px; /* Optional: limit the maximum width */
 }
 
+.header_2-user {
+    position: absolute;
+    top: 50%;
+    left: 36.5%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    width: 1000px; /* Adjust the width as needed */
+    margin-left:225px;
+}
+
+
+.header_2-user-pic {
+    height: 100px;
+    width: 100px;
+    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-size: cover;
+    border-radius: 10%;
+    border: 1px solid #00523E;
+    background-color: white;
+}
+
+.header_2-user-info {
+    margin-top:30px;
+    font-size: 30px;
+    color: #1C1C1C;
+    font-weight:bolder ;
+    font-family: IBMPlexSans, Arial, Sans-Serif;
+    margin-left: 10px; /* Adjust as needed */
+}
+
+.header_2-user-info-2{
+    font-size: 10px;
+    color: #7C7C7C;
+    font-weight:normal;
+}
+
+.delete-post-btn {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: red;
+  }
   
- 
-   
+  
+  .delete-post-btn img { /* Adjust the delete button image styling if necessary */
+    width: 20px;
+    height: 20px;
+  }
+  
+  .edit-profile-btn {
+      padding: 10px;
+      background-color: #4CAF50; /* Green background */
+      color: white; /* White text */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px; /* For Edit Profile Button */
+  }
+  
+  .edit-profile-btn:hover, .delete-post-btn:hover {
+      opacity: 0.5;
+  }
+
+  .delete-popup {
+    display: none;
+    position: fixed;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    color: #00523E;
+
+    opacity:1;
+  }
+
   
