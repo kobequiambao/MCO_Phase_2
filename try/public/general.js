@@ -19,26 +19,71 @@
       dropdownContent.classList.toggle('show_banner');
   }
     // ------------------------------------------------------------------
-    function openLoginForm() {
-        var modal = document.getElementById("loginFormModal");
+    function openLoginForm_create() {
+        var modal = document.getElementById("loginFormModal-create");
         modal.style.display = "block";
         document.body.style.overflow = "hidden"; // Disable scrolling on the body
     }
     
-    function closeLoginForm() {
-        var modal = document.getElementById("loginFormModal");
+    function closeLoginForm_create() {
+        var modal = document.getElementById("loginFormModal-create");
         modal.style.display = "none";
         document.body.style.overflow = ""; // Re-enable scrolling on the body
     }
     
-      
+    function openLoginForm_edit() {
+      var modal = document.getElementById("loginFormModal-edit");
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // Disable scrolling on the body
+  }
+  
+  function closeLoginForm_edit() {
+      var modal = document.getElementById("loginFormModal-edit");
+      modal.style.display = "none";
+      document.body.style.overflow = ""; // Re-enable scrolling on the body
+  }
+
+  function openLoginForm_delete() {
+    var modal = document.getElementById("loginFormModal-delete");
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Disable scrolling on the body
+}
+
+function closeLoginForm_delete() {
+    var modal = document.getElementById("loginFormModal-delete");
+    modal.style.display = "none";
+    document.body.style.overflow = ""; // Re-enable scrolling on the body
+}
+
+
+
+
+
+
+
+
       // Close modal if clicked outside of it
       window.onclick = function(event) {
-        var modal = document.getElementById("loginFormModal");
+        var modal = document.getElementById("loginFormModal-create");
         if (event.target == modal) {
           modal.style.display = "none";
         }
       }
+      window.onclick = function(event) {
+        var modal = document.getElementById("loginFormModal-edit");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      window.onclick = function(event) {
+        var modal = document.getElementById("loginFormModal-delete");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+
+
 
       function openForm() {
             
@@ -49,8 +94,15 @@
         document.getElementById("popup").style.display = "none";
       }
 
+
+
+
+
+
       function handleDelete(event) {
         event.stopPropagation();
         openForm();
     }
     
+    
+

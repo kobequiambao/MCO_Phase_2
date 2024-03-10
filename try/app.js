@@ -62,6 +62,13 @@ server.get('/editProfile', function(req, resp){
     });
 });
 
+server.get('/main', function(req, resp){
+    resp.render('main',{
+        layout: 'index',
+        title: 'Main'
+    });
+});
+
 server.get('/post', function(req, resp){
     resp.render('post', {
         layout: 'index',

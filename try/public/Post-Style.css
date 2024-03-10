@@ -360,39 +360,7 @@
 
     /* Save Button */
     
-    .save{
-        align-items: center;
-        display: flex;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.15s;
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        margin-right: 4px;
-        padding-bottom: 4px;
-    }
-
-    .save:hover{
-        background-color: rgb(178, 181, 184);
-    }
-
-    .save-icon{
-        width: 25px;
-        margin-right: 8px;
-    }
-
-    .save-text{
-        color: rgb(135, 138, 140);
-        display: inline-block;
-        font-size: 10px;
-        font-weight: bold;
-    }
-
-    #save-filled{
-        width: 25px;
-        margin-right: 8px;
-    }
+   
     
     .divider{
         margin-top: 15px;

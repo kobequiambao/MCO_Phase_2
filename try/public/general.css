@@ -204,7 +204,7 @@ main {
 .header_2-channel {
     position: absolute;
     top: 50%;
-    left:36.5%;
+    left:36%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
@@ -518,7 +518,11 @@ main {
 }
 .up_vote, .down_vote, .up_vote_filled, .down_vote_filled,
 .main_post-buttons-comment,
-.main_post-buttons-share {
+.main_post-buttons-share,
+.main_post-buttons-save,
+.main_post-buttons-save-filled,
+.main_post-buttons-edit,
+.main_post-buttons-delete {
     height: 20px;
     width: 20px;
     background-size: cover;
@@ -532,7 +536,18 @@ main {
 .main_post-buttons-share {
     background-image: url('CCAPDEV-LOGO-2/5.png');
 }
-
+.main_post-buttons-save {
+    background-image: url('CCAPDEV-LOGO-2/6.png');
+}
+.main_post-buttons-save-filled {
+    background-image: url('CCAPDEV-LOGO-2/20.png');
+}
+.main_post-buttons-edit {
+    background-image: url('CCAPDEV-LOGO-2/8.png');
+}
+.main_post-buttons-delete {
+    background-image: url('CCAPDEV-LOGO-2/9.png');
+}
 span {
     margin-left:5px;
     margin-right:5px;

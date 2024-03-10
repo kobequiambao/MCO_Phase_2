@@ -4,29 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Profile</title>
-<link rel="stylesheet" href="view.css"> <!-- Ensure this path is correct -->
-<link rel="stylesheet" href="general.css"> <!-- Ensure this path is correct -->
+<link rel="stylesheet" href="view.css">
+<link rel="stylesheet" href="general.css"> 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type = "text/javascript" src="general.js"></script>
-<script type = "text/javascript" src="template_post_script.js"></script>
-</head>
+<script type="text/javascript" src="general.js"></script>
+<script type="text/javascript" src="template_post_script.js"></script>
+<script id="template-post" type="text/x-handlebars-template">
+    {{> template_post}}
+</script>
+<script id="template-comment" type="text/x-handlebars-template">
+    {{> template_post}}
+</script>
+<script id="template-save" type="text/x-handlebars-template">
+    {{> template_post}}
+</script>
+<script id="template-hidden" type="text/x-handlebars-template">
+    {{> template_post}}
+</script>
+<script id="template-interactions" type="text/x-handlebars-template">
+    {{> template_post}}
+</script>
 
+</head>
 
 <body>
     {{> viewProfile_header}}
 
     <div class="profile-navbar">
-        <a href="#" class = "active">POSTS</a>
-        <a href="#">COMMENTS</a>
-        <a href="#">SAVED</a>
-        <a href="#">HIDDEN</a>
-        <a href="#">UPVOTED</a>
-        <a href="#">DOWNVOTED</a>
+        <a href="#" class="nav-link active" data-target="posts">POSTS</a>
+        <a href="#" class="nav-link" data-target="comments">COMMENTS</a>
+        <a href="#" class="nav-link" data-target="saved">SAVED</a>
+        <a href="#" class="nav-link" data-target="hidden">HIDDEN</a>
+        <a href="#" class="nav-link" data-target="interactions">INTERACTIONS</a>
     </div>
 
-<ul class="post-list">
-    {{>template_post}}
-</ul>
+    <ul class="post-list" id="template-container">
+        <!-- Content will be dynamically added here -->
+    </ul>
 
 </body>
 </html>
