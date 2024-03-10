@@ -15,7 +15,7 @@ $(document).ready(function(){
                                             <div class = "main_post-desc-poster-pic"></div>
                                             <div class = "main_post-desc-poster-name">
                                             u/Kooky_Marketing_3807</div>
-                                            <div class = "main_post-desc-banner">${flair}</div>
+                                            <div class = "main_post-desc-banner" id="${flair}">${flair}</div>
                         
             
             
@@ -33,7 +33,7 @@ $(document).ready(function(){
                                         <div class="main_vote">
                                             <img class="up_vote" src="CCAPDEV-LOGO-2/2.png" alt="">
                                             <img class="up_vote_filled" src="CCAPDEV-LOGO-2/16.png" alt="" hidden>
-                                            <span class = "num_vote">10</span>
+                                            <span class = "num_vote">0</span>
                                             <img class="down_vote" src="CCAPDEV-LOGO-2/3.png" alt="">
                                             <img class="down_vote_filled" src="CCAPDEV-LOGO-2/17.png" alt="" hidden>
                                         </div>
@@ -56,7 +56,6 @@ $(document).ready(function(){
         $('.title-box').val('');
         $('.body-box').val('');
         $('input[name="flair"][value="general-question"]').prop('checked', true);
-
     });
     
 });

@@ -222,35 +222,35 @@
         font-weight: bold;
     }
 
-    #general-question{
+    #General-Question{
         background-color: rgb(255, 214, 53);
     }
 
-    #discussion{
+    #Discussion{
        background-color: rgb(13, 211, 187); 
     }
 
-    #admissions{
+    #Admissions{
         background-color: rgb(0, 82, 62);
         color: white;
     }
 
-    #scholarships{
+    #Scholarships{
         background-color: rgb(234, 0, 39);
         color: white;
     }
 
-    #student-life{
+    #Student-Life{
         background-color: rgb(204, 82, 137);
         color: white;
     }
 
-    #new-articles{
+    #New-articles{
         background-color: purple;
         color: white;
     }
 
-    #meme{
+    #MEME{
         background-color: orangered;
     }
 
