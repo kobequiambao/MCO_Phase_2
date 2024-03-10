@@ -716,12 +716,40 @@ span {
     opacity:1;
   }
 
-  .main_post-img {
+  .main_post-img-container {
+    position: relative;
     width: 100%;
-    height: 500px;
-    object-fit:contain;
-    object-position: center;
-  }
+    height: 500px; /* Adjust the height as needed */
+    margin-top: 20px; /* Adjust margin-top as needed */
+    overflow: hidden;
+}
+
+.main_post-img {
+    position: relative; /* Ensure main image is positioned relative to its container */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image covers the container */
+    object-position: center; /* Center the image */
+    box-shadow: 0px 4px 5px -4px #C1ACBA;
+    z-index: 1; /* Ensure the image is above the blurred background */
+}
+
+.blurred-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(1px); /* Adjust the blur intensity as needed */
+    z-index: 0; /* Ensure it's behind other elements */
+    pointer-events: none; /* Ensures that the blurred background does not interfere with pointer events */
+}
+
+
+
+
+
 
   
   
