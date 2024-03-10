@@ -68,14 +68,17 @@
 }
 
 .logo {
-    height:150px;
+    height: 150px;
     width: 150px;
     margin-right: 10px;
     border: 2px solid black; /* Add border style */
     margin-bottom: 20px;
     margin-top: 20px;
     border-radius: 4px;
+    object-fit: cover;
+    object-position: center; /* Center the image inside */
 }
+
 
 .btn {
     font-size: 14px;
