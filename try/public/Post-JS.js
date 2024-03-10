@@ -108,16 +108,9 @@ $(document).ready(function () {
 
                           <div class="reply-container">
                               <button class="reply-button">
-                                  <img class="reply-icon" src="CCAPDEV-LOGO-2/4.png">
                                   <span class="reply-text">Reply</span>
                               </button>
-                          </div>
-
-                          <div class="share-container">
-                              <button href="" class="share-button">
-                                  <span class="share-text">Share</span>
-                              </button>
-                          </div>                     
+                          </div>                 
                       </div>
                       <textarea class="reply-textarea" hidden></textarea>
                       <button class="comment-button" hidden>Comment</button>
@@ -196,7 +189,7 @@ $(document).ready(function () {
                   </div>
                   <div class="comment-info-container">
                       <div class="info-comment">
-                          <span class="comment-by">${userName}</span> replying to <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
+                          <span class="comment-by">${userName}</span> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
                       </div>
                       <div class="comment-body">
                           <p class="comment-text">${comment}</p>
@@ -213,17 +206,10 @@ $(document).ready(function () {
 
 
                           <div class="reply-container">
-                              <button class="reply-button">
-                                  <img class="reply-icon" src="CCAPDEV-LOGO-2/4.png">
-                                  <span class="reply-text">Reply</span>
-                              </button>
-                          </div>
-
-                          <div class="share-container">
-                              <button href="" class="share-button">
-                                  <span class="share-text">Share</span>
-                              </button>
-                          </div>                     
+                          <button class="reply-button">
+                              <span class="reply-text">Reply</span>
+                          </button>
+                      </div>                   
                       </div>
                       <textarea class="reply-textarea" hidden></textarea>
                       <button class="comment-button" hidden>Comment</button>

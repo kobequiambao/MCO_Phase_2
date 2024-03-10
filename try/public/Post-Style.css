@@ -441,7 +441,8 @@
     /* Sort-Search */
 
     .sort-search-part{
-        margin-left: 57px;
+        margin-top:-10px;
+        margin-left: 20px;
         margin-right: 57px;
         margin-bottom: 4px;
         padding-right: 16px;
@@ -673,17 +674,20 @@
           
         }
 
-    .reply-textarea{
-        display: block;
-        resize: none;
-        width: 600px;
-        border-radius: 25px;
-        padding: 5px 10px;
-        border-width: 1px;
-        margin-bottom: 3px;
-        display: none;
-
-    }
+        .reply-textarea {
+            display: block;
+            resize: none;
+            width: 600px;
+            height:35px;
+            border-radius: 25px;
+            padding: 5px 10px;
+            border-width: 1px;
+            display: none;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            line-height: 35px;
+        }
+        
 
     .comment-button, .submit-comment-button{
         color: white;
@@ -692,7 +696,7 @@
         border-radius: 999px;
         font-size: 12px;
         height: 31.9886px;
-        background-color: rgb(0, 82, 62);
+        background-color: #00523E;;
         padding: 0px 10px;
         width: 76.3636px;
         float: right;
@@ -701,7 +705,7 @@
     }  
 
     .cancel-button, .cancel-comment-button{
-        background-color: rgb(151, 254, 171);
+        background-color: rgba(0, 82, 62, 0.2);
         border: none;
         padding: 0px 10px;
         cursor: pointer;
