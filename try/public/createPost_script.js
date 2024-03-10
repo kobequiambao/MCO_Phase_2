@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('#imageUpload').on('change', function() {
         var file = this.files[0];
-
+    
         if (file) {
             var reader = new FileReader();
             reader.onload = function(e) {
@@ -12,13 +12,28 @@ $(document).ready(function(){
                     fileName = fileName.substring(0, 30) + '...';
                 }
                 
-                console.log(imageDataUrl); 
+                // Apply the uploaded image as the background of .main_post-img
+                $('#uploadedImageContainer').css('background-image', 'url(' + imageDataUrl + ')');
+                
                 $('.file_name').text("Attachment: "+fileName).show();
                 $('.src').text(imageDataUrl);
+    
+                // Get dominant color of the image
+                var img = new Image();
+                img.src = imageDataUrl;
+                img.onload = function() {
+                    var vibrant = new Vibrant(img);
+                    var swatches = vibrant.swatches();
+                    var color = swatches.Vibrant.getHex();
+    
+                    // Set the background color of .main_post-img
+                    $('.main_post-img').css('background-color', color);
+                };
             };
             reader.readAsDataURL(file);
         }
     });
+    
 
 
     
@@ -87,6 +102,7 @@ $(document).ready(function(){
         $('.file_name').text('').hide();
         $('.src').text('');
     });
+      
     
 });
 
