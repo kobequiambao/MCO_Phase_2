@@ -398,6 +398,9 @@
     #pbc-delete-yes{
         margin-top:-15px;
     }
+    #pbc-delete-no{
+        background-color: #BEBEBE;
+    }
     #pbc-delete-yes, #pbc-delete-no{
         height:50px;
         margin-bottom:10px;
