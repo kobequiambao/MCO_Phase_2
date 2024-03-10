@@ -60,12 +60,13 @@ $(document).ready(function () {
             }
         }
     });
-
-    $(".save").click(function(){
-      $('#save').toggle();
-      $('#save-filled').toggle();
-    });
-
+      
+    $("#save").click(function(){
+        $('.main_post-buttons-save').toggle();
+        $('.main_post-buttons-save-filled').toggle();
+      });
+    
+      
     $(".submit-comment-button").click(function(){
       var userName = $(".header_1-user-name").text();
       var comment = $(".comment-box").val();
