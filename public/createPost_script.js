@@ -28,44 +28,58 @@ $(document).ready(function(){
     });
 
     $('.post-box-container').click(function(){
-        const title = $('.title-box').val();
-        const body = $('.body-box').val();
-        const flair = $('input[name="flair"]:checked').val();
-        let img = $('.src').text();
-        let stats = 'hidden';
-    
-        if(title !== '' && body !== '') {
-            if(img !== '') {
-                stats = '';
-                // Create an image element to calculate dominant color
-                const image = new Image();
-                image.crossOrigin = "Anonymous";
-                image.src = img;
-                image.onload = function() {
-                    // Calculate dominant color using ColorThief
-                    const colorThief = new ColorThief();
-                    const dominantColor = colorThief.getColor(image);
-                    const rgbColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
-    
-                    appendPost(title, body, flair, img, rgbColor, stats);
+
+        const storedProfileData = localStorage.getItem('userProfile');
+        if (storedProfileData) {
+            const userProfile = JSON.parse(storedProfileData);
+
+            // Update header 1 with user profile data
+            const userPhoto = `url('${userProfile.photo}')`;
+            const userProfileName = userProfile.username;
+
+            const title = $('.title-box').val();
+            const body = $('.body-box').val();
+            const flair = $('input[name="flair"]:checked').val();
+            let img = $('.src').text();
+            let stats = 'hidden';
+        
+            if(title !== '' && body !== '') {
+                if(img !== '') {
+                    stats = '';
+                    // Create an image element to calculate dominant color
+                    const image = new Image();
+                    image.crossOrigin = "Anonymous";
+                    image.src = img;
+                    image.onload = function() {
+                        // Calculate dominant color using ColorThief
+                        const colorThief = new ColorThief();
+                        const dominantColor = colorThief.getColor(image);
+                        const rgbColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+        
+                        appendPost(title, body, flair, img, rgbColor, stats, userProfileName, userPhoto);
+                    }
+                } else {
+                    appendPost(title, body, flair, img, '', stats,userProfileName, userPhoto);
                 }
-            } else {
-                appendPost(title, body, flair, img, '', stats);
             }
+        
+            $('.title-box').val('');
+            $('.body-box').val('');
+            $('input[name="flair"][value="general-question"]').prop('checked', true);
+            $('.file_name').text('').hide();
+            $('.src').text('');
         }
-    
-        $('.title-box').val('');
-        $('.body-box').val('');
-        $('input[name="flair"][value="general-question"]').prop('checked', true);
-        $('.file_name').text('').hide();
-        $('.src').text('');
     });
     
-    function appendPost(title, body, flair, img, rgbColor, stats) {
+    document.addEventListener('DOMContentLoaded', function () {
+        loadUserProfile();
+    });
+
+    function appendPost(title, body, flair, img, rgbColor, stat, userName, userPic) {
         const imgContainer = img !== '' ? `
             <div class="main_post-img-container">
                 <div class="blurred-background" style="background-color: ${rgbColor};"></div>
-                <img class="main_post-img" src="${img}" alt="" ${stats}>
+                <img class="main_post-img" src="${img}" alt="" ${stat}>
             </div>` : '';
     
         $('.post_list').append(`
@@ -73,9 +87,9 @@ $(document).ready(function(){
                 <div class="main_post-top" onclick="navigateToPost('/post')">
                     <div class="main_post-desc">
                         <div class="main_post-desc-poster">
-                            <div class="main_post-desc-poster-pic"></div>
+                            <div class="main_post-desc-poster-pic" style="background-image: ${userPic};"></div>
                             <div class="main_post-desc-poster-name">
-                                u/Kooky_Marketing_3807
+                                ${userName}
                             </div>
                             <div class="main_post-desc-banner" id="${flair}">${flair}</div>
                         </div>
@@ -103,10 +117,17 @@ $(document).ready(function(){
                         <div class="button-container">
                             <div class="main_post-buttons-share"></div>
                             <span>Share</span>
-                        </div>
+                        </div>                    
                     </div>
                 </div>
             </div>
         `);
     }
+
+
+    
+
+
+
+
 });

@@ -105,4 +105,34 @@ function closeLoginForm_delete() {
     }
     
     
-
+    document.getElementById('shareButton').addEventListener('click', function() {
+      var url = window.location.href;
+    
+      var input = document.createElement('input');
+      input.style.position = 'fixed';
+      input.style.opacity = 0;
+      input.value = url;
+    
+      document.body.appendChild(input);
+    
+      input.select();
+    
+  
+      document.execCommand('copy');
+    
+      document.body.removeChild(input);
+    
+      alert('Link copied to clipboard: ' + url);
+    
+      var dummyElement = document.createElement('input');
+      dummyElement.style.position = 'fixed';
+      dummyElement.style.opacity = 0;
+      document.body.appendChild(dummyElement);
+      dummyElement.focus();
+      document.body.removeChild(dummyElement);
+    });
+    
+    
+    
+  
+  
