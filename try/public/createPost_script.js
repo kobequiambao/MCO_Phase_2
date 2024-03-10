@@ -1,37 +1,17 @@
 $(document).ready(function(){
+    $('#imageUpload').on('change', function() {
+        var file = this.files[0];
 
-    function handleImageUpload() {
-        // Trigger the file input click event
-        $(".create-Post-buttons label").click();
-    }
 
-    // Function to handle the selected image and insert it into the body box
-    function insertImageIntoBodyBox(input) {
-        if (input.files && input.files[0]) {
+        if (file) {
             var reader = new FileReader();
-
             reader.onload = function(e) {
-                // Get the image URL
-                var imageUrl = e.target.result;
-
-                // Insert the image URL into the body box
-                $(".body-box").val($(".body-box").val() + '\n' + imageUrl);
+                $('.body-box').val('<img src="' + e.target.result + '" alt="Selected Image">');
             };
-
-            reader.readAsDataURL(input.files[0]);
+            reader.readAsDataURL(file);
         }
-    }
-
-    // Event listener for the "Add Image" button
-    $(".addImage").click(function() {
-        handleImageUpload();
     });
-
-    // Event listener for the file input change
-    $("#imageUpload").change(function() {
-        insertImageIntoBodyBox(this);
-    });
-
+    
     $('.post-box-container').click(function(){
         const title = $('.title-box').val();
         const body = $('.body-box').val();
