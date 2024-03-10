@@ -78,6 +78,8 @@ $(document).ready(function(){
         $('.title-box').val('');
         $('.body-box').val('');
         $('input[name="flair"][value="general-question"]').prop('checked', true);
+        $('.file_name').text('').hide();
+        $('.src').text('');
     });
     
 });
