@@ -1,9 +1,30 @@
 $(document).ready(function(){
+    $('#imageUpload').on('change', function() {
+        var file = this.files[0];
 
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var imageDataUrl = e.target.result;
+                var fileName = file.name;               
+                console.log(imageDataUrl); 
+                $('.file_name').text(fileName).show();
+                $('.src').text(imageDataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    
     $('.post-box-container').click(function(){
         const title = $('.title-box').val();
         const body = $('.body-box').val();
         const flair = $('input[name="flair"]:checked').val();
+        let img = $('.src').text();
+        let stats='hidden';
+        if(img !== '') {
+            stats = ''
+        }
 
         if(title !== '' && body !=='') {
             $('.post_list').append(`
@@ -27,6 +48,7 @@ $(document).ready(function(){
                                         <div class = "main_post-desc-content">
                                             ${body}
                                         </div>
+                                        <img class="main_post-img" src="${img}" alt="" ${stats}>
                                     </div>
             
                                     <div class="main_post-buttons">
