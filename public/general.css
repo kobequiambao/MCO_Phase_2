@@ -155,16 +155,18 @@ main {
 }
 
 
-.header_1-user-pic{
+.header_1-user-pic {
     background-image: url('CCAPDEV-LOGO-1/user.jpg');
-    background-position: -1px 0px;
-    background-size:cover;
-    width: 48px;
-    height:40px;
+    background-size: cover;
+    background-position: center;
+    width: 40px !important;
+    height: 40px !important; /* Adjusted height to match width */
     border: 1px solid #00523E;
-    border-radius: 100%;
-    margin-top:3px;
+    border-radius: 50%; /* Changed border-radius to 50% */
+    margin: 3px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
 }
+
 
 
 .header_1-user-name, .header_1-user-id {
@@ -660,6 +662,10 @@ span {
     border: 1px solid #00523E;
     background-color: white;
 }
+
+
+
+
 
 .header_2-user-info {
     margin-top:30px;
