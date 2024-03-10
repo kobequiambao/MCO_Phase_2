@@ -19,11 +19,14 @@ function displayFileName() {
 }
 
 function resetPreview() {
-    var previewImage = document.getElementById('preview');
-    previewImage.src = 'ADD-ONS/profilepic.jpg';
+    // Reset the file input value
+    document.getElementById('fileInput').value = '';
 
-    var fileNameSpan = document.getElementById('fileName');
-    fileNameSpan.textContent = 'No file chosen';
+    // Reset the preview image
+    document.getElementById('preview').src = 'ADD-ONS/profilepic.jpg';
+
+    // Hide the file name span
+    document.getElementById('fileName').classList.add('visually-hidden');
 }
 
 // Load user profile from local storage on page load
