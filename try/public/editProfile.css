@@ -12,14 +12,21 @@
 } */
 
 .wrapper {
-    width: 420px;
-    background: white;
+    width: 648px;
     opacity: 0.9;
     border: 1px solid black;
     color: white;
     padding: 30px 40px;
     margin-left: auto;
     margin-right: auto;
+
+
+    border-radius: 10px;
+    background-color:white;
+    overflow: hidden; 
+    padding:0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
+    color: #00523E;
 }
 
 .wrapper h1 {
