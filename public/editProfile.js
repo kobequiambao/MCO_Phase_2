@@ -25,6 +25,11 @@ function resetPreview() {
     // Reset the preview image
     document.getElementById('preview').src = 'ADD-ONS/profilepic.jpg';
 
+    // Reset the values of input fields
+    document.querySelector('input[placeholder="Username"]').value = '';
+    document.querySelector('input[placeholder="ID Number"]').value = '';
+    document.getElementById('college').value = ''; // Reset the selected college
+
     // Hide the file name span
     document.getElementById('fileName').classList.add('visually-hidden');
 }
