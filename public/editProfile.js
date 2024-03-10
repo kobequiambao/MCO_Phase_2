@@ -25,11 +25,6 @@ function resetPreview() {
     // Reset the preview image
     document.getElementById('preview').src = 'ADD-ONS/profilepic.jpg';
 
-    // Reset the values of input fields
-    document.querySelector('input[placeholder="Username"]').value = '';
-    document.querySelector('input[placeholder="ID Number"]').value = '';
-    document.getElementById('college').value = ''; // Reset the selected college
-
     // Hide the file name span
     document.getElementById('fileName').classList.add('visually-hidden');
 }
@@ -61,26 +56,23 @@ function loadUserProfile() {
     }
 }
 
-// Function to save changes to local storage
 function saveChanges() {
     // Retrieve form data
-    const username = document.querySelector('input[placeholder="Username"]').value;
+    const usernameInput = document.querySelector('input[placeholder="Username"]');
     const idNumberInput = document.querySelector('input[placeholder="ID Number"]');
+    const collegeSelect = document.getElementById('college');
+
+    const username = usernameInput.value;
     const idNumber = idNumberInput.value;
-
-    // Ensure ID number has at least three characters
     const firstThreeDigits = idNumber.length >= 3 ? idNumber.substring(0, 3) : '';
-
-    // Get the selected college
-    const selectedCollege = document.getElementById('college').value;
+    const selectedCollege = collegeSelect.value;
 
     // Save data to local storage
     const userProfile = {
         username: username,
         idNumber: idNumber,
-        college: selectedCollege, // Add the selected college to the user profile
-        // Add other fields as needed
-        photo: document.getElementById('preview').src, // Assuming the photo is stored in 'preview' element
+        college: selectedCollege,
+        photo: document.getElementById('preview').src,
     };
 
     localStorage.setItem('userProfile', JSON.stringify(userProfile));
@@ -89,5 +81,13 @@ function saveChanges() {
     document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
     document.getElementById('headerUserName').innerText = username;
     document.getElementById('headerUserId').innerText = `ID${firstThreeDigits}-${selectedCollege}`;
-}
 
+    // Reset form fields
+    usernameInput.value = '';
+    idNumberInput.value = '';
+    collegeSelect.value = '';
+    document.getElementById('preview').src = 'ADD-ONS/profilepic.jpg';
+
+    // Hide the file name span
+    document.getElementById('fileName').classList.add('visually-hidden');
+}
