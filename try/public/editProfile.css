@@ -39,6 +39,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-align: center !important;
+    display: flex;
+    align-items: center;
+    /* margin-top: 20px; */
+    background-color: transparent !important;
 }
 
 .logo {
@@ -103,32 +108,17 @@
 .btn {
     width: 100%;
     height: 45px;
-    background: rgba(255, 255, 255, 1);
+    background: transparent;
     border: none;
     outline: none;
     border-radius: 0;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: black;
     font-weight: 600;
 }
 
-.register-link {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-
-.register-link p a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.register-link p a:hover {
-    text-decoration: underline;
-}
 
 .file-input {
     opacity: 0;
@@ -147,21 +137,14 @@
     border: 0;
 }
 
-.button-container {
-    text-align: center !important;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    /* margin-top: 20px; */
-}
 
-.button-container .btn-outline-primary {
+.btn-outline-primary {
     color: #3498db !important; /* Change to the desired color */
     border-color: #3498db !important; /* Change to the desired color */
     line-height: 2;
 }
 
-.button-container .btn-outline-primary:hover {
-    color: white !important; /* Change to the desired color on hover */
-    background-color: #3498db !important; /* Change to the desired background color on hover */
+.btn-outline-primary:hover {
+    color: white !important; 
+    background-color: #3498db !important; 
 }
