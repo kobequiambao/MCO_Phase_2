@@ -26,7 +26,7 @@ server.get('/login', function(req, resp){
         title: 'Log In'
     });
 });
-
+//sdfsdfsdfsdfs
 server.get('/general', function(req, resp){
     resp.render('general',{
         layout: 'index',
