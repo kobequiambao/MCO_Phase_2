@@ -204,7 +204,7 @@ main {
 .header_2-channel {
     position: absolute;
     top: 50%;
-    left:36.5%;
+    left:36%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;

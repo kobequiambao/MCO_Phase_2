@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
@@ -10,43 +8,47 @@
     {{!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> --}}
     <link rel="stylesheet" href="editProfile.css">
     <link rel="stylesheet" href="general.css">
-    <script type = "text/javascript" src="general.js"></script>
+    <script type="text/javascript" src="general.js"></script>
 </head>
-
 <body>
     {{> header}}
+    <div class = "edit">
+        <div class="wrapper">
+            
+                <div class="wrapper-left">
+                    <form action=""></form>
+                    <h1>Edit Profile</h1>
+                    <div class="profile-section">
+                        <img id="preview" src="ADD-ONS/profilepic.jpg" alt="Profile Picture" class="logo">
+                    </div>
 
-    <div class="wrapper">
-        <form action="">
-            <h1>Edit Profile</h1>
-            <div class="profile-section">
-                <img id="preview" src="ADD-ONS/profilepic.jpg" alt="Profile Picture" class="logo">
-            </div>
-            <div class="button-container">
-                <label for="fileInput" class="btn btn-outline-primary">Upload Photo</label>
-                <input type="file" id="fileInput" class="account-settings-fileinput visually-hidden" onchange="displayFileName()">
-                <button type="button" class="btn btn-default md-btn-flat" onclick="resetPreview()">Reset</button>
-            </div>
-            <span id="fileName" class="file-name visually-hidden">No file chosen</span>
-            <div class="input-box">
-                <input type="text" placeholder="Username" required onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="ID Number" required onfocus="this.placeholder=''" onblur="this.placeholder='ID Number'">
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="College" required onfocus="this.placeholder=''" onblur="this.placeholder='College'">
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="Bio" required onfocus="this.placeholder=''" onblur="this.placeholder='Bio'">
-            </div>
+                    <div class="button-container">
+                        <label for="fileInput" class="btn btn-outline-primary">Upload Photo</label>
+                        <input type="file" id="fileInput" class="account-settings-fileinput visually-hidden" onchange="displayFileName()">
+                        <button type="button" class="btn btn-default md-btn-flat" onclick="resetPreview()">Reset</button>
+                    </div>
 
-            <button type="submit" class="btn" onclick="saveChanges()">Save Changes</button>
-        </form>
+                    
+                    <span id="fileName" class="file-name visually-hidden">No file chosen</span>
+                </div>
+
+                <div class="wrapper-right">
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" required onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="ID Number" required onfocus="this.placeholder=''" onblur="this.placeholder='ID Number'">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="College" required onfocus="this.placeholder=''" onblur="this.placeholder='College'">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Bio" required onfocus="this.placeholder=''" onblur="this.placeholder='Bio'">
+                    </div>
+                </div> 
+        </div>
+        <button type="submit" class="btn" onclick="saveChanges()">Save Changes</button>
     </div>
-    <script src="editProfile.js">
-        
-    </script>
-
-
+    <script src="editProfile.js"></script>
+</body>
 </html>
