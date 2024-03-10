@@ -8,7 +8,7 @@ $(document).ready(function(){
                 var imageDataUrl = e.target.result;
                 var fileName = file.name;               
                 console.log(imageDataUrl); 
-                $('.file_name').text(fileName).show();
+                $('.file_name').text("Attachment: "+fileName).show();
                 $('.src').text(imageDataUrl);
             };
             reader.readAsDataURL(file);
