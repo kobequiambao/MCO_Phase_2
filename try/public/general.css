@@ -16,7 +16,6 @@ main {
     background-color: #00523E;
 }
 
-
 .header_1 {
     margin-top:5px;
     height: 50px;
@@ -270,6 +269,7 @@ main {
     margin-right:auto;
     margin-left: auto;
     
+    
 }
 
 .main_about{
@@ -498,6 +498,9 @@ main {
     display: flex;
     align-items: center;
     margin-bottom:5px;
+
+    
+    
 }
 
 .button-container {

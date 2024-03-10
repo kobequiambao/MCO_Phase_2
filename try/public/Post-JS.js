@@ -142,6 +142,21 @@ $(document).ready(function () {
       toggleReply($(this).closest('.comment-container'));
     });
 
+    $(".main_post-buttons").on("click", ".button-container", function () {
+        // Find the closest main_master_post container
+        var mainMasterPost = $(this).closest('.main_master_post-top');
+
+        // Find the textarea and buttons outside the main_post-buttons container
+        var replyTextarea = mainMasterPost.find('.reply-textarea');
+        var commentButton = mainMasterPost.find('.comment-button');
+        var cancelButton = mainMasterPost.find('.cancel-button');
+
+        // Toggle the visibility of the textarea and buttons
+        replyTextarea.toggle();
+        commentButton.toggle();
+        cancelButton.toggle();
+    });
+
     $(".comment-section").on("click", ".cancel-button", function () {
       toggleReply($(this).closest('.comment-container'));
     });
