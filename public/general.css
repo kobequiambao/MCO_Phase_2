@@ -113,6 +113,7 @@ main {
 }
 
 .header_1-user {
+    background-color: #00523E;
     width: 200px;
     height: 46px;
     margin-left: auto;
@@ -159,20 +160,27 @@ main {
     background-image: url('CCAPDEV-LOGO-1/user.jpg');
     background-size: cover;
     background-position: center;
-    width: 40px !important;
-    height: 40px !important; /* Adjusted height to match width */
-    border: 1px solid #00523E;
+    width: 38px !important;
+    height: 38px !important; /* Adjusted height to match width */
+    border: 1px solid #BEBEBE;
     border-radius: 50%; /* Changed border-radius to 50% */
     margin: 3px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
+    margin-left: 10px;
+    box-shadow: 0px 0px 5px white; 
+}
+
+.header_1-user-info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:5px;
+    text-align: center;
 }
 
 
-
 .header_1-user-name, .header_1-user-id {
-    margin-left:10px;
+
     font-family: Noto Sans, Arial, sans-serif;
-    color: #060606; /* Text color */
+    color: white; /* Text color */
     text-align: left;
     display: flex;
     align-items: center; /* Align items vertically center */
