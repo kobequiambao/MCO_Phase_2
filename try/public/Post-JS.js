@@ -1,62 +1,62 @@
 // TODO: Write your code below
 $(document).ready(function () {
 
-    $(document).on('mouseenter', '.upvote', function() {
+    $(document).on('mouseenter', '.up_vote', function() {
         $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
-    }).on('mouseleave', '.upvote', function() {
+    }).on('mouseleave', '.up_vote', function() {
         $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
     });
   
-    $(document).on('mouseenter', '.downvote', function() {
+    $(document).on('mouseenter', '.down_vote', function() {
         $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
-    }).on('mouseleave', '.downvote', function() {
+    }).on('mouseleave', '.down_vote', function() {
         $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
     });
 
-    $(".post-container").on("click", ".upvote, .upvote-filled", function () {
-        $('.upvote').toggle();
-        $('.upvote-filled').toggle();
+    $('.up_vote, .up_vote_filled').click(function () {
+        $('.up_vote').toggle();
+        $('.up_vote_filled').toggle();
 
-        var currentVoteCount = parseInt($('.votes').text());
+        var currentVoteCount = parseInt($('.num_vote').text());
         var newVoteCount;
         
-        if($('.downvote').is(":hidden")){
-            $('.downvote').toggle();
-            $('.downvote-filled').toggle();
+        if($('.down_vote').is(":hidden")){
+            $('.down_vote').toggle();
+            $('.down_vote_filled').toggle();
             newVoteCount = currentVoteCount + 2;
-            $('.votes').text(newVoteCount);
+            $('.num_vote').text(newVoteCount);
         } else {
-            if($('.upvote').is(":hidden")){
+            if($('.up_vote').is(":hidden")){
                 newVoteCount = currentVoteCount + 1;
-                $('.votes').text(newVoteCount);
+                $('.num_vote').text(newVoteCount);
             }
             else {
                 newVoteCount = currentVoteCount - 1;
-                $('.votes').text(newVoteCount);
+                $('.num_vote').text(newVoteCount);
             }
         }
     });
 
-    $(".post-container").on("click", ".downvote, .downvote-filled", function () {
-        $('.downvote').toggle();
-        $('.downvote-filled').toggle();
+    $('.down_vote, .down_vote_filled').click( function () {
+        $('.down_vote').toggle();
+        $('.down_vote_filled').toggle();
 
-        var currentVoteCount = parseInt($('.votes').text());
+        var currentVoteCount = parseInt($('.num_vote').text());
         var newVoteCount;
         
-        if($('.upvote').is(":hidden")){
-            $('.upvote').toggle();
-            $('.upvote-filled').toggle();
+        if($('.up_vote').is(":hidden")){
+            $('.up_vote').toggle();
+            $('.up_vote_filled').toggle();
             newVoteCount = currentVoteCount - 2;
-            $('.votes').text(newVoteCount);
+            $('.num_vote').text(newVoteCount);
         } else {
-            if($('.downvote').is(":hidden")){
+            if($('.down_vote').is(":hidden")){
                 newVoteCount = currentVoteCount - 1;
-                $('.votes').text(newVoteCount);
+                $('.num_vote').text(newVoteCount);
             }
             else {
                 newVoteCount = currentVoteCount + 1;
-                $('.votes').text(newVoteCount);
+                $('.num_vote').text(newVoteCount);
             }
         }
     });
@@ -90,7 +90,7 @@ $(document).ready(function () {
                   </div>
                   <div class="comment-info-container">
                       <div class="info-comment">
-                          <p class="comment-by">${userName} <span class="posted-time">&#xb7; ${currentDate}</span></p>
+                          <p class="comment-by">${userName}</p> <span class="posted-time">&#xb7; ${currentDate}</span>
                       </div>
                       <div class="comment-body">
                           <p class="comment-text">${comment}</p>
@@ -120,7 +120,7 @@ $(document).ready(function () {
       `);
 
       
-      $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
+      $(".num_comment").text(parseInt($(".num_comment").text()) + 1);
       }
       
       
@@ -136,15 +136,12 @@ $(document).ready(function () {
     });
 
     $(".main_post-buttons").on("click", ".button-container", function () {
-        // Find the closest main_master_post container
         var mainMasterPost = $(this).closest('.main_master_post-top');
 
-        // Find the textarea and buttons outside the main_post-buttons container
         var replyTextarea = mainMasterPost.find('.reply-textarea');
         var commentButton = mainMasterPost.find('.comment-button');
         var cancelButton = mainMasterPost.find('.cancel-button');
 
-        // Toggle the visibility of the textarea and buttons
         replyTextarea.toggle();
         commentButton.toggle();
         cancelButton.toggle();
@@ -189,7 +186,7 @@ $(document).ready(function () {
                   </div>
                   <div class="comment-info-container">
                       <div class="info-comment">
-                          <span class="comment-by">${userName}</span> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
+                          <p class="comment-by">${userName}</p> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
                       </div>
                       <div class="comment-body">
                           <p class="comment-text">${comment}</p>
@@ -220,6 +217,7 @@ $(document).ready(function () {
         $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
       }
 
+      $(".num_comment").text(parseInt($(".num_comment").text()) + 1);
       $(reply).closest(".comment-container").find(".reply-textarea").val('');
       toggleReply($(reply).closest('.comment-container'));
     }
