@@ -368,6 +368,11 @@ main {
     opacity:0.5;
 }
 
+.main_userPost {
+    font-size: 18px !important;
+    font-family: IBMPlexSans, Arial, Sans-Serif;
+}
+
 .main_vote .up_vote, .up_vote_filled,
 .main_vote .down_vote, .down_vote_filled {
     cursor: pointer; /* Add cursor pointer to indicate it's clickable */
