@@ -46,6 +46,9 @@ function loadUserProfile() {
         // Set the selected college in the form
         document.getElementById('college').value = userProfile.college;
 
+        // Set bio in the form
+        document.querySelector('input[placeholder="Bio"]').value = userProfile.bio;
+
         // Display profile picture
         document.getElementById('preview').src = userProfile.photo;
 
@@ -61,11 +64,13 @@ function saveChanges() {
     const usernameInput = document.querySelector('input[placeholder="Username"]');
     const idNumberInput = document.querySelector('input[placeholder="ID Number"]');
     const collegeSelect = document.getElementById('college');
+    const bioInput = document.querySelector('input[placeholder="Bio"');
 
     const username = usernameInput.value;
     const idNumber = idNumberInput.value;
     const firstThreeDigits = idNumber.length >= 3 ? idNumber.substring(0, 3) : '';
     const selectedCollege = collegeSelect.value;
+    const bio = bioInput.value;
 
     // Save data to local storage
     const userProfile = {
@@ -73,6 +78,7 @@ function saveChanges() {
         idNumber: idNumber,
         college: selectedCollege,
         photo: document.getElementById('preview').src,
+        bio: bio,
     };
 
     localStorage.setItem('userProfile', JSON.stringify(userProfile));
@@ -86,8 +92,11 @@ function saveChanges() {
     usernameInput.value = '';
     idNumberInput.value = '';
     collegeSelect.value = '';
+    bioInput.value = '';
     document.getElementById('preview').src = 'ADD-ONS/profilepic.jpg';
 
     // Hide the file name span
     document.getElementById('fileName').classList.add('visually-hidden');
 }
+
+
