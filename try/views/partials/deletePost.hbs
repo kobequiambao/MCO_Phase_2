@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Create-Post</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- ?testing -->
+    <link rel="stylesheet" href="Create-Post.css">
+    <script type = "text/javascript" src="general.js"></script>
+  
+    
+
+</head>
+
+        <div class="create-post-cointainer" id = "cpc-delete">
+            <div class = "create-post-top">
+            <div class="create-draft-container">
+                <div class="create-a-post-container">
+                    Delete Post
+                </div>
+                <span class="close" onclick="closeLoginForm_delete()">&times;</span>
+            </div>
+            
+            </div>
+           
+            <hr class="divider">
+            <div class="main">
+                    <div class="text-box-container" id = "delete-text">
+                        Are You Sure You Want To Delete This?
+                    </div>
+            </div>
+            <div class="post-box-container" onclick="closeLoginForm_delete()" id = "pbc-delete-yes">Yes</div>
+            <div class="post-box-container" onclick="closeLoginForm_delete()" id = "pbc-delete-no">No</div>
+        </div>
+
+
+</html>

@@ -41,17 +41,25 @@
                                 <span>Save</span>
                             </div>
 
-                            <div class="button-container">
+                            <div class="button-container" id = "editPost" onclick="openLoginForm_edit()">
                                 <div class="main_post-buttons-edit"></div>
                                 <span>Edit</span>
+                                
                             </div>
-
-                            <div class="button-container">
+                            <div class="button-container" onclick="openLoginForm_delete()">
                                 <div class="main_post-buttons-delete"></div>
                                 <span>Delete</span>
                             </div>                            
                         </div>
                     </div>
+
+        <div id="loginFormModal-edit" class="modal">
+            {{>editPost}}
+        </div>
+
+        <div id="loginFormModal-delete" class="modal">
+            {{>deletePost}}
+        </div>
 
         <div class="comment-part-container">
             <textarea class="comment-box" placeholder="What are your thoughts?"></textarea>

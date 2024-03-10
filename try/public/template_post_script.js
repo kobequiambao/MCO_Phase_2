@@ -59,5 +59,47 @@
                 $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
             });
 
+            $('.nav-link').click(function(e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $('.post-list').html('{{>' + target + '}}');
+            });
+          
+            var templates = {
+                posts: $('#template-post').html(),
+                comments: $('#template-comment').html(),
+                saved: $('#template-save').html(),
+                hidden: $('#template-hidden').html(),
+                interactions: $('#template-interactions').html()
+            };
+
             
+
+            $(document).ready(function() {
+                // Set the initial template content
+                var initialTemplate = $('#template-post').html();
+                $('#template-container').html(initialTemplate);
+    
+                // Handle navbar link clicks
+                $('.nav-link').click(function(e) {
+                    e.preventDefault();
+                    $('.nav-link').removeClass('active');
+                    $(this).addClass('active');
+                    var target = $(this).data('target');
+                    $('#template-container').html(templates[target]);
+                });
+    
+                // Set the "active" class for the initial active navbar item
+                $('.nav-link[data-target="posts"]').addClass('active');
+            });
+
+
+
+
+
+
+
+
         }); 
+
+        
