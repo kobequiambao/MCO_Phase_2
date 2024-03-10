@@ -6,7 +6,12 @@ $(document).ready(function(){
             var reader = new FileReader();
             reader.onload = function(e) {
                 var imageDataUrl = e.target.result;
-                var fileName = file.name;               
+                var fileName = file.name;
+                
+                if (fileName.length > 30) {
+                    fileName = fileName.substring(0, 30) + '...';
+                }
+                
                 console.log(imageDataUrl); 
                 $('.file_name').text("Attachment: "+fileName).show();
                 $('.src').text(imageDataUrl);
@@ -14,6 +19,7 @@ $(document).ready(function(){
             reader.readAsDataURL(file);
         }
     });
+
 
     
     $('.post-box-container').click(function(){
