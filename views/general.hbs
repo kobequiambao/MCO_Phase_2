@@ -1,0 +1,60 @@
+<!-- check -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="general.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="general.js"></script>
+    {{!-- <script src="shared.js"></script> --}}
+    <script type="text/javascript" src="shared.js"></script>
+    <script src="template_post_script.js"></script>
+    <script src="createPost_script.js"></script>
+    <title>General</title>
+</head>
+<body>
+    {{> header}}
+    {{!-------------------------------------------------------------------------}}
+    <main>
+        <div class = "main_feed"> 
+
+            <div class = "main_feed-post">
+              
+                <div class = "main_createPost" onclick="openLoginForm_create()">What's on your mind, <span class = "main_userPost" id="usernamePlaceholder">Michael Angelo</span>?</div>
+                <div id="loginFormModal-create" class="modal">
+                    {{>createPost}}
+                </div>
+                <div class="post_list">
+                    {{>template_post}}
+                </div>
+                
+                
+            </div>
+        </div>
+
+        
+        
+    </main>
+
+    <script>
+        // Load user profile from local storage on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserProfile();
+        });
+
+        function loadUserProfile() {
+            const storedProfileData = localStorage.getItem('userProfile');
+            if (storedProfileData) {
+                const userProfile = JSON.parse(storedProfileData);
+
+                // Update header with user profile data
+                document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
+                document.getElementById('headerUserName').innerText = userProfile.username;
+                document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+                document.getElementById('usernamePlaceholder').textContent = userProfile.username;
+            }
+        }
+    </script>
+</body>
+</html>
