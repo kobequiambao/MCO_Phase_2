@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="general.js"></script>
 <script type="text/javascript" src="template_post_script.js"></script>
+<script type="text/javascript" src="general.js"></script>
 <script id="template-post" type="text/x-handlebars-template">
     {{> template_post}}
 </script>
@@ -43,4 +44,30 @@
     </ul>
 
 </body>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadUserProfile();
+    });
+
+    function loadUserProfile() {
+        const storedProfileData = localStorage.getItem('userProfile');
+        if (storedProfileData) {
+            const userProfile = JSON.parse(storedProfileData);
+
+            // Update header 1 with user profile data
+            document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
+            document.getElementById('headerUserName').innerText = userProfile.username;
+            document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+
+            // Update header 2 with user profile data
+            document.getElementById('headerUserPic2').style.backgroundImage = `url('${userProfile.photo}')`;
+            document.getElementById('headerUserName2').innerText = userProfile.username;
+            document.getElementById('headerUserId2').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+        }
+    }
+</script>
+
 </html>

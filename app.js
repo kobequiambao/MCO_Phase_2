@@ -110,6 +110,13 @@ server.get('/general', function(req, resp){
     });
 });
 
+server.get('/main', function(req, resp){
+    resp.render('main',{
+        layout: 'index',
+        title: 'Main'
+    });
+});
+
 server.get('/createPost', function(req, resp){
     resp.render('createPost',{
         layout: 'index',

@@ -462,6 +462,8 @@
         height: 28px;
         width: 28px;
         border-radius: 999px;
+        background-size: cover;
+        background-position: center;
     }
 
     .threadline{

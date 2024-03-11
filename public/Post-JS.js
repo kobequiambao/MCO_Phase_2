@@ -68,6 +68,11 @@ $(document).ready(function () {
     
       
     $(".submit-comment-button").click(function(){
+        const storedProfileData = localStorage.getItem('userProfile');
+            const userProfile = JSON.parse(storedProfileData);
+
+            const userPhoto = `url('${userProfile.photo}')`;
+            const userProfileName = userProfile.username;
       var userName = $(".header_1-user-name").text();
       var comment = $(".comment-box").val();
 
@@ -79,14 +84,12 @@ $(document).ready(function () {
 
       currentDate = day + " " + month + " " + year;
 
-      var userPic = $('.header_1-user-pic').css('background-image');
-      userPic = userPic.split('/').slice(-2).join('/');
 
       if(comment !== "") {
       $('.comment-section').append(`
       <div class="comment-container">
                   <div class="comment-profile">
-                      <img class=userpfp src="${userPic}">
+                      <div class=userpfp  style="background-image: ${userPhoto};"></div>
                       <span class="threadline">|</span>
                   </div>
                   <div class="comment-info-container">
@@ -163,7 +166,11 @@ $(document).ready(function () {
     });
 
     function appendReply (reply) {
-      var userName = $(".header_1-user-name").text();
+        const storedProfileData = localStorage.getItem('userProfile');
+            const userProfile = JSON.parse(storedProfileData);
+
+            const userPhoto = `url('${userProfile.photo}')`;
+            const userProfileName = userProfile.username;
 
       var currentDate = new Date();
 
@@ -175,19 +182,17 @@ $(document).ready(function () {
       var commentByValue = $(reply).closest(".comment-container").find(".comment-by").text();
       var comment = $(reply).closest(".comment-container").find(".reply-textarea").val();
 
-      var userPic = $('.header_1-user-pic').css('background-image');
-      userPic = userPic.split('/').slice(-2).join('/');
 
       if(comment !== "") {
         $('.comment-section').append(`
         <div class="comment-container">
                   <div class="comment-profile">
-                      <img class=userpfp src="${userPic}">
+                      <div class=userpfp style="background-image: ${userPhoto};"></div>
                       <span class="threadline">|</span>
                   </div>
                   <div class="comment-info-container">
                       <div class="info-comment">
-                          <p class="comment-by">${userName}</p> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
+                          <p class="comment-by">${userProfileName}</p> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
                       </div>
                       <div class="comment-body">
                           <p class="comment-text">${comment}</p>
