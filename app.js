@@ -17,6 +17,12 @@ server.use(express.static('public'));
 // mongoose stuff
 mongoose.connect("mongodb://localhost:27017/MCO2", {useNewUrlParser: true});
 
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+db.once('open', function() {
+    console.log('Connected to the database!');
+});
+
 const AccountSchema = new mongoose.Schema({
     bio: String,
     college: String,
@@ -30,7 +36,7 @@ const AccountSchema = new mongoose.Schema({
 
 const CommentInfoSchema = new mongoose.Schema({
     Body: String,
-    Date: String,
+    Date: Date,
     PostId: String,
     isHidden: Boolean,
     CommenterId: String,
@@ -51,13 +57,13 @@ const PostInfoSchema = new mongoose.Schema({
     isHidden: Boolean,
     AccountId: String,
     NumvoteCount: Number,
-    Date: String,
+    Date: Date,
 });
 
 const ReplyInfoSchema = new mongoose.Schema({
    Body: String,
    CommentId: String,
-   Date: String,
+   Date: Date,
    isHidden: Boolean,
    NumvoteCount: Number,
    CommenterId: String, 
@@ -70,17 +76,24 @@ const PostInfo = mongoose.model('PostInfo', PostInfoSchema);
 const ReplyInfo = mongoose.model('ReplyInfo', ReplyInfoSchema);
 
 
-
-
 // until here
 
 
 
-server.get('/', function(req, resp){
-    resp.render('main',{
-        layout: 'index',
-        index_title: 'DLSU FORUM'
-    });
+server.get('/', function(req, resp) {
+    // Fetch all PostInfo from MongoDB
+    PostInfo.find({}).exec()
+        .then(postInfoData => {
+            resp.render('main', {
+                layout: 'index',
+                index_title: 'DLSU FORUM',
+                postInfo: postInfoData,
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            resp.status(500).send('Internal Server Error');
+        });
 });
 
 server.get('/login', function(req, resp){
