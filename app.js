@@ -1,6 +1,8 @@
 const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
+const { ObjectId } = require('mongoose').Types;
+
 const handlebars = require('express-handlebars');  
 
 const bodyParser = require('body-parser');
@@ -18,6 +20,7 @@ server.engine('hbs', handlebars.engine({
 }));
 
 server.use(express.static('public'));
+server.use(express.static('public', { extensions: ['css', 'js'] }));
 mongoose.connect("mongodb+srv://alfredagustines:mongohuhu@apdev.dxbdgzs.mongodb.net/MCO2?retryWrites=true&w=majority&appName=APDEV", { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -159,13 +162,35 @@ server.get('/editProfile', function(req, resp){
     });
 });
 
-server.get('/post', function(req, resp){
-    resp.render('post', {
+server.get('/post/:postId', async (req, resp) => {
+    try {
+      const postId = req.params.postId;
+  
+      // Validate that postId is a valid ObjectId
+      if (!ObjectId.isValid(postId)) {
+        return resp.status(400).send('Invalid post ID');
+      }
+  
+      // Find the specific post based on the postId
+      const postInfoData = await PostInfo.findById(postId).populate('AccountId');
+      
+      // Check if the post exists
+      if (!postInfoData) {
+        return resp.status(404).send('Post not found');
+      }
+  
+      // Render the Handlebars template with the specific post data and additional parameters
+      resp.render('post', {
         layout: 'index',
-        title: 'Post',
-        n: req.params.n 
+        index_title: 'Post',
+        postInfoData,
     });
-});
+    } catch (error) {
+      // Handle errors appropriately
+      console.error('Error retrieving PostInfo data:', error);
+      resp.status(500).send('Internal Server Error');
+    }
+  });
 // Start the server
 const port = 3000;
 server.listen(port, () => {

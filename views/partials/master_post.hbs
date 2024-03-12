@@ -1,31 +1,28 @@
 {{!-- MASTER-POSTS --}}
-<div class="main_master_post" id="post-1">    
-    
-                    <div class = "main_master_post-top">
-                        <div class = "main_post-desc">
-                            <div class = "main_post-desc-poster">
-                                <div class = "main_post-desc-poster-pic"></div>
-                                <div class = "main_post-desc-poster-name">
-                                u/Kooky_Marketing_3807</div>
-                                <div class = "main_post-desc-banner">General Question</div>
+{{log this}}
+<div class="main_master_post" id="{{postInfoData._id}}">
+        
+                    <div class="main_master_post-top">
+                        <div class="main_post-desc">
+                            <div class="main_post-desc-poster">
+                                <div class="main_post-desc-poster-pic"></div>
+                                <div class="main_post-desc-poster-name">
+                                    u/{{postInfoData.AccountId.username}}
+                                </div>
+                                <div class="main_post-desc-banner">{{postInfoData.Type}}</div>
                             </div>
-                            
-                            <div class = "main_post-desc-title">Lf swimming kasama</div>
-                            <div class = "main_post-desc-content">
-                                Swimming
 
-                                Hi!! Are there people interested in swimming at razon every Wednesday and Thursday?
-                                <img class="main_post-img" src="" alt="" hidden>
-                            </div>
+                            <div class="main_post-desc-title">{{postInfoData.Title}}</div>
+                            <div class="main_post-desc-content">{{postInfoData.Body}}</div>
                         </div>
 
                         <div class="main_post-buttons">
                             <div class="main_vote">
-                                <img class="up_vote" src="CCAPDEV-LOGO-2\2.png" alt="">
-                                <img class="up_vote_filled" src="CCAPDEV-LOGO-2\16.png" alt="" hidden>
+                                <img class="up_vote" src="/CCAPDEV-LOGO-2/2.png" alt="">
+                                <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden>
                                 <span class = "num_vote">0</span>
-                                <img class="down_vote" src="CCAPDEV-LOGO-2\3.png" alt="">
-                                <img class="down_vote_filled" src="CCAPDEV-LOGO-2\17.png" alt="" hidden>
+                                <img class="down_vote" src="/CCAPDEV-LOGO-2/3.png" alt="">
+                                <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden>
                             </div>
                             <div class="button-container" id = "master-comment">
                                 <div class="main_post-buttons-comment"></div>
@@ -89,7 +86,7 @@
 
             <div class="comment-container">
                 <div class="comment-profile">
-                    <img class=userpfp src="CCAPDEV-LOGO-2/user1.png">
+                    <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
                     <span class="threadline">|</span>
                 </div>
                 <div class="comment-info-container">
@@ -100,14 +97,14 @@
                         <p class="comment-text">heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
                     </div>
                     <div class="comment-section-icons">
-                        <img class="upvote-icon" src="CCAPDEV-LOGO-2\2.png">
-                        <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2\16.png" hidden>
+                        <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                        <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
 
                         <span class="vote-count">0</span>
 
 
-                        <img class="downvote-icon" src="CCAPDEV-LOGO-2\3.png">
-                        <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2\17.png" hidden>
+                        <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                        <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
 
 
                         <div class="reply-container">
@@ -126,10 +123,6 @@
             
         </div>
 </div>
-
-
-
-
 
 
      <style>
@@ -162,31 +155,6 @@
       }
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-       
-
 
 <style>
     .dropdown-content {
