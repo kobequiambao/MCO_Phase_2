@@ -1,4 +1,5 @@
       $(document).ready(function(){
+        alert('Document is ready. JavaScript is working!');
             $(document).on('click', '.up_vote, .up_vote_filled', function() {
                 actionUpvote($(this).closest('.main_post')); 
             });
