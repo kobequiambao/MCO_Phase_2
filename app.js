@@ -1,26 +1,44 @@
 const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
+const handlebars = require('express-handlebars');  
 
-const bodyParser = require('body-parser')
-server.use(express.json()); 
+const bodyParser = require('body-parser');
+server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-const handlebars = require('express-handlebars');
 server.set('view engine', 'hbs');
-server.engine('hbs', handlebars.engine({
-    extname: 'hbs'
+server.engine('hbs', handlebars.engine({  
+    extname: 'hbs',
+    defaultLayout: false, 
+    runtimeOptions: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true,
+    },
 }));
 
 server.use(express.static('public'));
-
-// mongoose stuff
-mongoose.connect("mongodb://localhost:27017/MCO2", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://alfredagustines:mongohuhu@apdev.dxbdgzs.mongodb.net/MCO2?retryWrites=true&w=majority&appName=APDEV", { useNewUrlParser: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
-db.once('open', function() {
+db.once('open', function () {
     console.log('Connected to the database!');
+});
+
+const postInfoSchema = new mongoose.Schema({
+    Body: String,
+    College: String,
+    Title: String,
+    Type: String,
+    CommentCount: Number,
+    isHidden: Boolean,
+    AccountId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account'
+    },
+    NumvoteCount: Number,
+    Date: String
 });
 
 const AccountSchema = new mongoose.Schema({
@@ -30,13 +48,13 @@ const AccountSchema = new mongoose.Schema({
     idNo: Number,
     isAdmin: Boolean,
     password: String,
-    photo: Buffer,
+    photo: String,
     username: String,
 });
 
 const CommentInfoSchema = new mongoose.Schema({
     Body: String,
-    Date: Date,
+    Date: String,
     PostId: String,
     isHidden: Boolean,
     CommenterId: String,
@@ -48,52 +66,55 @@ const HiddenSchema = new mongoose.Schema({
     PostId: String,
 });
 
-const PostInfoSchema = new mongoose.Schema({
-    Body: String,
-    College: String,
-    Title: String,
-    Type: String,
-    CommentCount: Number,
-    isHidden: Boolean,
-    AccountId: String,
-    NumvoteCount: Number,
-    Date: Date,
-});
-
 const ReplyInfoSchema = new mongoose.Schema({
-   Body: String,
-   CommentId: String,
-   Date: Date,
-   isHidden: Boolean,
-   NumvoteCount: Number,
-   CommenterId: String, 
+    Body: String,
+    CommentId: String,
+    Date: String,
+    isHidden: Boolean,
+    NumvoteCount: Number,
+    CommenterId: String, 
+ });
+
+ const Account = mongoose.model('Account', AccountSchema);
+ const CommentInfo = mongoose.model('CommentInfo', CommentInfoSchema);
+ const Hidden = mongoose.model('Hidden', HiddenSchema);
+ const PostInfo = mongoose.model('PostInfo', postInfoSchema);
+ const ReplyInfo = mongoose.model('ReplyInfo', ReplyInfoSchema);
+ 
+ 
+// Set up a route to render the Handlebars template
+server.get('/', async (req, res) => {
+    try {
+        // Find all documents in the PostInfo collection
+        const postInfoData = await PostInfo.find().populate('AccountId');
+
+        // Render the Handlebars template with the PostInfo data and additional parameters
+        res.render('main', {
+            layout: 'index',
+            index_title: 'DLSU FORUM',
+            postInfoData
+        });
+    } catch (error) {
+        console.error('Error retrieving PostInfo data:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
-const Account = mongoose.model('Account', AccountSchema);
-const CommentInfo = mongoose.model('CommentInfo', CommentInfoSchema);
-const Hidden = mongoose.model('Hidden', HiddenSchema);
-const PostInfo = mongoose.model('PostInfo', PostInfoSchema);
-const ReplyInfo = mongoose.model('ReplyInfo', ReplyInfoSchema);
+server.get('/main', async (req, res) => {
+    try {
+        // Find all documents in the PostInfo collection
+        const postInfoData = await PostInfo.find().populate('AccountId');
 
-
-// until here
-
-
-
-server.get('/', function(req, resp) {
-    // Fetch all PostInfo from MongoDB
-    PostInfo.find({}).exec()
-        .then(postInfoData => {
-            resp.render('main', {
-                layout: 'index',
-                index_title: 'DLSU FORUM',
-                postInfo: postInfoData,
-            });
-        })
-        .catch(err => {
-            console.error(err);
-            resp.status(500).send('Internal Server Error');
+        // Render the Handlebars template with the PostInfo data and additional parameters
+        res.render('main', {
+            layout: 'index',
+            index_title: 'DLSU FORUM',
+            postInfoData
         });
+    } catch (error) {
+        console.error('Error retrieving PostInfo data:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 server.get('/login', function(req, resp){
@@ -107,13 +128,6 @@ server.get('/general', function(req, resp){
     resp.render('general',{
         layout: 'index',
         title: 'General'
-    });
-});
-
-server.get('/main', function(req, resp){
-    resp.render('main',{
-        layout: 'index',
-        title: 'Main'
     });
 });
 
@@ -152,10 +166,8 @@ server.get('/post', function(req, resp){
         n: req.params.n 
     });
 });
-
-
-const port = process.env.PORT | 3000;
-server.listen(port, function(){
-    console.log('Listening at port '+port);
+// Start the server
+const port = 3001;
+server.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
 });
-
