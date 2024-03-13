@@ -158,7 +158,7 @@ main {
 
 
 .header_1-user-pic {
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     background-size: cover;
     background-position: center;
     width: 38px !important;
@@ -444,7 +444,7 @@ main {
     height: 30px;
     width: 30px;
     background-size: cover;
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     border-radius:50%;
 
     background-position: center;
@@ -667,7 +667,7 @@ span {
 .header_2-user-pic {
     height: 100px;
     width: 100px;
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     background-size: cover;
     border-radius: 10%;
     border: 1px solid #00523E;

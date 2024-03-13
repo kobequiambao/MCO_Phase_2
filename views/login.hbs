@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title> DLSYOU Login </title>
-    <link rel="stylesheet" href="login.css">
+    <title>DLSYOU Login</title>
+    <link rel="stylesheet" href="/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <script type = "text/javascript" src="general.js"></script>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="/register-post.js"></script>
 </head>
 
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="/login" method="POST">
             <img src="ADD-ONS/blacklogo.png" alt="DLSYOU Logo" class="logo" onclick="navigateToPost('/main')">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
+                <input type="text" name="username" placeholder="Username" required onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required onfocus="this.placeholder=''" onblur="this.placeholder='Password'">
+                <input type="password" name="password" placeholder="Password" required onfocus="this.placeholder=''" onblur="this.placeholder='Password'">
             </div>
 
             <div class="remember-forgot">
@@ -31,8 +33,9 @@
             <div class="register-link">
                 <p>Don't have an account? <a href="register.html">Register</a></p>
             </div>
-            <button type="submit" class="btn" onclick="navigateToPost('/general')">Login</button> 
+            <button type="submit" class="btn" onclick="navigateToPost('/general')">Login</button>
         </form>
     </div>
 </body>
+
 </html>

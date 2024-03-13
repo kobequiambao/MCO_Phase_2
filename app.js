@@ -20,7 +20,7 @@ server.engine('hbs', handlebars.engine({
 }));
 
 server.use(express.static('public'));
-server.use(express.static('public', { extensions: ['css', 'js'] }));
+//server.use(express.static('public', { extensions: ['css', 'js'] }));
 mongoose.connect("mongodb+srv://alfredagustines:mongohuhu@apdev.dxbdgzs.mongodb.net/MCO2?retryWrites=true&w=majority&appName=APDEV", { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -85,13 +85,10 @@ const ReplyInfoSchema = new mongoose.Schema({
  const ReplyInfo = mongoose.model('ReplyInfo', ReplyInfoSchema);
  
  
-// Set up a route to render the Handlebars template
 server.get('/', async (req, res) => {
     try {
-        // Find all documents in the PostInfo collection
         const postInfoData = await PostInfo.find().populate('AccountId');
 
-        // Render the Handlebars template with the PostInfo data and additional parameters
         res.render('main', {
             layout: 'index',
             index_title: 'DLSU FORUM',
@@ -105,10 +102,8 @@ server.get('/', async (req, res) => {
 
 server.get('/main', async (req, res) => {
     try {
-        // Find all documents in the PostInfo collection
         const postInfoData = await PostInfo.find().populate('AccountId');
 
-        // Render the Handlebars template with the PostInfo data and additional parameters
         res.render('main', {
             layout: 'index',
             index_title: 'DLSU FORUM',
@@ -119,12 +114,30 @@ server.get('/main', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 server.get('/login', function(req, resp){
     resp.render('login',{
         layout: 'index',
         title: 'Log In'
     });
+});
+
+server.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        // Check if there's an account with the provided username and password
+        const existingAccount = await Account.findOne({ username, password });
+
+        if (!existingAccount) {
+            // No matching account found
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        res.redirect('/general');
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 server.get('/general', function(req, resp){
@@ -141,11 +154,45 @@ server.get('/createPost', function(req, resp){
     });
 });
 
-server.get('/signup', function(req, resp){
-    resp.render('register',{
+server.use(bodyParser.urlencoded({ extended: true }));
+
+
+server.get('/signup', (req, res) => {
+    res.render('register', {
         layout: 'index',
         title: 'Sign Up'
     });
+});
+
+server.post('/signup', async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+
+        const existingAccount = await Account.findOne({ $or: [{ email }, { username }] });
+
+        if (existingAccount) {
+            return res.status(401).json('An account with the same email or username already exists.');
+        }
+
+        const newAccount = new Account({
+            username,
+            email,
+            password,
+            bio: '',
+            college: '',
+            idNo: 0,
+            isAdmin: false,
+            photo: '',
+        });
+
+        const result = await newAccount.save();
+
+        console.log('Data added to the database:', result);
+        res.redirect('/login');
+    } catch (error) {
+        console.error('Error adding data to the database:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 server.get('/viewProfile', function(req, resp){
@@ -166,32 +213,26 @@ server.get('/post/:postId', async (req, resp) => {
     try {
       const postId = req.params.postId;
   
-      // Validate that postId is a valid ObjectId
       if (!ObjectId.isValid(postId)) {
         return resp.status(400).send('Invalid post ID');
       }
   
-      // Find the specific post based on the postId
       const postInfoData = await PostInfo.findById(postId).populate('AccountId');
       
-      // Check if the post exists
       if (!postInfoData) {
         return resp.status(404).send('Post not found');
       }
   
-      // Render the Handlebars template with the specific post data and additional parameters
       resp.render('post', {
         layout: 'index',
         index_title: 'Post',
         postInfoData,
     });
     } catch (error) {
-      // Handle errors appropriately
       console.error('Error retrieving PostInfo data:', error);
       resp.status(500).send('Internal Server Error');
     }
   });
-// Start the server
 const port = 3000;
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
