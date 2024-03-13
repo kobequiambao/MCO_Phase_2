@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <title>Post</title>
-    <link rel="stylesheet" href="Post-Style.css">
-    <script type = "text/javascript" src="general.js"></script>
-    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="/Post-Style.css">
+    <script type = "text/javascript" src="/general.js"></script>
+    <!-- <link rel="stylesheet" href="general.css"> -->
+    <link rel="stylesheet" href="/general.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="Post-JS.js"></script>
-    <script type="text/javascript" src="editPost_script.js"></script>
+    <script type = "text/javascript" src="/Post-JS.js"></script>
+    <script type="text/javascript" src="/editPost_script.js"></script>
 </head>
 <body>
     {{> header}}
@@ -21,23 +22,5 @@
         </div>      
     </main>
 </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            loadUserProfile();
-        });
-
-        function loadUserProfile() {
-            const storedProfileData = localStorage.getItem('userProfile');
-            if (storedProfileData) {
-                const userProfile = JSON.parse(storedProfileData);
-
-                // Update header with user profile data
-                document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
-                document.getElementById('headerUserName').innerText = userProfile.username;
-                document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
-                document.getElementById('usernamePlaceholder').textContent = userProfile.username;
-            }
-        }
-    </script>
 
 </html>

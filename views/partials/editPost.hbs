@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <!-- ?testing -->
-    <link rel="stylesheet" href="Create-Post.css">
-    <script type = "text/javascript" src="general.js"></script>
+    <link rel="stylesheet" href="/Create-Post.css">
+    <script type = "text/javascript" src="/general.js"></script>
   
     
 
@@ -30,13 +30,13 @@
                 <div class="text-box-container">
                     <div class="title-box-container">
                         <div class="title-box-holder">
-                            <textarea maxlength="300" placeholder="Title" class="title-box" rows="1"></textarea>
+                            <textarea maxlength="300" placeholder="Title" class="title-box" rows="1">{{this.Title}}</textarea>
                         </div>
                     </div>
         
                     <div class="body-box-container" id = "bbc-edit">
                         <div class="body-box-holder">
-                            <textarea placeholder="Text" class="body-box"></textarea>
+                            <textarea placeholder="Text" class="body-box">{{this.Body}}</textarea>
                         </div>
                     </div>
                 </div>

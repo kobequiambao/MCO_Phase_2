@@ -22,47 +22,40 @@
     function openLoginForm_create() {
         var modal = document.getElementById("loginFormModal-create");
         modal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Disable scrolling on the body
+        document.body.style.overflow = "hidden";
     }
     
     function closeLoginForm_create() {
         var modal = document.getElementById("loginFormModal-create");
         modal.style.display = "none";
-        document.body.style.overflow = ""; // Re-enable scrolling on the body
+        document.body.style.overflow = ""; 
     }
     
     function openLoginForm_edit() {
       var modal = document.getElementById("loginFormModal-edit");
       modal.style.display = "block";
-      document.body.style.overflow = "hidden"; // Disable scrolling on the body
+      document.body.style.overflow = "hidden"; 
   }
   
   function closeLoginForm_edit() {
       var modal = document.getElementById("loginFormModal-edit");
       modal.style.display = "none";
-      document.body.style.overflow = ""; // Re-enable scrolling on the body
+      document.body.style.overflow = ""; 
   }
 
   function openLoginForm_delete() {
     var modal = document.getElementById("loginFormModal-delete");
     modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // Disable scrolling on the body
+    document.body.style.overflow = "hidden"; 
 }
 
 function closeLoginForm_delete() {
     var modal = document.getElementById("loginFormModal-delete");
     modal.style.display = "none";
-    document.body.style.overflow = ""; // Re-enable scrolling on the body
+    document.body.style.overflow = ""; 
 }
 
 
-
-
-
-
-
-
-      // Close modal if clicked outside of it
       window.onclick = function(event) {
         var modal = document.getElementById("loginFormModal-create");
         if (event.target == modal) {
@@ -84,7 +77,6 @@ function closeLoginForm_delete() {
 
 
 
-
       function openForm() {
             
         document.getElementById("popup").style.display = "block";
@@ -96,13 +88,10 @@ function closeLoginForm_delete() {
 
 
 
-
-
-
       function handleDelete(event) {
         event.stopPropagation();
         openForm();
-    }
+      }
     
     
     document.getElementById('shareButton').addEventListener('click', function() {

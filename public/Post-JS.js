@@ -2,15 +2,15 @@
 $(document).ready(function () {
 
     $(document).on('mouseenter', '.up_vote', function() {
-        $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
+        $(this).attr('src', '/CCAPDEV-LOGO-2/16.png');
     }).on('mouseleave', '.up_vote', function() {
-        $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
+        $(this).attr('src', '/CCAPDEV-LOGO-2/2.png');
     });
   
     $(document).on('mouseenter', '.down_vote', function() {
-        $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
+        $(this).attr('src', '/CCAPDEV-LOGO-2/17.png');
     }).on('mouseleave', '.down_vote', function() {
-        $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
+        $(this).attr('src', '/CCAPDEV-LOGO-2/3.png');
     });
 
     $('.up_vote, .up_vote_filled').click(function () {
@@ -100,14 +100,14 @@ $(document).ready(function () {
                           <p class="comment-text">${comment}</p>
                       </div>
                       <div class="comment-section-icons">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                          <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
 
                           <span class="vote-count">0</span>
 
 
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                          <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -198,14 +198,14 @@ $(document).ready(function () {
                           <p class="comment-text">${comment}</p>
                       </div>
                       <div class="comment-section-icons">
-                          <img class="upvote-icon" src="CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon-filled" src="CCAPDEV-LOGO-2/16.png" hidden>
+                          <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                          <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
 
                           <span class="vote-count">0</span>
 
 
-                          <img class="downvote-icon" src="CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon-filled" src="CCAPDEV-LOGO-2/17.png" hidden>
+                          <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                          <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
 
 
                           <div class="reply-container">
@@ -230,15 +230,15 @@ $(document).ready(function () {
 
     
   $(document).on('mouseenter', '.upvote-icon', function() {
-      $(this).attr('src', 'CCAPDEV-LOGO-2/16.png');
+      $(this).attr('src', '/CCAPDEV-LOGO-2/16.png');
   }).on('mouseleave', '.upvote-icon', function() {
-      $(this).attr('src', 'CCAPDEV-LOGO-2/2.png');
+      $(this).attr('src', '/CCAPDEV-LOGO-2/2.png');
   });
 
   $(document).on('mouseenter', '.downvote-icon', function() {
-      $(this).attr('src', 'CCAPDEV-LOGO-2/17.png');
+      $(this).attr('src', '/CCAPDEV-LOGO-2/17.png');
   }).on('mouseleave', '.downvote-icon', function() {
-      $(this).attr('src', 'CCAPDEV-LOGO-2/3.png');
+      $(this).attr('src', '/CCAPDEV-LOGO-2/3.png');
   });
 
     $(".comment-section").on("click", ".upvote-icon, .upvote-icon-filled", function () {

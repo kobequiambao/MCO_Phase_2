@@ -84,31 +84,31 @@ main {
     background-repeat: no-repeat;
 }
 .header_1-search {
-    margin-left:182px;
+    margin-left: 182px;
     width: 900px;
     height: 46px;
     background-color: #00523E;
     border: none;
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    outline: none; /* Remove outline when clicked */
-    font-family: Noto Sans,Arial,sans-serif;
-    font-size: 16px; /* Adjust font size */
-    color: #BEBEBE; /* Text color */
-    font-weight: lighter; /* Bold text */
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-family: Noto Sans, Arial, sans-serif;
+    font-size: 16px;
+    color: #BEBEBE;
+    font-weight: lighter;
     text-align: left;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    background-image: url('CCAPDEV-LOGO-2/10.png'); /* Path to your search icon */
-    background-repeat: no-repeat; /* Prevent the icon from repeating */
-    background-position: 20px center; /* Position the icon 20px from the left and vertically centered */
-    background-size: 20px; /* Set the size of the background image */
-    padding-left: 50px; /* Add padding to the left of the button to accommodate the icon */
+    transition: background-color 0.3s ease;
+    background-image: url('CCAPDEV-LOGO-2/10.png');
+    background-repeat: no-repeat;
+    background-position: 20px center;
+    background-size: 20px;
+    padding-left: 50px;
     display: flex;
-    align-items: center; /* Align text vertically center */
+    align-items: center;
 }
 
 .header_1-search:hover {
-    background-color: #BEBEBE; /* Change background color on hover */
+    background-color: #BEBEBE; 
     color: #00523E;
 }
 
@@ -127,7 +127,7 @@ main {
 .dropdown-content_user {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
-    color: #060606; /* Text color */
+    color: #060606; 
     margin-top:50px;
     display: none;
     position: absolute;
@@ -158,13 +158,13 @@ main {
 
 
 .header_1-user-pic {
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     background-size: cover;
     background-position: center;
     width: 38px !important;
-    height: 38px !important; /* Adjusted height to match width */
+    height: 38px !important; 
     border: 1px solid #BEBEBE;
-    border-radius: 50%; /* Changed border-radius to 50% */
+    border-radius: 50%; 
     margin: 3px;
     margin-left: 10px;
     box-shadow: 0px 0px 5px white; 
@@ -181,27 +181,27 @@ main {
 .header_1-user-name, .header_1-user-id {
 
     font-family: Noto Sans, Arial, sans-serif;
-    color: white; /* Text color */
+    color: white; 
     text-align: left;
     display: flex;
-    align-items: center; /* Align items vertically center */
+    align-items: center; 
 }
 .header_1-user-name {
-    font-size: 15px; /* Adjust font size */
-    font-weight: bold; /* Bold text */
+    font-size: 15px; 
+    font-weight: bold; 
 }
 .header_1-user-id {
-    font-size: 10px; /* Adjust font size */
-    font-weight: lighter; /* Lighter text */
+    font-size: 10px; 
+    font-weight: lighter; 
 }
 
 .header_1-user:hover {
-    background-color: #BEBEBE; /* Change background color on hover */
+    background-color: #BEBEBE; 
 }
 
 .header_1-user:hover .header_1-user-name,
 .header_1-user:hover .header_1-user-id {
-    color: #00523E; /* Change text color on hover */
+    color: #00523E; 
 }
 
 .header_2 {
@@ -251,7 +251,7 @@ main {
     color: #1C1C1C;
     font-weight:bolder ;
     font-family: IBMPlexSans, Arial, Sans-Serif;
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px; 
 }
 
 .header_2-channel-info-2{
@@ -305,7 +305,7 @@ main {
     display:flex;
     margin-left: auto;
     border: 2px solid white;
-    border-radius: 10px; /* Reduced border radius */
+    border-radius: 10px; 
 }
 
 .main_about-info {
@@ -314,8 +314,8 @@ main {
     height: 590px;
     width: 290px;
     border: 2px solid white;
-    border-radius: 10px; /* Reduced border radius */
-    overflow: hidden; /* Ensure border-radius doesn't interfere */
+    border-radius: 10px; 
+    overflow: hidden; 
 }
 
 
@@ -327,8 +327,8 @@ main {
     color: white;
     font-weight: bold;
     display: flex;
-    justify-content: center; /* horizontally center */
-    align-items: center; /* vertically center */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .main_about-info-desc{
@@ -337,7 +337,7 @@ main {
     font-family:Noto Sans,Arial,sans-serif;
     color: #1A1A1B;
     font-size: 14px;
-    text-align: justify; /* horizontally center */
+    text-align: justify; 
 }
 
 .main_about-info-pic{
@@ -355,9 +355,9 @@ main {
     height: 60px;
     background-color: #BEBEBE;
     border: none;
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    outline: none; /* Remove outline when clicked */
+    border-radius: 5px; 
+    cursor: pointer; 
+    outline: none; 
     font-size: 18px;
     font-family: IBMPlexSans, Arial, Sans-Serif;
     color: white;
@@ -369,9 +369,9 @@ main {
     background-repeat: no-repeat; /* Prevent the icon from repeating */
     background-position: 20px center; /* Position the icon 20px from the left and vertically centered */
     background-size: 20px; /* Set the size of the background image */
-    padding-left: 60px; /* Add padding to the left of the button to accommodate the icon */
+    padding-left: 60px; 
     display: flex;
-    align-items: center; /* Align text vertically center */
+    align-items: center; 
     opacity: 0.9;
 }
 
@@ -444,7 +444,7 @@ main {
     height: 30px;
     width: 30px;
     background-size: cover;
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     border-radius:50%;
 
     background-position: center;
@@ -667,7 +667,7 @@ span {
 .header_2-user-pic {
     height: 100px;
     width: 100px;
-    background-image: url('CCAPDEV-LOGO-1/user.jpg');
+    background-image: url('ADD-ONS/profilepic.jpg');
     background-size: cover;
     border-radius: 10%;
     border: 1px solid #00523E;

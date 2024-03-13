@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#imageUpload').on('change', function() {
         var file = this.files[0];
 
-        if (file && file.type.startsWith('image/')) { // Check if the file is an image
+        if (file && file.type.startsWith('image/')) { 
             var reader = new FileReader();
             reader.onload = function(e) {
                 var imageDataUrl = e.target.result;
@@ -12,18 +12,16 @@ $(document).ready(function(){
                     fileName = fileName.substring(0, 30) + '...';
                 }
                 
-                // Apply the uploaded image as the background of .main_post-img
                 $('#uploadedImageContainer').css('background-image', 'url(' + imageDataUrl + ')');
                 
                 $('.file_name').text("Attachment: "+fileName).show();
                 $('.src').text(imageDataUrl);
     
-                // Get dominant color of the image
             };
             reader.readAsDataURL(file);
         } else {
             alert('Please select an image file.');
-            $('#imageUpload').val(''); // Clear the file input
+            $('#imageUpload').val(''); 
         }
     });
 
@@ -33,7 +31,6 @@ $(document).ready(function(){
         if (storedProfileData) {
             const userProfile = JSON.parse(storedProfileData);
 
-            // Update header 1 with user profile data
             const userPhoto = `url('${userProfile.photo}')`;
             const userProfileName = userProfile.username;
 
@@ -46,12 +43,10 @@ $(document).ready(function(){
             if(title !== '' && body !== '') {
                 if(img !== '') {
                     stats = '';
-                    // Create an image element to calculate dominant color
                     const image = new Image();
                     image.crossOrigin = "Anonymous";
                     image.src = img;
                     image.onload = function() {
-                        // Calculate dominant color using ColorThief
                         const colorThief = new ColorThief();
                         const dominantColor = colorThief.getColor(image);
                         const rgbColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
