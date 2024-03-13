@@ -292,14 +292,12 @@
         color: rgb(26, 26, 26);
     }
 
-    /* All icons at the bottom (comment, share, save, more) */
 
     .icon-container{
         margin-left: 20px;
         display: flex;
     }
 
-    /* Comment icon */
 
     .comment-icon-container{
         align-items: center;

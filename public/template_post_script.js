@@ -77,11 +77,11 @@
             
 
             $(document).ready(function() {
-                // Set the initial template content
+                
                 var initialTemplate = $('#template-post').html();
                 $('#template-container').html(initialTemplate);
     
-                // Handle navbar link clicks
+              
                 $('.nav-link').click(function(e) {
                     e.preventDefault();
                     $('.nav-link').removeClass('active');
@@ -90,7 +90,7 @@
                     $('#template-container').html(templates[target]);
                 });
     
-                // Set the "active" class for the initial active navbar item
+               
                 $('.nav-link[data-target="posts"]').addClass('active');
             });
 

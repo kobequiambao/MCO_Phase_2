@@ -28,26 +28,25 @@ $(document).ready(function(){
 
         $(document).ready(function(){
             $('#loginForm').submit(function (event) {
-                // Prevent the form from submitting by default
+               
                 event.preventDefault();
         
-                // Get form inputs
                 const usernameInput = $('#usernameInput');
                 const passwordInput = $('#passwordInput');
         
-                // Validate username length
+           
                 if (usernameInput.val().length === 0) {
                     alert('Please enter a username');
                     return;
                 }
         
-                // Validate password length
+              
                 if (passwordInput.val().length === 0) {
                     alert('Please enter a password');
                     return;
                 }
         
-                // If all validation passes, submit the form
+                
                 this.submit();
             });
         });

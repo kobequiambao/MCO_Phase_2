@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif; 
     /* background-color: #00523E; */
   }
-  /* DELETE POPUP */
 
 
   #delbox{
@@ -32,7 +31,7 @@ body {
 
   .title_profile {
     font-weight: bold;
-    width: fit-content; /* Adjust width as needed */
+    width: fit-content; 
     margin: 0 auto;
   }
   
@@ -80,12 +79,12 @@ body {
     display: inline-block;
     margin-left: 10px;
     padding: 5px 15px;
-    background-color: #f2f2f2; /* Light grey background */
-    color: black; /* Black text */
+    background-color: #f2f2f2; 
+    color: black;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    border: 1px solid #ddd; /* Border added here */
+    border: 1px solid #ddd; 
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
@@ -110,7 +109,7 @@ body {
     margin-top: 10px; 
     padding: 10px;
     width: 80%;
-    margin-bottom: 20px; /* Space between posts */
+    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 5px;
     position: relative;
@@ -131,11 +130,11 @@ body {
     margin-top: 10px; 
     margin-right: 15px; 
     justify-content: start;
-    padding-left: 10px; /* Adds some space from the left edge */
-    margin-top: 10px; /* Adds space between the title and the vote buttons */
+    padding-left: 10px;
+    margin-top: 10px;
     position: absolute;
-    left: 10px; /* Positions the vote buttons to the left */
-    top: 10px; /* Adjust as needed to align properly */
+    left: 10px; 
+    top: 10px; 
   }
   
   .vote button { 
@@ -145,12 +144,12 @@ body {
   
   .post-header-viewallpost .title { 
     font-weight: bold; 
-    flex-grow: 1; /* This will make the title grow to occupy maximum space */
-    text-align: center; /* This will center the title text if there's space on both sides */
+    flex-grow: 1; 
+    text-align: center; 
   }
   
   .comments {
-    border-top: 1px solid #ccc; /* Adds a top border to the comments section */
+    border-top: 1px solid #ccc; 
     margin-top: 15px;
     padding-top: 15px;
 }
@@ -160,21 +159,21 @@ body {
 }
 
 .comment {
-    background-color: #f9f9f9; /* Light background for each comment */
-    border: 1px solid #ddd; /* Border around each comment */
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
     padding: 10px;
-    border-radius: 4px; /* Slightly rounded corners for the border */
-    margin-bottom: 10px; /* Space between comments */
-    position: relative; /* Position relative for absolute positioning of buttons or icons */
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
 
 .deletebutton {
-    /* Style for your icons, e.g., a trash bin for delete */
+  
     cursor: pointer;
     border-radius: 50%;
     margin-left: 100;
-    /* Add specific icon styles or use an <img> tag with src attribute pointing to your icon image */
+    
 }
 
 .comment-img-btn {
@@ -191,20 +190,20 @@ body {
 }
 
 .post-image {
-  display: flex; /* Use flexbox to center the image */
-  justify-content: center; /* Center image horizontally */
-  align-items: center; /* Center image vertically, if needed */
-  overflow: hidden; /* Prevents the image from overflowing its container */
-  max-width: 100%; /* Ensures the image container does not exceed the width of the post */
-  margin: 20px auto; /* Adds margin on the top and bottom and auto margins on the sides to center it within the post */
-  border-radius: 10px; /* Optional: Rounds the corners of the image container */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden;
+  max-width: 100%;
+  margin: 20px auto;
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .post-image img {
-  max-width: 100%; /* Ensures the image is responsive and does not exceed the width of its container */
-  height: auto; /* Keeps the image's aspect ratio */
-  display: block; /* Ensures no extra space at the bottom of the image */
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
 }
   .profile-container {
     text-align: center;
@@ -212,46 +211,46 @@ body {
 }
 
 .profile-picture {
-    width: 150px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
-    border-radius: 50%; /* Creates the circle shape */
-    border: 3px solid #fff; /* Optional: adds a border around the picture */
-    box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #fff; 
+    box-shadow: 0 0 8px rgba(0,0,0,0.1); 
 }
 
 
 
 .post-header-viewuserprofile {
   display: flex;
-  justify-content: center; /* Centers the title */
+  justify-content: center;
   align-items: center;
-  width: 100%; /* Ensure the header takes up full width */
+  width: 100%; 
 }
 
 
 .post-header-viewallpost {
   display: flex;
-  justify-content: center; /* Centers the title */
+  justify-content: center; 
   align-items: center;
-  width: 100%; /* Ensure the header takes up full width */
+  width: 100%; 
 }
 
 .profile-navbar {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  background-color: #00523E; /* Light grey background */
-  border-bottom: 2px solid; /* Bottom border to match the uploaded image */
+  background-color: #00523E; 
+  border-bottom: 2px solid; 
   padding: 10px 0;
 }
 
 .profile-navbar a {
   text-decoration: none;
-  color: white; /* White color for the text */
+  color: white; 
   margin: 0 15px;
   padding-bottom: 5px;
   font-size: 16px;
-  position: relative; /* Added position relative */
+  position: relative; 
 }
 
 .profile-navbar a::after {
@@ -260,12 +259,12 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px; /* Adjust as needed */
-  background-color: transparent; /* Transparent border, will be blue on active */
+  height: 3px; 
+  background-color: transparent; 
 }
 
 .profile-navbar a:hover::after, .profile-navbar a.active::after {
-  background-color: #BEBEBE; /* Blue border on hover/active */
+  background-color: #BEBEBE; 
 }
 
 

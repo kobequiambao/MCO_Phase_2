@@ -20,12 +20,12 @@ header {
 }
 
 main {
-    height: auto; /* Height adjusts dynamically based on content */
-    min-height: calc(100vh - 205px); /* Ensures full height minus the header height */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    height: auto; 
+    min-height: calc(100vh - 205px); 
+    box-sizing: border-box; 
     background-color: #00523E;
-    padding: 20px; /* Adjust padding as needed */
-    margin: 0; /* Remove default margin */
+    padding: 20px; 
+    margin: 0; 
 }
 
 
@@ -216,13 +216,13 @@ main {
 
 .color1 {
     height: 40%;
-    background-color: #00523E; /* Red */
+    background-color: #00523E; 
     top: 0;
 }
 
 .color2 {
     height: 60%;
-    background-color: white; /* Blue */
+    background-color: white; 
     bottom: 0;
 }
 
@@ -364,11 +364,11 @@ main {
     font-weight: bold;
     text-align: left;
     font-style: italic;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    background-image: url('CCAPDEV-LOGO-2/14.png'); /* Path to your search icon */
-    background-repeat: no-repeat; /* Prevent the icon from repeating */
-    background-position: 20px center; /* Position the icon 20px from the left and vertically centered */
-    background-size: 20px; /* Set the size of the background image */
+    transition: background-color 0.3s ease;
+    background-image: url('CCAPDEV-LOGO-2/14.png'); 
+    background-repeat: no-repeat; 
+    background-position: 20px center; 
+    background-size: 20px; 
     padding-left: 60px; 
     display: flex;
     align-items: center; 
@@ -386,7 +386,7 @@ main {
 
 .main_vote .up_vote, .up_vote_filled,
 .main_vote .down_vote, .down_vote_filled {
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    cursor: pointer; 
 }
 .main_post {
     margin-top: 20px;
@@ -502,7 +502,7 @@ main {
     margin-right:5px;
     height: 25px;
     width: 25px;
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    cursor: pointer; 
 }
 
 .num_vote {
@@ -521,7 +521,7 @@ main {
     margin-left:5px;
     height: 25px;
     width: 25px;
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    cursor: pointer; 
 }
 
 .main_post-buttons {
@@ -593,7 +593,7 @@ span {
 .dropdown-content_search {
     font-family: Noto Sans, Arial, sans-serif;
     font-size: 14px;
-    color: #060606; /* Text color */
+    color: #060606; 
     margin-top:170px;
     display: none;
     position: absolute;
@@ -649,7 +649,7 @@ span {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 600px; /* Optional: limit the maximum width */
+    max-width: 600px; 
 }
 
 .header_2-user {
@@ -659,7 +659,7 @@ span {
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    width: 1000px; /* Adjust the width as needed */
+    width: 1000px; 
     margin-left:225px;
 }
 
@@ -684,7 +684,7 @@ span {
     color: #1C1C1C;
     font-weight:bolder ;
     font-family: IBMPlexSans, Arial, Sans-Serif;
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px; 
 }
 
 .header_2-user-info-2{
@@ -704,19 +704,19 @@ span {
   }
   
   
-  .delete-post-btn img { /* Adjust the delete button image styling if necessary */
+  .delete-post-btn img {
     width: 20px;
     height: 20px;
   }
   
   .edit-profile-btn {
       padding: 10px;
-      background-color: #4CAF50; /* Green background */
-      color: white; /* White text */
+      background-color: #4CAF50; 
+      color: white; 
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10px; /* For Edit Profile Button */
+      margin-top: 10px;
   }
   
   .edit-profile-btn:hover, .delete-post-btn:hover {
@@ -737,20 +737,20 @@ span {
   .main_post-img-container {
     position: relative;
     width: 100%;
-    height: 500px; /* Adjust the height as needed */
-    margin-top: 20px; /* Adjust margin-top as needed */
+    height: 500px; 
+    margin-top: 20px;
     overflow: hidden;
     pointer-events: none;
 }
 
 .main_post-img {
-    position: relative; /* Ensure main image is positioned relative to its container */
+    position: relative; 
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure the image covers the container */
-    object-position: center; /* Center the image */
+    object-fit: contain; 
+    object-position: center; 
     box-shadow: 0px 4px 5px -4px #C1ACBA;
-    z-index: 0; /* Set a lower z-index to keep it behind the modal */
+    z-index: 0;
 }
 
 .blurred-background {
@@ -760,8 +760,8 @@ span {
     width: 100%;
     height: 100%;
     background-size: cover;
-    filter: blur(1px); /* Adjust the blur intensity as needed */
-    z-index: 0; /* Ensure it's behind other elements */
+    filter: blur(1px); 
+    z-index: 0;
 }
 
 
