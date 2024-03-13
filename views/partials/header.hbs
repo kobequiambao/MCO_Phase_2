@@ -1,3 +1,4 @@
+{{log this}}
  <div class="header_1">
             <div class = "header_1-logo" onclick="navigateToPost('/general')"></div>
             <div class="header_1-search"onclick="toggleDropdown_search()">Search
@@ -12,8 +13,8 @@
             <div class="header_1-user" onclick="toggleDropdown_user()">
                 <div class="header_1-user-pic" id="headerUserPic"></div>
                 <div class="header_1-user-info">
-                    <div class="header_1-user-name" id="headerUserName">NA</div>
-                    <div class="header_1-user-id" id="headerUserId"></div>
+                    <div class="header_1-user-name" id="headerUserName">{{userData.username}}</div>
+                    <div class="header_1-user-id" id="headerUserId">={{userData.college}}=</div>
                 </div>
                 <div class="dropdown-content_user">
                     <a href="/viewProfile">View Profile</a>
@@ -34,5 +35,21 @@
                 </div>
             </div>
         </div>
+
+        <script> 
+            document.addEventListener('DOMContentLoaded', function () {
+        loadUserProfile();
+        });
+        function loadUserProfile() {
+            const storedProfileData = localStorage.getItem('userProfile');
+            if (storedProfileData) {
+                const userProfile = JSON.parse(storedProfileData);
+        
+                // Update header with user profile data
+                let modifiedIdNos = userProfile.idNo.slice(0, 3);
+                console.log('Modified idNo:', modifiedIdNo);
+        }
+        }
+        </script>
 
  

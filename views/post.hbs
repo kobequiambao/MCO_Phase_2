@@ -22,23 +22,5 @@
         </div>      
     </main>
 </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            loadUserProfile();
-        });
-
-        function loadUserProfile() {
-            const storedProfileData = localStorage.getItem('userProfile');
-            if (storedProfileData) {
-                const userProfile = JSON.parse(storedProfileData);
-
-                // Update header with user profile data
-                document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
-                document.getElementById('headerUserName').innerText = userProfile.username;
-                document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
-                document.getElementById('usernamePlaceholder').textContent = userProfile.username;
-            }
-        }
-    </script>
 
 </html>
