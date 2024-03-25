@@ -8,22 +8,21 @@
                                 <div class="main_post-desc-poster-pic"></div>
                                 <div class="main_post-desc-poster-name">
                                     u/{{postInfoData.AccountId.username}}
+                                    Michael
                                 </div>
-                                <div class="main_post-desc-banner">{{postInfoData.Type}}</div>
-                                <div class="main_post-date">{{postInfoData.Date}}</div>
+                                <div class="main_post-desc-banner">{{postInfoData.Type}}General_Question</div>
+                                <div class="main_post-date">{{postInfoData.Date}}January 21,2024</div>
                             </div>
 
-                            <div class="main_post-desc-title">{{postInfoData.Title}}</div>
-                            <div class="main_post-desc-content">{{postInfoData.Body}}</div>
+                            <div class="main_post-desc-title">{{postInfoData.Title}}To Delete to ah</div>
+                            <div class="main_post-desc-content">{{postInfoData.Body}} Kindly check admin_master_post.hbs then delete unnecessary infos</div>
                         </div>
 
                         <div class="main_post-buttons">
                             <div class="main_vote">
-                                <img class="up_vote" src="/CCAPDEV-LOGO-2/2.png" alt="">
-                                <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden>
+                                <img class="uv" src="/CCAPDEV-LOGO-2/2.png" alt="">
                                 <span class = "num_vote">0</span>
-                                <img class="down_vote" src="/CCAPDEV-LOGO-2/3.png" alt="">
-                                <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden>
+                                <img class="dv" src="/CCAPDEV-LOGO-2/3.png" alt="">
                             </div>
                             <div class="button-container" id = "master-comment">
                                 <div class="main_post-buttons-comment"></div>
@@ -34,17 +33,6 @@
                                 <span>Share</span>
                             </div>
                           
-                            <div class="button-container" id ="save">
-                                <div class="main_post-buttons-save"></div>
-                                <div class="main_post-buttons-save-filled" hidden></div>
-                                <span>Save</span>
-                            </div>
-
-                            <div class="button-container" id = "editPost" onclick="openLoginForm_edit()">
-                                <div class="main_post-buttons-edit"></div>
-                                <span>Edit</span>
-                                
-                            </div>
                             <div class="button-container" onclick="openLoginForm_delete()">
                                 <div class="main_post-buttons-delete"></div>
                                 <span>Delete</span>
@@ -60,17 +48,11 @@
             {{>deletePost}}
         </div>
 
-        <div class="comment-part-container">
-            <textarea class="comment-box" placeholder="What are your thoughts?"></textarea>
-            <button class="submit-comment-button">Comment</button>
-            <button class="cancel-comment-button">Cancel</button>
-        </div>
-        
         <div class="sort-search-part">
             <div class="sort-search-container">
                 <div class="sort-by">
                     <div class="dropdown">
-                        <button class="sort-button" onclick="toggleDropdown()">Sort By: Best</button>
+                        <button class="sort-button" onclick="toggleDropdown()" id = "admin_sort-button">Sort By: Best</button>
                         <div class="dropdown-content" id="sortOptions">
                           <a class="best" href="#">Best</a>
                           <a class="new" href="#">New</a>
@@ -97,26 +79,15 @@
                     <div class="comment-body">
                         <p class="comment-text">heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
                     </div>
-                    <div class="comment-section-icons">
-                        <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
-                        <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+                    <div class="admin_csi" >
+                        <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
 
-                        <span class="vote-count">0</span>
+                        <span class="vote-count" id = "admin_vc">0</span>
 
-
-                        <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
-                        <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
-
-
-                        <div class="reply-container">
-                            <button class="reply-button">
-                                <span class="reply-text">Reply</span>
-                            </button>
-                        </div>                 
+                        <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
+      
                     </div>
-                    <textarea class="reply-textarea" hidden></textarea>
-                    <button class="comment-button" hidden>Comment</button>
-                    <button class="cancel-button" hidden>Cancel</button>
+
                 </div>
             </div>
 

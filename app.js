@@ -238,8 +238,26 @@ server.get('/editProfile', function(req, resp){
             title: 'Edit Profile'   
         });
 });
+server.get('/admin', function(req, resp){
+    resp.render('admin',{
+        layout: 'index',
+        title: 'Admin'   
+    });
+});
 
+server.get('/admin_post', function(req, resp){
+    resp.render('admin_post',{
+        layout: 'index',
+        title: 'Admin Posts'   
+    });
+});
 
+server.get('/admin_aaccount', function(req, resp){
+    resp.render('admin_account',{
+        layout: 'index',
+        title: 'Admin Accounts'   
+    });
+});
 server.get('/post/:postId', async (req, resp) => {
     try {
       const postId = req.params.postId;

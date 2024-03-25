@@ -285,7 +285,9 @@ main {
     display:flex;
     padding:0;
 }
-
+#admin_mf{
+    background-color: white;
+}
 
 .main_feed-post{
     margin-top:20px;
@@ -385,7 +387,8 @@ main {
 }
 
 .main_vote .up_vote, .up_vote_filled,
-.main_vote .down_vote, .down_vote_filled {
+.main_vote .down_vote, .down_vote_filled,
+.uv, .uv_filled, .dv, .dv_filled{
     cursor: pointer; 
 }
 .main_post {
@@ -496,7 +499,8 @@ main {
 }
 
 
-.up_vote, .up_vote_filled {
+.up_vote, .up_vote_filled,
+.uv, .uv_filled {
     margin: 0 auto;
     margin-top: 6px;
     margin-right:5px;
@@ -507,6 +511,7 @@ main {
 
 .num_vote {
     height: 20px;
+    
     margin: auto;
     margin-top: 6px;
     
@@ -514,7 +519,8 @@ main {
     line-height: 20px;
 }
 
-.down_vote, .down_vote_filled {
+.down_vote, .down_vote_filled,
+.dv, .dv_filled {
     margin: 0 auto;
     margin-top: 6px;
     margin-bottom: 12px;
@@ -549,6 +555,7 @@ main {
     opacity: 20%;
 }
 .up_vote, .down_vote, .up_vote_filled, .down_vote_filled,
+.uv, .dv, .uv_filled, .dv_filled,
 .main_post-buttons-comment,
 .main_post-buttons-share,
 .main_post-buttons-save,
@@ -773,14 +780,69 @@ span {
 
 }
 
+.main_post-date{
+    font-family:IBMPlexSans, Arial, Sans-Serif;
+    
+    font-size: 10px;
+    text-align: justify;
+    margin-left:10px;
+}
 
+.admin_text {
+    margin-left: 160px;
+    width: 980px;
+    margin-right: 90px;
+    font-family: IBMPlexSans, Arial, Sans-Serif;
+    font-size: 32px;
+    text-align: center;
+    color:  #00523E;
+    font-weight: bolder;
+    padding-top: 5px;;
+}
+  
+#admin_sort-button{
+    margin-left:-15px;
+}
 
+  
+.accounts_box{
+    display: flex;
+}
 
-  
-  
-  
+.accounts_box {
+    margin-top: 20px;
+    border-radius: 10px;
+    /* height: 200px; */
+    display: flex;
+    background-color:#949494;
+    overflow: hidden; 
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
+    color: #00523E;
+}
 
-  
-  
+.main_post-top:hover {
+    background-color: #00523E;
+    color:white;
+    opacity:50%;
+}
 
-  
+#admin_mpdt,.acc_info{
+    display: flex;
+}
+.acc_username, .acc_email,
+.acc_info-username, .acc_info-email{
+    width:30%;
+    text-align: center;
+}
+.acc_idnum, .acc_college,
+.acc_info-idnum, .acc_info-college{
+    width:20%;
+    text-align: center;
+}
+
+.acc_info-username, .acc_info-email, .acc_info-idnum, .acc_info-college{
+    font-size: 12px;
+}

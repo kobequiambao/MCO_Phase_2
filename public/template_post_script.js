@@ -68,6 +68,7 @@
           
             var templates = {
                 posts: $('#template-post').html(),
+                accounts: $('#template-accounts').html(),
                 comments: $('#template-comment').html(),
                 saved: $('#template-save').html(),
                 hidden: $('#template-hidden').html(),

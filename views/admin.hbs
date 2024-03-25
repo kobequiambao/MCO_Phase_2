@@ -1,0 +1,45 @@
+{{log this}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/general.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/general.js"></script>
+    <script type="text/javascript" src="/shared.js"></script>
+    <script src="/template_post_script.js"></script>
+    <script src="/createPost_script.js"></script>
+    <title>General</title>
+    <script id="template-post" type="text/x-handlebars-template">
+         <div class="main_feed" id="admin_mf">
+            <div class="main_feed-post">
+                {{> admin_list_posts}}
+            </div>
+         </div>        
+        
+    </script>
+    <script id="template-accounts" type="text/x-handlebars-template">
+         <div class="main_feed" id="admin_mf">
+            <div class="main_feed-post">
+                {{> admin_list_accounts}}
+            </div>
+         </div>        
+    </script>
+   
+</head>
+<body>
+    {{> admin_header}}
+
+    <div class="profile-navbar">
+        <a href="#" class="nav-link active" data-target="posts">POSTS</a>
+        <a href="#" class="nav-link" data-target="accounts">ACCOUNTS</a>
+        
+    </div>
+
+    <ul class="post-list" id="template-container">
+        <!-- Content will be dynamically added here -->
+    </ul>
+
+</body>
+</html>

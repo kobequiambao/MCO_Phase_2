@@ -1,17 +1,14 @@
 {{!-- POSTS --}}
 <div class="main_post" id="post-1">    
     
-                    <div class = "main_post-top " onclick="navigateToPost('/post')">
+                    <div class="main_post-top" onclick="navigateToPost('/admin_post')">
                         <div class = "main_post-desc">
                             <div class = "main_post-desc-poster">
                                 <div class = "main_post-desc-poster-pic" id="desc-poster-pic"></div>
                                 <div class = "main_post-desc-poster-name">
                                 u/KookyPookie</div>
                                 <div class = "main_post-desc-banner">General Question</div>
-            
-
-
-
+                                <div class="main_post-date">toDelete (date here){{this.Date}}</div>
                             </div>
                             
                             <div class = "main_post-desc-title">
@@ -25,19 +22,13 @@
 
                         <div class="main_post-buttons">
                             <div class="main_vote">
-                                <img class="up_vote" src="CCAPDEV-LOGO-2\2.png" alt="">
-                                <img class="up_vote_filled" src="CCAPDEV-LOGO-2\16.png" alt="" hidden>
+                                <img class="uv" src="CCAPDEV-LOGO-2\2.png" alt="">
                                 <span class = "num_vote">0</span>
-                                <img class="down_vote" src="CCAPDEV-LOGO-2\3.png" alt="">
-                                <img class="down_vote_filled" src="CCAPDEV-LOGO-2\17.png" alt="" hidden>
+                                <img class="dv" src="CCAPDEV-LOGO-2\3.png" alt="">
                             </div>
                             <div class="button-container">
                                 <div class="main_post-buttons-comment"></div>
-                                <span>Comment</span>
-                            </div>
-                            <div class="button-container">
-                                <div class="main_post-buttons-share"></div>
-                                <span>Share</span>
+                                <span><span class="num_comment">1</span>Comment</span>
                             </div>
 
                         </div>
