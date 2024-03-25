@@ -71,6 +71,14 @@ $(document).ready(function(){
     });
 
     function appendPost(title, body, flair, img, rgbColor, stat, userName, userPic) {
+        var currentDate = new Date();
+
+        var day = currentDate.getDate();
+        var month = currentDate.toLocaleString('en-US', { month: 'short' });
+        var year = currentDate.getFullYear();
+  
+        currentDate = day + " " + month + " " + year;
+
         const imgContainer = img !== '' ? `
             <div class="main_post-img-container">
                 <div class="blurred-background" style="background-color: ${rgbColor};"></div>
@@ -87,6 +95,7 @@ $(document).ready(function(){
                                 ${userName}
                             </div>
                             <div class="main_post-desc-banner" id="${flair}">${flair}</div>
+                            <div class="main_post-date">${currentDate}</div>
                         </div>
                         
                         <div class="main_post-desc-title">
