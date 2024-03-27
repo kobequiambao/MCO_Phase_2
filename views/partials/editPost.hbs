@@ -29,23 +29,32 @@
                 <div class="text-box-container">
                     <div class="title-box-container">
                         <div class="title-box-holder">
-                            <textarea maxlength="300" placeholder="Title" class="title-box" rows="1">{{this.Title}}</textarea>
+                            <textarea maxlength="300" placeholder="Title" class="title-box" rows="1">{{postInfoData.Title}}</textarea>
                         </div>
                     </div>
         
                     <div class="body-box-container" id = "bbc-edit">
                         <div class="body-box-holder">
-                            <textarea placeholder="Text" class="body-box">{{this.Body}}</textarea>
+                            <textarea placeholder="Text" class="body-box">{{postInfoData.Body}}</textarea>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="post-box-container" onclick="closeLoginForm_edit()" id = "pbc_edit">
-                Post
+            <div class="post-box-container"  onclick="updatePost()" id = "pbc_edit">
+                Submit
             </div>
                     
         </div>
 
 
 </html>
+
+<style>
+    .title-box, .body-box{
+        font-weight: lighter;
+        color:gray;
+    }
+</style>
+
+
