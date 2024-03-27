@@ -834,7 +834,7 @@ span {
 }
 .acc_username, .acc_email,
 .acc_info-username, .acc_info-email{
-    width:30%;
+    width:28%;
     text-align: center;
 }
 .acc_idnum, .acc_college,
@@ -845,4 +845,29 @@ span {
 
 .acc_info-username, .acc_info-email, .acc_info-idnum, .acc_info-college{
     font-size: 12px;
+}
+
+.acc_delete{
+    width:4%;
+}
+.acc_delete{
+    height: 20px;
+    width: 20px;
+    background-size: 70%;
+    background-image: url('CCAPDEV-LOGO-2/21.png');
+    background-repeat: no-repeat;
+    padding:3px;
+}
+
+
+#admin_ala:hover .acc_delete  {
+    background-image: url('CCAPDEV-LOGO-2/9.png');
+}
+
+.acc_info:hover{
+    color:greenyellow;
+}
+
+#admin_ai:hover .acc_delete{
+    background-image: url('CCAPDEV-LOGO-2/22.png');
 }

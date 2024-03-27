@@ -14,7 +14,7 @@
     <script id="template-post" type="text/x-handlebars-template">
          <div class="main_feed" id="admin_mf">
             <div class="main_feed-post">
-                {{> admin_list_posts}}
+                {{> admin_list_posts allPosts=posts}}
             </div>
          </div>        
         
@@ -22,7 +22,7 @@
     <script id="template-accounts" type="text/x-handlebars-template">
          <div class="main_feed" id="admin_mf">
             <div class="main_feed-post">
-                {{> admin_list_accounts}}
+                {{> admin_list_accounts allAccounts=accounts}}
             </div>
          </div>        
     </script>

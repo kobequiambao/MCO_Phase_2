@@ -238,26 +238,59 @@ server.get('/editProfile', function(req, resp){
             title: 'Edit Profile'   
         });
 });
-server.get('/admin', function(req, resp){
-    resp.render('admin',{
-        layout: 'index',
-        title: 'Admin'   
-    });
+// server.get('/admin', function(req, resp){
+//     resp.render('admin',{
+//         layout: 'index',
+//         title: 'Admin'   
+//     });
+// });
+
+server.get('/admin_post', async function(req, resp) {
+    try {
+        // Fetch post information from the database
+        const posts = await PostInfo.find({}); // This assumes you want to fetch all posts
+    
+        // Render the 'admin_post' template with the fetched posts
+        resp.render('admin_post', {
+            layout: 'index',
+            title: 'Admin Posts',
+            posts: posts // Pass the fetched posts to the template
+        });
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+        // Handle error appropriately, e.g., send an error response
+        resp.status(500).send("Internal Server Error");
+    }
 });
 
-server.get('/admin_post', function(req, resp){
-    resp.render('admin_post',{
-        layout: 'index',
-        title: 'Admin Posts'   
-    });
+server.get('/admin', async function(req, resp){
+    try {
+        // Fetch accounts from the database
+        const accounts = await Account.find({}); // This assumes you want to fetch all accounts
+        const posts = await PostInfo.find({}); // This assumes you want to fetch all posts
+        // Render the 'admin_account' template with the fetched accounts
+        resp.render('admin', {
+            layout: 'index',
+            title: 'Admin Accounts',
+            accounts: accounts, // Pass the fetched accounts and posts to the template
+            posts: posts
+        });
+    } catch (error) {
+        console.error("Error fetching accounts:", error);
+        // Handle error appropriately, e.g., send an error response
+        resp.status(500).send("Internal Server Error");
+    }
 });
 
-server.get('/admin_aaccount', function(req, resp){
+
+
+server.get('/admin_account', function(req, resp){
     resp.render('admin_account',{
         layout: 'index',
         title: 'Admin Accounts'   
     });
 });
+
 server.get('/post/:postId', async (req, resp) => {
     try {
       const postId = req.params.postId;
@@ -286,6 +319,19 @@ server.get('/post/:postId', async (req, resp) => {
       resp.status(500).send('Internal Server Error');
     }
   });
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 const port = 3000;
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

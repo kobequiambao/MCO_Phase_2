@@ -1,0 +1,22 @@
+<!-- admin_account.hbs -->
+
+{{!-- POSTS --}}
+
+<div class="main_post" id="post-1">    
+    
+    <div class="main_post-top">
+        <div class="main_post-desc">
+            
+            <div class="main_post-desc-title" id="admin_mpdt">
+                <div class="acc_username">Username</div>
+                <div class="acc_email">Email</div>
+                <div class="acc_idnum">ID Number</div>
+                <div class="acc_college">College</div>
+            </div>
+
+            <!-- Include admin_list_accounts partial and pass accounts data -->
+            {{> admin_list_accounts accounts}}
+
+        </div>
+    </div>
+</div>
