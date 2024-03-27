@@ -283,6 +283,14 @@ server.get('/admin', async function(req, resp){
 });
 
 
+
+server.get('/admin_account', function(req, resp){
+    resp.render('admin_account',{
+        layout: 'index',
+        title: 'Admin Accounts'   
+    });
+});
+
 server.get('/post/:postId', async (req, resp) => {
     try {
       const postId = req.params.postId;
@@ -311,6 +319,19 @@ server.get('/post/:postId', async (req, resp) => {
       resp.status(500).send('Internal Server Error');
     }
   });
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 const port = 3000;
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
