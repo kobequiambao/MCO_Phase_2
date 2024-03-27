@@ -252,7 +252,7 @@ server.get('/admin_post', function(req, resp){
     });
 });
 
-server.get('/admin_aaccount', function(req, resp){
+server.get('/admin_account', function(req, resp){
     resp.render('admin_account',{
         layout: 'index',
         title: 'Admin Accounts'   
