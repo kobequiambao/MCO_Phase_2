@@ -132,5 +132,38 @@
         }
       }
     }
+
+    $(document).ready(function(){
+      $('.best').click(function(){
+              $('.sort-button').text('Sort By: Best');
+              var postList = $('.post_list');
+
+              var posts = postList.children('.main_post');
+
+              posts.sort(function(a, b) {
+                  var numVotesA = parseInt($(a).find('.num_vote').text());
+                  var numVotesB = parseInt($(b).find('.num_vote').text());
+                  return numVotesB - numVotesA;
+            });
+          postList.empty().append(posts);
+      });
+
+
+      $('.new').click(function(){
+          $('.sort-button').text('Sort By: New');
+          var postList = $('.post_list');
+
+          var posts = postList.children('.main_post');
+
+          posts.sort(function(a, b) {
+              var dateA = new Date($(a).find('.main_post-date').text());
+              var dateB = new Date($(b).find('.main_post-date').text());
+              return dateB - dateA;
+          });
+
+          postList.empty().append(posts);
+      });
+    });
+
 </script>
 
