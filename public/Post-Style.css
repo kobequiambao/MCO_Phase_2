@@ -450,6 +450,10 @@
         background-color: #BEBEBE;
     }
 
+    .replied-comment-container{
+        width: 92%;
+    }
+
     .comment-profile{
         width: 5%;
         display: inline-block;
@@ -672,6 +676,10 @@
             font-family: Arial, sans-serif;
             line-height: 35px;
         }
+
+        .replied-textarea{
+            width: 550px;
+        }
         
 
     .comment-button, .submit-comment-button{
@@ -704,6 +712,7 @@
         margin-left: 0px;
         
     }
+    
     .comment-button{
         margin-right:1px !important;
     }
