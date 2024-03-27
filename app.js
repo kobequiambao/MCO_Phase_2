@@ -287,33 +287,7 @@ server.get('/post/:postId', async (req, resp) => {
     }
   });
 
-  // Add a new route for updating the post
-server.post('/update-post', async (req, res) => {
-    try {
-        const { postId, title, body } = req.body;
-
-        // Find the post by its ID
-        const post = await PostInfo.findById(postId);
-
-        if (!post) {
-            return res.status(404).json({ error: 'Post not found' });
-        }
-
-        // Update the post fields
-        post.Title = "check bro";
-        post.Body = body;
-        
-
-        // Save the updated post
-        const updatedPost = await post.save();
-
-        res.status(200).json(updatedPost);
-        closeLoginForm_edit();
-    } catch (error) {
-        console.error('Error updating post:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
+ 
 
 
 
