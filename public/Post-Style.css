@@ -765,3 +765,8 @@
         /* margin-right:0; */
     }
 
+    .reply-section{
+        width: 100%;
+        padding-left: 40px;
+        display: block;
+    }

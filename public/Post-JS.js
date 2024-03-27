@@ -1,4 +1,4 @@
-// TODO: Write your code below
+// : Write your code below
 $(document).ready(function () {
 
     $(document).on('mouseenter', '.up_vote', function() {
@@ -120,6 +120,7 @@ $(document).ready(function () {
                       <button class="comment-button" hidden>Comment</button>
                       <button class="cancel-button" hidden>Cancel</button>
                   </div>
+                  <div class="reply-section"></div>
               </div>
       `);
 
@@ -135,10 +136,6 @@ $(document).ready(function () {
       $('.comment-box').val('');
     });
 
-    $(".comment-section").on("click", ".reply-button", function () {
-      toggleReply($(this).closest('.comment-container'));
-    });
-
     $(".main_post-buttons").on("click", ".button-container", function () {
         var mainMasterPost = $(this).closest('.main_master_post-top');
 
@@ -151,82 +148,100 @@ $(document).ready(function () {
         cancelButton.toggle();
     });
 
-    $(".comment-section").on("click", ".cancel-button", function () {
-      toggleReply($(this).closest('.comment-container'));
-    });
+    // Event handler for reply button
+$(".comment-section").on("click", ".reply-button", function () {
+    // Find the closest comment-info-container from the clicked button to toggle elements within it
+    var actionContainer = $(this).closest('.comment-info-container');
+    toggleReply(actionContainer);
+});
 
-    function toggleReply(comment) {
-      comment.find('.comment-info-container .cancel-button').toggle();
-      comment.find('.comment-info-container .comment-button').toggle();
-      comment.find('.comment-info-container .reply-textarea').toggle();
-    }
+// Event handler for cancel button
+$(".comment-section").on("click", ".cancel-button", function () {
+    // Similarly, find the closest comment-info-container
+    var actionContainer = $(this).closest('.comment-info-container');
+    toggleReply(actionContainer);
+});
+
+// Adjusted function to toggle reply-related elements
+function toggleReply(actionContainer) {
+    // Toggle only within the specific action container, not affecting other sections
+    actionContainer.find('.reply-textarea').toggle();
+    actionContainer.find('.comment-button').toggle();
+    actionContainer.find('.cancel-button').toggle();
+}
+
 
     $(".comment-section").on("click", ".comment-button", function () {
       appendReply($(this).closest('.comment-container'));
+      var actionContainer = $(this).closest('.comment-info-container');
+      toggleReply(actionContainer);
     });
-
-    function appendReply (reply) {
+    
+    function appendReply(commentButton) {
         const storedProfileData = localStorage.getItem('userProfile');
-            const userProfile = JSON.parse(storedProfileData);
-
-            const userPhoto = `url('${userProfile.photo}')`;
-            const userProfileName = userProfile.username;
-
-      var currentDate = new Date();
-
-      var day = currentDate.getDate();
-      var month = currentDate.toLocaleString('en-US', { month: 'short' });
-      var year = currentDate.getFullYear();
-
-      currentDate = day + " " + month + " " + year;
-      var commentByValue = $(reply).closest(".comment-container").find(".comment-by").text();
-      var comment = $(reply).closest(".comment-container").find(".reply-textarea").val();
-
-
-      if(comment !== "") {
-        $('.comment-section').append(`
-        <div class="comment-container">
-                  <div class="comment-profile">
-                      <div class=userpfp style="background-image: ${userPhoto};"></div>
-                      <span class="threadline">|</span>
-                  </div>
-                  <div class="comment-info-container">
-                      <div class="info-comment">
-                          <p class="comment-by">${userProfileName}</p> ▸ <span class="replying-to">@${commentByValue}</span>  <span class="posted-time">&#xb7; ${currentDate}</span>
-                      </div>
-                      <div class="comment-body">
-                          <p class="comment-text">${comment}</p>
-                      </div>
-                      <div class="comment-section-icons">
-                          <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
-                          <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
-
-                          <span class="vote-count">0</span>
-
-
-                          <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
-                          <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
-
-
-                          <div class="reply-container">
-                          <button class="reply-button">
-                              <span class="reply-text">Reply</span>
-                          </button>
-                      </div>                   
-                      </div>
-                      <textarea class="reply-textarea" hidden></textarea>
-                      <button class="comment-button" hidden>Comment</button>
-                      <button class="cancel-button" hidden>Cancel</button>
-                  </div>
-              </div>
-        `);
-        $(".comment-count").text(parseInt($(".comment-count").text()) + 1);
-      }
-
-      $(".num_comment").text(parseInt($(".num_comment").text()) + 1);
-      $(reply).closest(".comment-container").find(".reply-textarea").val('');
-      toggleReply($(reply).closest('.comment-container'));
+        const userProfile = JSON.parse(storedProfileData);
+    
+        const userPhoto = `url('${userProfile.photo}')`; 
+        const userProfileName = userProfile.username; 
+    
+        let currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = currentDate.toLocaleString('en-US', { month: 'short' });
+        let year = currentDate.getFullYear();
+        currentDate = `${day} ${month} ${year}`;
+    
+        let commentByValue = commentButton.closest(".comment-container").find(".comment-by").first().text();
+        let comment = commentButton.closest(".comment-container").find(".reply-textarea").val();
+    
+        if (comment !== "") {
+            // Correctly target either the nearest .reply-section within the current .comment-container
+            // or find the .reply-section in the parent .comment-container if this is a nested reply
+            let replySection = commentButton.closest(".comment-container").find('.reply-section').first();
+    
+            if (replySection.length === 0) {
+                // If there's no .reply-section within the current .comment-container, this is a top-level comment,
+                // so append the reply to the .reply-section of the parent .comment-container
+                replySection = commentButton.closest(".comment-container").parent();
+            }
+    
+            replySection.append(`
+                <div class="comment-container">
+                    <div class="comment-profile">
+                        <div class="userpfp" style="background-image: ${userPhoto};"></div>
+                        <span class="threadline">|</span>
+                    </div>
+                    <div class="comment-info-container">
+                        <div class="info-comment">
+                            <p class="comment-by">${userProfileName}</p> ▸ <span class="replying-to">@${commentByValue}</span> <span class="posted-time">&#xb7; ${currentDate}</span>
+                        </div>
+                        <div class="comment-body">
+                            <p class="comment-text">${comment}</p>
+                        </div>
+                        <div class="comment-section-icons">
+                            <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                            <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+                            <span class="vote-count">0</span>
+                            <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                            <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+                            <div class="reply-container">
+                                <button class="reply-button">
+                                    <span class="reply-text">Reply</span>
+                                </button>
+                            </div>                   
+                        </div>
+                        <textarea class="reply-textarea" hidden></textarea>
+                        <button class="comment-button" hidden>Comment</button>
+                        <button class="cancel-button" hidden>Cancel</button>
+                    </div>
+                    <div class="reply-section"></div>
+                </div>
+            `);
+            commentButton.closest(".comment-container").find(".reply-textarea").val(''); // Clear the textarea after submitting.
+            var currentCount = parseInt($(".num_comment").text());
+            $(".num_comment").text(currentCount + 1); 
+        }
     }
+    
 
     
   $(document).on('mouseenter', '.upvote-icon', function() {
@@ -245,53 +260,55 @@ $(document).ready(function () {
         upvoteActionComment($(this).closest('.comment-container'));
     });
 
-    function upvoteActionComment(upvote) {
-        upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
-        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
-        
-        if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
-            upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
-            newVoteCount = currentVoteCount + 2;
-            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
-        } else {
-            if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
-                newVoteCount = currentVoteCount + 1;
-                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
-            }
-            else {
-                newVoteCount = currentVoteCount - 1;
-                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
-            }
+    function upvoteActionComment(comment) {
+    // Target only the icons and vote count within the comment's immediate icons container
+    var iconsContainer = comment.children('.comment-info-container').find('.comment-section-icons');
+    iconsContainer.find('.upvote-icon, .upvote-icon-filled').toggle();
+    var currentVoteCount = parseInt(iconsContainer.find('.vote-count').text());
+    
+    if(iconsContainer.find('.downvote-icon').is(":hidden")){
+        iconsContainer.find('.downvote-icon, .downvote-icon-filled').toggle();
+        var newVoteCount = currentVoteCount + 2;
+    } else {
+        if(iconsContainer.find('.upvote-icon').is(":hidden")){
+            var newVoteCount = currentVoteCount + 1;
+        }
+        else {
+            var newVoteCount = currentVoteCount - 1;
         }
     }
+    iconsContainer.find('.vote-count').text(newVoteCount);
+}
+
 
     $(".comment-section").on("click", ".downvote-icon, .downvote-icon-filled", function () {
         downvoteActionComment($(this).closest('.comment-container'));
     });
 
-    function downvoteActionComment(upvote) {
-        upvote.find('.comment-section-icons .downvote-icon, .comment-section-icons .downvote-icon-filled').toggle();
-        currentVoteCount = parseInt(upvote.find('.comment-section-icons .vote-count').text());
+    function downvoteActionComment(comment) {
+        // Apply the same logic for downvote action targeting
+        var iconsContainer = comment.children('.comment-info-container').find('.comment-section-icons');
+        iconsContainer.find('.downvote-icon, .downvote-icon-filled').toggle();
+        var currentVoteCount = parseInt(iconsContainer.find('.vote-count').text());
         
-        if(upvote.find('.comment-section-icons .upvote-icon').is(":hidden")){
-            upvote.find('.comment-section-icons .upvote-icon, .comment-section-icons .upvote-icon-filled').toggle();
-            newVoteCount = currentVoteCount - 2;
-            upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+        if(iconsContainer.find('.upvote-icon').is(":hidden")){
+            iconsContainer.find('.upvote-icon, .upvote-icon-filled').toggle();
+            var newVoteCount = currentVoteCount - 2;
         } else {
-            if(upvote.find('.comment-section-icons .downvote-icon').is(":hidden")){
-                newVoteCount = currentVoteCount - 1;
-                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+            if(iconsContainer.find('.downvote-icon').is(":hidden")){
+                var newVoteCount = currentVoteCount - 1;
             }
             else {
-                newVoteCount = currentVoteCount + 1;
-                upvote.find('.comment-section-icons .vote-count').text(newVoteCount);
+                var newVoteCount = currentVoteCount + 1;
             }
         }
+        iconsContainer.find('.vote-count').text(newVoteCount);
     }
+    
 
     $(document).on('click', '.best', function() {
         $('.sort-button').text('Sort By: Best');
-        var commentContainers = $('.comment-container');
+        var commentContainers = $('.comment-section > .comment-container');
     
         commentContainers.sort(function(a, b) {
             var voteCountA = parseInt($(a).find('.vote-count').text());
@@ -304,18 +321,22 @@ $(document).ready(function () {
     
         $('.comment-section').append(commentContainers);
     });
-
+    
     $(document).on('click', '.new', function() {
         $('.sort-button').text('Sort By: New');
-        var commentContainers = $('.comment-container');
-    
-        commentContainers.sort(function(a, b) {
-            var timeA = new Date($(a).find('.posted-time').text());
-            var timeB = new Date($(b).find('.posted-time').text());
-    
-            return timeB - timeA; 
-        });
-    
-        $('.comment-section').empty().append(commentContainers);
+        sortCommentsByDate();
     });
+    
+    function sortCommentsByDate() {
+        var comments = $('.comment-section > .comment-container').get();
+        comments.sort(function(a, b) {
+            var dateA = $(a).find('.posted-time').text().trim().split('·')[1].trim();
+            var dateB = $(b).find('.posted-time').text().trim().split('·')[1].trim();
+            dateA = new Date(dateA);
+            dateB = new Date(dateB);
+            return dateB - dateA;
+        });
+        $('.comment-section').append(comments);
+    }
+    
 });
