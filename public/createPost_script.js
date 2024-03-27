@@ -51,10 +51,10 @@ $(document).ready(function(){
                         const dominantColor = colorThief.getColor(image);
                         const rgbColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
         
-                        appendPost(title, body, flair, img, rgbColor, stats, userProfileName, userPhoto);
+                        prependPost(title, body, flair, img, rgbColor, stats, userProfileName, userPhoto);
                     }
                 } else {
-                    appendPost(title, body, flair, img, '', stats,userProfileName, userPhoto);
+                    prependPost(title, body, flair, img, '', stats,userProfileName, userPhoto);
                 }
             }
         
@@ -70,7 +70,7 @@ $(document).ready(function(){
         loadUserProfile();
     });
 
-    function appendPost(title, body, flair, img, rgbColor, stat, userName, userPic) {
+    function prependPost(title, body, flair, img, rgbColor, stat, userName, userPic) {
         var currentDate = new Date();
 
         var day = currentDate.getDate();
@@ -85,7 +85,7 @@ $(document).ready(function(){
                 <img class="main_post-img" src="${img}" alt="" ${stat}>
             </div>` : '';
     
-        $('.post_list').append(`
+        $('.post_list').prepend(`
             <div class="main_post" id="post-1">
                 <div class="main_post-top" onclick="navigateToPost('/post')">
                     <div class="main_post-desc">
