@@ -205,7 +205,7 @@ function toggleReply(actionContainer) {
             }
     
             replySection.append(`
-                <div class="comment-container">
+                <div class="comment-container replied-comment-container">
                     <div class="comment-profile">
                         <div class="userpfp" style="background-image: ${userPhoto};"></div>
                         <span class="threadline">|</span>
@@ -229,11 +229,10 @@ function toggleReply(actionContainer) {
                                 </button>
                             </div>                   
                         </div>
-                        <textarea class="reply-textarea" hidden></textarea>
+                        <textarea class="reply-textarea replied-textarea" hidden></textarea>
                         <button class="comment-button" hidden>Comment</button>
                         <button class="cancel-button" hidden>Cancel</button>
                     </div>
-                    <div class="reply-section"></div>
                 </div>
             `);
             commentButton.closest(".comment-container").find(".reply-textarea").val(''); // Clear the textarea after submitting.
