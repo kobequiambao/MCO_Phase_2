@@ -238,26 +238,51 @@ server.get('/editProfile', function(req, resp){
             title: 'Edit Profile'   
         });
 });
-// server.get('/admin', function(req, resp){
-//     resp.render('admin',{
-//         layout: 'index',
-//         title: 'Admin'   
-//     });
-// });
 
 server.get('/admin_post', async function(req, resp) {
     try {
-        // Fetch post information from the database
-        const posts = await PostInfo.find({}); // This assumes you want to fetch all posts
-    
-        // Render the 'admin_post' template with the fetched posts
+        const postId = req.query.postId;
+        if (!postId) {
+            return resp.status(400).send("Post ID is required");
+        }
+
+        // Fetch the post information from the database based on the postId
+        const post = await PostInfo.findById(postId);
+        
+        if (!post) {
+            // Handle case where post is not found
+            return resp.status(404).send("Post not found");
+        }
+
+        // Fetch comments associated with the specific post from the database using PostId field
+        const comments = await CommentInfo.find({ PostId: postId });
+
+        // Fetch account information for the post's poster
+        const posterAccount = await Account.findById(post.AccountId);
+
+        // Fetch account information for each commenter
+        const commenters = await Promise.all(comments.map(async (comment) => {
+            // Fetch commenter's account information
+            const commenterAccount = await Account.findById(comment.CommenterId);
+            return commenterAccount; // Return commenter's account info
+        }));
+
+        // Log the fetched post, poster, and commenters information to the console
+        console.log("Fetched Post Information:", post);
+        console.log("Fetched Poster Information:", posterAccount);
+        console.log("Fetched Commenters Information:", commenters);
+
+        // Render the 'admin_post' template with the fetched post, poster, commenters, and comments
         resp.render('admin_post', {
             layout: 'index',
-            title: 'Admin Posts',
-            posts: posts // Pass the fetched posts to the template
+            title: 'Post Details',
+            post: post,
+            poster: posterAccount, // Pass the fetched poster information to the template
+            commenters: commenters, // Pass the fetched commenters information to the template
+            comments: comments // Pass the fetched comments to the template
         });
     } catch (error) {
-        console.error("Error fetching posts:", error);
+        console.error("Error fetching post:", error);
         // Handle error appropriately, e.g., send an error response
         resp.status(500).send("Internal Server Error");
     }
@@ -267,7 +292,7 @@ server.get('/admin', async function(req, resp){
     try {
         // Fetch accounts from the database
         const accounts = await Account.find({}); // This assumes you want to fetch all accounts
-        const posts = await PostInfo.find({}); // This assumes you want to fetch all posts
+        const posts = await PostInfo.find({}).populate('AccountId'); // Populate the AccountId field to get the corresponding account info
         // Render the 'admin_account' template with the fetched accounts
         resp.render('admin', {
             layout: 'index',
@@ -282,7 +307,38 @@ server.get('/admin', async function(req, resp){
     }
 });
 
+// Add this route to handle post deletion
+server.delete('/delete-post', async function(req, res) {
+    try {
+        const postId = req.query.postId;
 
+        // Delete the post from the database
+        await PostInfo.findByIdAndDelete(postId);
+
+        // Return success response
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error deleting post:', error);
+        // Return error response
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+server.delete('/delete-account', async function(req, res) {
+    try {
+        const userId = req.query.userId;
+
+        // Delete the account from the database
+        await Account.findByIdAndDelete(userId);
+
+        // Return success response
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        // Return error response
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 server.get('/admin_account', function(req, resp){
     resp.render('admin_account',{
@@ -319,18 +375,6 @@ server.get('/post/:postId', async (req, resp) => {
       resp.status(500).send('Internal Server Error');
     }
   });
-
- 
-
-
-
-
-
-
-
-
-
-
 
 const port = 3000;
 server.listen(port, () => {
