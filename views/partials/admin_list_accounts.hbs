@@ -16,7 +16,7 @@
                         <div class="acc_info-email">{{email}}</div>
                         <div class="acc_info-idnum">{{idNo}}</div>
                         <div class="acc_info-college">{{college}}</div>
-                        <div class = "acc_delete"></div>
+                        <div class="acc_delete" onclick="deleteAccount('{{_id}}')"></div>
                     </div>
                 {{/each}}
             </div>
@@ -24,3 +24,26 @@
 
     </div>
 </div>
+
+<script>
+    function deleteAccount(userId) {
+        if (confirm("Are you sure you want to delete this account?")) {
+            // Send an AJAX request to the server to delete the account
+            fetch(`/delete-account?userId=${userId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If deletion is successful, reload the page or handle it appropriately
+                    location.reload();
+                } else {
+                    // Handle error
+                    console.error('Error deleting account');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+</script>
