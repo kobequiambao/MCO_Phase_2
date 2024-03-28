@@ -120,8 +120,18 @@ function closeLoginForm_delete() {
       dummyElement.focus();
       document.body.removeChild(dummyElement);
     });
-    
-    
+
+    $(document).ready(function(){
+      $('.best').click(function(){
+          $('.sort-button').text('Sort By: Best');
+      });
+
+      $('.new').click(function(){
+          $('.sort-button').text('Sort By: New');
+      });
+  });
+  
+
     
   
   

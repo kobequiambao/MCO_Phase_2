@@ -363,7 +363,7 @@
     .divider{
         margin-top: 15px;
         height: 8px;
-        background-color: rgb(218, 224, 230);
+        background-color: #BEBEBE;
     }
 
     /* Comment text box  */
@@ -448,6 +448,10 @@
         padding: 10px;
         
         background-color: #BEBEBE;
+    }
+
+    .replied-comment-container{
+        width: 92%;
     }
 
     .comment-profile{
@@ -672,6 +676,10 @@
             font-family: Arial, sans-serif;
             line-height: 35px;
         }
+
+        .replied-textarea{
+            width: 550px;
+        }
         
 
     .comment-button, .submit-comment-button{
@@ -704,6 +712,7 @@
         margin-left: 0px;
         
     }
+    
     .comment-button{
         margin-right:1px !important;
     }
