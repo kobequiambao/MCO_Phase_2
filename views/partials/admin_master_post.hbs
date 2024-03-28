@@ -1,39 +1,39 @@
 {{!-- MASTER-POSTS --}}
 {{log this}}
-<div class="main_master_post" id="{{postInfoData._id}}">
+<div class="main_master_post" id="{{post._id}}">
         
                     <div class="main_master_post-top">
                         <div class="main_post-desc">
                             <div class="main_post-desc-poster">
                                 <div class="main_post-desc-poster-pic"></div>
                                 <div class="main_post-desc-poster-name">
-                                    u/{{postInfoData.AccountId.username}}
-                                    Michael
+                                    u/{{poster.username}}
+                                    
                                 </div>
-                                <div class="main_post-desc-banner">{{postInfoData.Type}}General_Question</div>
-                                <div class="main_post-date">{{postInfoData.Date}}January 21,2024</div>
+                                <div class="main_post-desc-banner">{{post.Type}}</div>
+                                <div class="main_post-date">{{post.Date}}</div>
                             </div>
 
-                            <div class="main_post-desc-title">{{postInfoData.Title}}To Delete to ah</div>
-                            <div class="main_post-desc-content">{{postInfoData.Body}} Kindly check admin_master_post.hbs then delete unnecessary infos</div>
+                            <div class="main_post-desc-title">{{post.Title}}</div>
+                            <div class="main_post-desc-content">{{post.Body}}</div>
                         </div>
 
                         <div class="main_post-buttons">
                             <div class="main_vote">
                                 <img class="uv" src="/CCAPDEV-LOGO-2/2.png" alt="">
-                                <span class = "num_vote">0</span>
+                                <span class = "num_vote">{{post.NumvoteCount}}</span>
                                 <img class="dv" src="/CCAPDEV-LOGO-2/3.png" alt="">
                             </div>
                             <div class="button-container" id = "master-comment">
                                 <div class="main_post-buttons-comment"></div>
-                                <span><span class="num_comment">1</span>Comment</span>
+                                <span><span class="num_comment">{{post.CommentCount}}</span>Comment</span>
                             </div>
                             <div class="button-container" id="shareButton">
                                 <div class="main_post-buttons-share"></div>
                                 <span>Share</span>
                             </div>
                           
-                            <div class="button-container" onclick="openLoginForm_delete()">
+                            <div class="button-container" onclick="deletePost('{{post._id}}')">
                                 <div class="main_post-buttons-delete"></div>
                                 <span>Delete</span>
                             </div>                            
@@ -63,10 +63,8 @@
         </div>
 
 
-
-
         <div class="comment-section">
-
+            {{#each comments}}
             <div class="comment-container">
                 <div class="comment-profile">
                     <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
@@ -74,18 +72,20 @@
                 </div>
                 <div class="comment-info-container">
                     <div class="info-comment">
-                        <p class="comment-by">stargirlfromscosmos</p> <span class="posted-time">&#xb7; 3 Nov 2023</span>
+                        
+                        <p class="comment-by">{{commenters.username}}</p> <span class="posted-time">&#xb7; {{this.Date}}</span>
+                        
                     </div>
                     <div class="comment-body">
-                        <p class="comment-text">heyy i've been wanting to do this nanghinayang  ako i wasn't able to get it for gesport i'm g OPPP</p>
+                        <p class="comment-text">{{this.Body}}</p>
                     </div>
                     <div class="admin_csi" >
                         <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
 
-                        <span class="vote-count" id = "admin_vc">0</span>
+                        <span class="vote-count" id = "admin_vc">{{this.NumvoteCount}}</span>
 
                         <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
-      
+                    
                     </div>
 
                 </div>
@@ -94,6 +94,7 @@
            
             
         </div>
+      {{/each}}
 </div>
 
 
@@ -156,5 +157,29 @@
           }
         }
       }
+    }
+</script>
+
+<!-- JavaScript for deletion -->
+<script>
+    function deletePost(postId) {
+        if (confirm("Are you sure you want to delete this post?")) {
+            // Send an AJAX request to the server to delete the post
+            fetch(`/delete-post?postId=${postId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If deletion is successful, reload the page or handle it appropriately
+                    location.reload();
+                } else {
+                    // Handle error
+                    console.error('Error deleting post');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     }
 </script>
