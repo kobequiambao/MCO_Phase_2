@@ -238,6 +238,12 @@ server.get('/editProfile', function(req, resp){
             title: 'Edit Profile'   
         });
 });
+// server.get('/admin', function(req, resp){
+//     resp.render('admin',{
+//         layout: 'index',
+//         title: 'Admin'   
+//     });
+// });
 
 server.get('/admin_post', async function(req, resp) {
     try {
@@ -256,6 +262,16 @@ server.get('/admin_post', async function(req, resp) {
 
         // Fetch comments associated with the specific post from the database using PostId field
         const comments = await CommentInfo.find({ PostId: postId });
+        
+
+        // Fetch replies associated with each comment
+        const repliesPromises = comments.map(async (comment) => {
+            // Fetch replies for the current comment from replyinfos collection
+            return await ReplyInfo.find({ CommentId: comment._id });
+        });
+
+        // Resolve all promises to get the actual replies
+        const replies = await Promise.all(repliesPromises);
 
         // Fetch account information for the post's poster
         const posterAccount = await Account.findById(post.AccountId);
@@ -271,6 +287,7 @@ server.get('/admin_post', async function(req, resp) {
         console.log("Fetched Post Information:", post);
         console.log("Fetched Poster Information:", posterAccount);
         console.log("Fetched Commenters Information:", commenters);
+        console.log("Fetched Replies:", replies);
 
         // Render the 'admin_post' template with the fetched post, poster, commenters, and comments
         resp.render('admin_post', {
@@ -279,7 +296,8 @@ server.get('/admin_post', async function(req, resp) {
             post: post,
             poster: posterAccount, // Pass the fetched poster information to the template
             commenters: commenters, // Pass the fetched commenters information to the template
-            comments: comments // Pass the fetched comments to the template
+            comments: comments, // Pass the fetched comments to the template
+            replies: replies // Pass the fetched replies to the template
         });
     } catch (error) {
         console.error("Error fetching post:", error);
@@ -340,6 +358,9 @@ server.delete('/delete-account', async function(req, res) {
     }
 });
 
+
+
+
 server.get('/admin_account', function(req, resp){
     resp.render('admin_account',{
         layout: 'index',
@@ -375,47 +396,6 @@ server.get('/post/:postId', async (req, resp) => {
       resp.status(500).send('Internal Server Error');
     }
   });
-
-
-  server.get('/editPost/:postId', async (req, res) => {
-    try {
-        const postId = req.params.postId;
-        // Fetch the post from the database
-        const post = await PostInfo.findById(postId);
-        if (!post) {
-            return res.status(404).send('Post not found');
-        }
-        // Render the editpost.hbs template with the fetched post data
-        res.render('editPost', {
-            layout: 'index',
-            title: 'Edit Post',
-            postInfoData: post // Send the post data to the editPost template
-        });
-    } catch (error) {
-        console.error('Error retrieving post for editing:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-server.post('/editPost/:postId', async (req, res) => {
-    try {
-        const postId = req.params.postId;
-        const { title, body } = req.body;
-
-        // Update the post in the database
-        const updatedPost = await PostInfo.findByIdAndUpdate(postId, { Title: title, Body: body }, { new: true });
-
-        if (!updatedPost) {
-            return res.status(404).send('Post not found');
-        }
-
-        // Redirect to the post page or any other appropriate page
-        res.redirect(`/post/${postId}`);
-    } catch (error) {
-        console.error('Error updating post:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
 
 const port = 3000;
 server.listen(port, () => {
