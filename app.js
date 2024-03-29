@@ -256,6 +256,16 @@ server.get('/admin_post', async function(req, resp) {
 
         // Fetch comments associated with the specific post from the database using PostId field
         const comments = await CommentInfo.find({ PostId: postId });
+        
+
+        // Fetch replies associated with each comment
+        const repliesPromises = comments.map(async (comment) => {
+            // Fetch replies for the current comment from replyinfos collection
+            return await ReplyInfo.find({ CommentId: comment._id });
+        });
+
+        // Resolve all promises to get the actual replies
+        const replies = await Promise.all(repliesPromises);
 
         // Fetch account information for the post's poster
         const posterAccount = await Account.findById(post.AccountId);
@@ -271,6 +281,7 @@ server.get('/admin_post', async function(req, resp) {
         console.log("Fetched Post Information:", post);
         console.log("Fetched Poster Information:", posterAccount);
         console.log("Fetched Commenters Information:", commenters);
+        console.log("Fetched Replies:", replies);
 
         // Render the 'admin_post' template with the fetched post, poster, commenters, and comments
         resp.render('admin_post', {
@@ -279,7 +290,8 @@ server.get('/admin_post', async function(req, resp) {
             post: post,
             poster: posterAccount, // Pass the fetched poster information to the template
             commenters: commenters, // Pass the fetched commenters information to the template
-            comments: comments // Pass the fetched comments to the template
+            comments: comments, // Pass the fetched comments to the template
+            replies: replies // Pass the fetched replies to the template
         });
     } catch (error) {
         console.error("Error fetching post:", error);
