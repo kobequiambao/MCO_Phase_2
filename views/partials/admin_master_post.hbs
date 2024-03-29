@@ -63,6 +63,33 @@
         </div>
 
 
+{{!-- <div class="comment-section">
+    {{#each comments}}
+        <div class="comment-container">
+            <div class="comment-profile">
+                <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
+                <span class="threadline">|</span>
+            </div>
+            <div class="comment-info-container">
+                <div class="info-comment">
+                    {{#each ../commenters}}
+                        <p class="comment-by">{{username}}</p>
+                    {{/each}}
+                    <span class="posted-time">&#xb7; {{this.Date}}</span>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">{{this.Body}}</p>
+                </div>
+                <div class="admin_csi" >
+                    <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
+                    <span class="vote-count" id="admin_vc">{{comments.NumvoteCount}}</span>
+                    <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div> --}}
+
         <div class="comment-section">
             {{#each comments}}
             <div class="comment-container">
@@ -72,33 +99,79 @@
                 </div>
                 <div class="comment-info-container">
                     <div class="info-comment">
-                        
-                        <p class="comment-by">{{commenters.username}}</p> <span class="posted-time">&#xb7; {{this.Date}}</span>
-                        
+                    {{#each ../commenters}}
+                        <p class="comment-by">{{username}}</p>
+                    {{/each}}
+                    <span class="posted-time">&#xb7; {{this.Date}}</span>
                     </div>
                     <div class="comment-body">
                         <p class="comment-text">{{this.Body}}</p>
                     </div>
-                    <div class="admin_csi" >
-                        <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
+                    <div class="comment-section-icons">
+                        <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                        <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
 
-                        <span class="vote-count" id = "admin_vc">{{this.NumvoteCount}}</span>
+                        <span class="vote-count">{{this.NumvoteCount}}</span>
 
-                        <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
-                    
+
+                        <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                        <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+
+
+                        <div class="reply-container">
+                            <button class="reply-button">
+                                <span class="reply-text">Reply</span>
+                            </button>
+                        </div>                 
                     </div>
-
+                    <textarea class="reply-textarea" hidden></textarea>
+                    <button class="comment-button" hidden>Comment</button>
+                    <button class="cancel-button" hidden>Cancel</button>
                 </div>
+                
+                <div class="reply-section">
+                    <div class="comment-container replied-comment-container">
+                        <div class="comment-profile">
+                            <div class=userpfp style="background-image: ${userPhoto};"></div>
+                            <span class="threadline">|</span>
+                        </div>
+                        <div class="comment-info-container">
+
+                            <div class="info-comment">
+                                <p class="comment-by">{{CommenterId}}</p> ▸ <span class="replying-to">{{#each ../commenters}}{{username}}{{/each}}</span>  <span class="posted-time">&#xb7;{{Date}}</span>
+                            </div>
+                            <div class="comment-body">
+                                <p class="comment-text">{{Body}}</p>
+                            </div>
+                            <div class="comment-section-icons">
+                                <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                                <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+
+                                <span class="vote-count">{{NumvoteCount}}</span>
+                                
+
+                                <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                                <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+                                
+
+                                <div class="reply-container">
+                                <button class="reply-button">
+                                    <span class="reply-text">Reply</span>
+                                </button>
+                            </div>                   
+                            </div>
+                            <textarea class="reply-textarea replied-textarea" hidden></textarea>
+                            <button class="comment-button" hidden>Comment</button>
+                            <button class="cancel-button" hidden>Cancel</button>
+
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
 
-           
-            
-        </div>
-      {{/each}}
-</div>
 
-
-     <style>
+<style>
     .dropdown-content {
       display: none;
       position: absolute;
@@ -183,3 +256,5 @@
         }
     }
 </script>
+
+
