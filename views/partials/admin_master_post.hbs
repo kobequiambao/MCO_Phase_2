@@ -63,42 +63,34 @@
         </div>
 
 
-        <div class="comment-section">
-            {{#each comments}}
-            <div class="comment-container">
-                <div class="comment-profile">
-                    <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
-                    <span class="threadline">|</span>
+<div class="comment-section">
+    {{#each comments}}
+        <div class="comment-container">
+            <div class="comment-profile">
+                <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
+                <span class="threadline">|</span>
+            </div>
+            <div class="comment-info-container">
+                <div class="info-comment">
+                    {{#each ../commenters}}
+                        <p class="comment-by">{{username}}</p>
+                    {{/each}}
+                    <span class="posted-time">&#xb7; {{this.Date}}</span>
                 </div>
-                <div class="comment-info-container">
-                    <div class="info-comment">
-                        
-                        <p class="comment-by">{{commenters.username}}</p> <span class="posted-time">&#xb7; {{this.Date}}</span>
-                        
-                    </div>
-                    <div class="comment-body">
-                        <p class="comment-text">{{this.Body}}</p>
-                    </div>
-                    <div class="admin_csi" >
-                        <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
-
-                        <span class="vote-count" id = "admin_vc">{{this.NumvoteCount}}</span>
-
-                        <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
-                    
-                    </div>
-
+                <div class="comment-body">
+                    <p class="comment-text">{{this.Body}}</p>
+                </div>
+                <div class="admin_csi" >
+                    <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
+                    <span class="vote-count" id="admin_vc">{{comments.NumvoteCount}}</span>
+                    <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
                 </div>
             </div>
-
-           
-            
         </div>
-      {{/each}}
+    {{/each}}
 </div>
 
-
-     <style>
+<style>
     .dropdown-content {
       display: none;
       position: absolute;
