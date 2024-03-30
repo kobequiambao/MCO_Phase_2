@@ -5,43 +5,40 @@
     <title>Edit Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {{!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> --}}
     <link rel="stylesheet" href="editProfile.css">
     <link rel="stylesheet" href="general.css">
     <script type="text/javascript" src="general.js"></script>
+    <script>
+        const userData = <%- JSON.stringify(userData) %>;
+    </script>
 </head>
 <body>
     {{> header}}
-    <div class = "edit">
+    <div class="edit">
         <div class="wrapper">
-            
-                <div class="wrapper-left">
-                    <form action=""></form>
-                    <h1>Edit Profile</h1>
-                    <div class="profile-section">
-                        <img id="preview" src="ADD-ONS/profilepic.jpg" alt="Profile Picture" class="logo">
-                    </div>
-
-                    <div class="button-container">
-                        <label for="fileInput" class="btn btn-outline-primary">Upload Photo</label>
-                        <input type="file" id="fileInput" class="account-settings-fileinput visually-hidden" onchange="displayFileName()">
-                        <button type="button" class="btn btn-default md-btn-flat" onclick="resetPreview()">Reset</button>
-                    </div>
-
-                    
-                    <span id="fileName" class="file-name visually-hidden">No file chosen</span>
+            <div class="wrapper-left">
+                <form action=""></form>
+                <h1>Edit Profile</h1>
+                <div class="profile-section">
+                    <img id="preview" src="{{userData.photo}}" alt="Profile Picture" class="logo">
                 </div>
-
-                <div class="wrapper-right">
-                    <div class="input-box">
-                        <input type="text" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'" maxlength="15">
-                    </div>
-                    <div class="input-box">
-                        <input type="text" placeholder="ID Number" onfocus="this.placeholder=''" onblur="this.placeholder='ID Number'" maxlength="8">
-                    </div>
+                <div class="button-container">
+                    <label for="fileInput" class="btn btn-outline-primary">Upload Photo</label>
+                    <input type="file" id="fileInput" class="account-settings-fileinput visually-hidden" onchange="displayFileName()">
+                    <button type="button" class="btn btn-default md-btn-flat" onclick="resetPreview()">Reset</button>
+                </div>
+                <span id="fileName" class="file-name visually-hidden">No file chosen</span>
+            </div>
+            <div class="wrapper-right">
+                <div class="input-box">
+                    <input type="text" placeholder="Username" value="{{userData.username}}" maxlength="15">
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="ID Number" value="{{userData.idNo}}" maxlength="8">
+                </div>
                 <div class="input-box">
                     <label for="college"></label>
-                    <select id="college" onfocus="this.placeholder=''" onblur="this.placeholder='College'">
+                    <select id="college" onfocus="this.placeholder=''" onblur="this.placeholder='{{userData.college}}'">
                         <option value="" disabled selected>Select College</option>
                         <option value="BAGCED">BAGCED</option>
                         <option value="CCS">CCS</option>
@@ -52,13 +49,36 @@
                         <option value="SOE">SOE</option>
                     </select>
                 </div>
-                    <div class="input-box">
-                        <input type="text" placeholder="Bio" onfocus="this.placeholder=''" onblur="this.placeholder='Bio'">
-                    </div>
-                </div> 
+                <div class="input-box">
+                    <input type="text" placeholder="Bio" value="{{userData.bio}}">
+                </div>
+            </div> 
         </div>
         <button type="submit" class="btn" onclick="saveChanges()">Save Changes</button>
     </div>
     <script src="editProfile.js"></script>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadUserProfile();
+    });
+
+    function loadUserProfile() {
+        const storedProfileData = localStorage.getItem('userProfile');
+        if (storedProfileData) {
+            const userProfile = JSON.parse(storedProfileData);
+
+            // Update header 1 with user profile data
+            document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
+            document.getElementById('headerUserName').innerText = userProfile.username;
+            document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+
+            // Update header 2 with user profile data
+            document.getElementById('headerUserPic2').style.backgroundImage = `url('${userProfile.photo}')`;
+            document.getElementById('headerUserName2').innerText = userProfile.username;
+            document.getElementById('headerUserId2').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+        }
+    }
+</script>
 </html>

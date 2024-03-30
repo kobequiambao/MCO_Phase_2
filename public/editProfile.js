@@ -30,24 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadUserProfile() {
-    const storedProfileData = localStorage.getItem('userProfile');
-    if (storedProfileData) {
-        const userProfile = JSON.parse(storedProfileData);
-
-        document.querySelector('input[placeholder="Username"]').value = userProfile.username;
-        document.querySelector('input[placeholder="ID Number"]').value = userProfile.idNumber;
-
-        document.getElementById('college').value = userProfile.college;
-
-        document.querySelector('input[placeholder="Bio"]').value = userProfile.bio;
-
-        document.getElementById('preview').src = userProfile.photo;
-
-        document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
-        document.getElementById('headerUserName').innerText = userProfile.username;
-        document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+    if (userData) {
+        document.querySelector('input[placeholder="Username"]').value = userData.username;
+        document.querySelector('input[placeholder="ID Number"]').value = userData.idNumber;
+        document.getElementById('college').value = userData.college;
+        document.querySelector('input[placeholder="Bio"]').value = userData.bio;
+        document.getElementById('preview').src = userData.photo;
+        document.getElementById('headerUserPic').style.backgroundImage = `url('${userData.photo}')`;
+        document.getElementById('headerUserName').innerText = userData.username;
+        document.getElementById('headerUserId').innerText = `ID${userData.idNumber.substring(0, 3)}-${userData.college}`;
     }
 }
+
+
 
 function saveChanges() {
     const usernameInput = document.querySelector('input[placeholder="Username"]');
@@ -68,6 +63,29 @@ function saveChanges() {
         photo: document.getElementById('preview').src,
         bio: bio,
     };
+
+    const idNo = idNumber;
+    const college = selectedCollege;
+    fetch('/updateProfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, idNo, college, bio })
+    })
+    .then(response => {
+        if (response.ok) {
+            
+            window.location.href = '/general';
+        } else {
+            console.error('Failed to save changes:', response.statusText);
+            
+        }
+    })
+    .catch(error => {
+        console.error('Error saving changes:', error);
+       
+    });
 
     localStorage.setItem('userProfile', JSON.stringify(userProfile));
 

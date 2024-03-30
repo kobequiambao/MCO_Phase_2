@@ -31,6 +31,8 @@ db.once('open', function () {
     console.log('Connected to the database!');
 });
 
+
+
 const postInfoSchema = new mongoose.Schema({
     Body: String,
     College: String,
@@ -50,7 +52,7 @@ const AccountSchema = new mongoose.Schema({
     bio: String,
     college: String,
     email: String,
-    idNo: Number,
+    idNo: String,
     isAdmin: Boolean,
     password: String,
     photo: String,
@@ -227,17 +229,73 @@ server.get('/viewProfile', async (req, res) => {
         });
 
     } catch (error) {
+        console.error('Error rendering editProfile template:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+server.get('/editProfile', async (req, res) => {
+    try {
+        const userData = await Account.findOne({ username: loggedInUser });
+
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
+
+        res.render('editProfile', {
+            layout: 'index',
+            title: 'Edit Profile',
+            userData
+        });
+
+    } catch (error) {
         console.error('Error rendering viewProfile template:', error);
         res.status(500).send('Internal Server Error');
     }
 });
 
-server.get('/editProfile', function(req, resp){
-        resp.render('editProfile',{
-            layout: 'index',
-            title: 'Edit Profile'   
-        });
+// Add a new route handler for updating the user profile
+server.post('/updateProfile', async (req, res) => {
+    try {
+        const { username, idNo, college, bio } = req.body;
+
+        // Find the user by the loggedInUser variable
+        const userData = await Account.findOne({ username: loggedInUser });
+
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
+
+        // Update the user's data
+        userData.username = username;
+        userData.idNo = String(idNo);
+        userData.college = college;
+        userData.bio = bio;
+
+        // Save the updated user data
+        await userData.save();
+
+        // Redirect to the profile view page or any other appropriate page
+        res.redirect('/viewProfile');
+    } catch (error) {
+        console.error('Error updating user profile:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 server.get('/admin_post', async function(req, resp) {
     try {
