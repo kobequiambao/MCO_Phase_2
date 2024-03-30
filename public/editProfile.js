@@ -29,18 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadUserProfile();
 });
 
-function loadUserProfile() {
-    if (userData) {
-        document.querySelector('input[placeholder="Email"]').value = userData.email;
-        document.querySelector('input[placeholder="ID Number"]').value = userData.idNo;
-        document.getElementById('college').value = userData.college;
-        document.querySelector('input[placeholder="Bio"]').value = userData.bio;
-        document.getElementById('preview').src = userData.photo;
-        document.getElementById('headerUserPic').style.backgroundImage = `url('${userData.photo}')`;
-        document.getElementById('headerUserName').innerText = userData.username;
-        document.getElementById('headerUserId').innerText = `ID${userData.idNumber.substring(0, 3)}-${userData.college}`;
-    }
-}
+
 
 
 
@@ -62,6 +51,7 @@ function saveChanges() {
         college: selectedCollege,
         photo: document.getElementById('preview').src,
         bio: bio,
+        username:userData.username
     };
     const photo = document.getElementById('preview').src;
     const idNo = idNumber;
@@ -87,20 +77,6 @@ function saveChanges() {
        
     });
 
-    localStorage.setItem('userProfile', JSON.stringify(userProfile));
-
-    document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
-    document.getElementById('headerUserName').innerText = userProfile.username;
-    document.getElementById('headerUserId').innerText = `ID${firstThreeDigits}-${selectedCollege}`;
-
-    emailInput.value = userProfile.email;
-    idNumberInput.value = userProfile.idNumber;
-    collegeSelect.value = userProfile.college;
-    bioInput.value = userProfile.bio;
-
-    document.getElementById('preview').src = userProfile.photo;
-
-    document.getElementById('fileName').classList.add('visually-hidden');
 }
 
 

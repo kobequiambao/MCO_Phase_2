@@ -27,12 +27,9 @@ $(document).ready(function(){
 
     $('.post-box-container').click(function(){
 
-        const storedProfileData = localStorage.getItem('userProfile');
-        if (storedProfileData) {
-            const userProfile = JSON.parse(storedProfileData);
-
-            const userPhoto = `url('${userProfile.photo}')`;
-            const userProfileName = userProfile.username;
+        
+            const userPhoto = `url('${userData.photo}')`;
+            const userProfileName = userData.username;
 
             const title = $('.title-box').val();
             const body = $('.body-box').val();
@@ -63,12 +60,9 @@ $(document).ready(function(){
             $('input[name="flair"][value="general-question"]').prop('checked', true);
             $('.file_name').text('').hide();
             $('.src').text('');
-        }
+        
     });
     
-    document.addEventListener('DOMContentLoaded', function () {
-        loadUserProfile();
-    });
 
     function prependPost(title, body, flair, img, rgbColor, stat, userName, userPic) {
         var currentDate = new Date();

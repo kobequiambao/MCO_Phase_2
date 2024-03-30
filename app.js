@@ -9,7 +9,9 @@ const Handlebars = require('handlebars');
 Handlebars.registerHelper('slice', function(str, start, end) {
   return str.slice(start, end);
 });
-
+Handlebars.registerHelper('json', function(context) {
+    return JSON.stringify(context);
+});
 const bodyParser = require('body-parser');
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
