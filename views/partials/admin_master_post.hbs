@@ -63,7 +63,11 @@
         </div>
 
 
+
 {{!-- <div class="comment-section">
+
+<div class="comment-section">
+
     {{#each comments}}
         <div class="comment-container">
             <div class="comment-profile">
@@ -76,6 +80,7 @@
                         <p class="comment-by">{{username}}</p>
                     {{/each}}
                     <span class="posted-time">&#xb7; {{this.Date}}</span>
+
                 </div>
                 <div class="comment-body">
                     <p class="comment-text">{{this.Body}}</p>
@@ -166,9 +171,25 @@
 
                         </div>
                     </div>
+
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">{{this.Body}}</p>
+                </div>
+                <div class="admin_csi" >
+                    <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
+                    <span class="vote-count" id="admin_vc">{{comments.NumvoteCount}}</span>
+                    <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
+
                 </div>
                 {{/each}}
             </div>
+
+
+
+        </div>
+    {{/each}}
+</div>
 
 
 <style>
