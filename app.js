@@ -8,7 +8,8 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-
+server.use(bodyParser.json({ limit: '10mb' }));
+server.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({  
     extname: 'hbs',
@@ -170,7 +171,7 @@ server.get('/createPost', function(req, resp){
         });
 });
 
-server.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 server.get('/signup', (req, res) => {
@@ -257,7 +258,7 @@ server.get('/editProfile', async (req, res) => {
 // Add a new route handler for updating the user profile
 server.post('/updateProfile', async (req, res) => {
     try {
-        const { username, idNo, college, bio } = req.body;
+        const { username, idNo, college, bio, photo } = req.body;
 
         // Find the user by the loggedInUser variable
         const userData = await Account.findOne({ username: loggedInUser });
@@ -271,7 +272,7 @@ server.post('/updateProfile', async (req, res) => {
         userData.idNo = String(idNo);
         userData.college = college;
         userData.bio = bio;
-
+        userData.photo = photo;
         // Save the updated user data
         await userData.save();
 

@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="editProfile.css">
     <link rel="stylesheet" href="general.css">
     <script type="text/javascript" src="general.js"></script>
+    
     <script>
         const userData = <%- JSON.stringify(userData) %>;
     </script>
+    
 </head>
 <body>
     {{> header}}
@@ -37,17 +39,7 @@
                     <input type="text" placeholder="ID Number" value="{{userData.idNo}}" maxlength="8">
                 </div>
                 <div class="input-box">
-                    <label for="college"></label>
-                    <select id="college" onfocus="this.placeholder=''" onblur="this.placeholder='{{userData.college}}'">
-                        <option value="" disabled selected>Select College</option>
-                        <option value="BAGCED">BAGCED</option>
-                        <option value="CCS">CCS</option>
-                        <option value="CLA">CLA</option>
-                        <option value="COS">COS</option>
-                        <option value="GCOE">GCOE</option>
-                        <option value="RVRCOB">RVRCOB</option>
-                        <option value="SOE">SOE</option>
-                    </select>
+                    <input id = "college" type="text" placeholder="College" value="{{userData.college}}" maxlength="6">
                 </div>
                 <div class="input-box">
                     <input type="text" placeholder="Bio" value="{{userData.bio}}">

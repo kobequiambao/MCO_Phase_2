@@ -92,7 +92,7 @@ $(document).ready(function(){
                         <div class="main_post-desc-poster">
                             <div class="main_post-desc-poster-pic" style="background-image: ${userPic};"></div>
                             <div class="main_post-desc-poster-name">
-                                ${userName}
+                                u/${userName}
                             </div>
                             <div class="main_post-desc-banner" id="${flair}">${flair}</div>
                             <div class="main_post-date">${currentDate}</div>

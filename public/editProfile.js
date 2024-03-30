@@ -63,7 +63,7 @@ function saveChanges() {
         photo: document.getElementById('preview').src,
         bio: bio,
     };
-
+    const photo = document.getElementById('preview').src;
     const idNo = idNumber;
     const college = selectedCollege;
     fetch('/updateProfile', {
@@ -71,7 +71,7 @@ function saveChanges() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, idNo, college, bio })
+        body: JSON.stringify({ username, idNo, college, bio, photo})
     })
     .then(response => {
         if (response.ok) {
