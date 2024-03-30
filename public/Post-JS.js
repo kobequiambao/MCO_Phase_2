@@ -68,8 +68,8 @@ $(document).ready(function () {
     
       
     $(".submit-comment-button").click(function(){
-        const storedProfileData = localStorage.getItem('userProfile');
-            const userProfile = JSON.parse(storedProfileData);
+       
+            const userProfile = userData;
 
             const userPhoto = `url('${userProfile.photo}')`;
             const userProfileName = userProfile.username;
@@ -178,8 +178,8 @@ function toggleReply(actionContainer) {
     });
     
     function appendReply(commentButton) {
-        const storedProfileData = localStorage.getItem('userProfile');
-        const userProfile = JSON.parse(storedProfileData);
+        
+        const userProfile = userData;
     
         const userPhoto = `url('${userProfile.photo}')`; 
         const userProfileName = userProfile.username; 
