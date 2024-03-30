@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function loadUserProfile() {
     if (userData) {
         document.querySelector('input[placeholder="Username"]').value = userData.username;
-        document.querySelector('input[placeholder="ID Number"]').value = userData.idNumber;
+        document.querySelector('input[placeholder="ID Number"]').value = userData.idNo;
         document.getElementById('college').value = userData.college;
         document.querySelector('input[placeholder="Bio"]').value = userData.bio;
         document.getElementById('preview').src = userData.photo;

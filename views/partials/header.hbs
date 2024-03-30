@@ -12,11 +12,12 @@
             
             <div class="header_1-user" onclick="toggleDropdown_user()">
                 <div class="header_1-user-pic" id="headerUserPic" style = "background-image: url('{{userData.photo}}')"></div>
-                <div class="header_1-user-info">
-                    <div class="header_1-user-name" id="headerUserName">{{userData.username}}</div>
-                    <div class="header_1-user-id" id="headerUserId">ID122-CCS</div>
-                    {{!-- ={{userData.college}}= --}}
-                </div>
+            <div class="header_1-user-info">
+                <div class="header_1-user-name" id="headerUserName">{{userData.username}}</div>
+                <div class="header_1-user-id" id="headerUserId">ID{{slice userData.idNo 0 3}}-{{userData.college}}</div>
+            </div>
+
+
                 <div class="dropdown-content_user">
                     <a href="/viewProfile">View Profile</a>
                     <a href="/editProfile">Edit Profile</a>

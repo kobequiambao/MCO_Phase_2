@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 const { ObjectId } = require('mongoose').Types;
 
 const handlebars = require('express-handlebars');  
+const Handlebars = require('handlebars');
+
+Handlebars.registerHelper('slice', function(str, start, end) {
+  return str.slice(start, end);
+});
 
 const bodyParser = require('body-parser');
 server.use(express.json());
@@ -164,6 +169,10 @@ server.get('/general', async (req, res) => {
     }
 });
 
+
+
+
+
 server.get('/createPost', function(req, resp){
         resp.render('createPost',{
             layout: 'index',
@@ -197,9 +206,9 @@ server.post('/signup', async (req, res) => {
             password,
             bio: '',
             college: '',
-            idNo: 0,
+            idNo: '',
             isAdmin: false,
-            photo: '',
+            photo: 'ADD-ONS/profilepic.jpg',
         });
 
         const result = await newAccount.save();

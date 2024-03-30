@@ -136,14 +136,13 @@ function closeLoginForm_delete() {
 });
 
 function loadUserProfile() {
-    const storedProfileData = localStorage.getItem('userProfile');
-    if (storedProfileData) {
-        const userProfile = JSON.parse(storedProfileData);
+ 
+    if (userData) {
 
         // Update header 1 with user profile data
         document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
         document.getElementById('headerUserName').innerText = userProfile.username;
-        document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
+        document.getElementById('headerUserId').innerText = `ID${userProfile.idNo.substring(0, 3)}-${userProfile.college}`;
 
         // Update header 2 with user profile data
         document.getElementById('headerUserPic2').style.backgroundImage = `url('${userProfile.photo}')`;
