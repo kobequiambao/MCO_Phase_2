@@ -267,7 +267,7 @@ server.get('/editProfile', async (req, res) => {
 // Add a new route handler for updating the user profile
 server.post('/updateProfile', async (req, res) => {
     try {
-        const { username, idNo, college, bio, photo } = req.body;
+        const {email, idNo, college, bio, photo } = req.body;
 
         // Find the user by the loggedInUser variable
         const userData = await Account.findOne({ username: loggedInUser });
@@ -277,7 +277,7 @@ server.post('/updateProfile', async (req, res) => {
         }
 
         // Update the user's data
-        userData.username = username;
+        userData.email = email;
         userData.idNo = String(idNo);
         userData.college = college;
         userData.bio = bio;

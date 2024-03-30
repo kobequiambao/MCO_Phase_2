@@ -10,10 +10,10 @@
             
             
             <div class="header_1-user" onclick="toggleDropdown_user()">
-                <div class="header_1-user-pic" id="headerUserPic"></div>
+                <div class="header_1-user-pic" id="headerUserPic" style = "background-image: url('{{userData.photo}}')"></div>
                 <div class="header_1-user-info">
-                    <div class="header_1-user-name" id="headerUserName">Michael Angelo Depasucat</div>
-                    <div class="header_1-user-id" id="headerUserId">ID122-CCS</div>
+                    <div class="header_1-user-name" id="headerUserName">{{userData.username}}</div>
+                    <div class="header_1-user-id" id="headerUserId">ID{{slice userData.idNo 0 3}}-{{userData.college}}</div>
                 </div>
                 <div class="dropdown-content_user">
                     <a href="/viewProfile">View Profile</a>
@@ -27,10 +27,10 @@
             <div class="color1"></div>
             <div class="color2"></div>
             <div class="header_2-user">
-                <div class="header_2-user-pic" id="headerUserPic2"></div>
+                <div class="header_2-user-pic" id="headerUserPic2" style = "background-image: url('{{userData.photo}}')"></div>
                 <div class="header_2-user-info">
-                    <div class ="header_2-user-info-1" id="headerUserName2">Michael Angelo Depasucat</div>
-                    <div class ="header_2-user-info-2" id="headerUserId2">ID122-CSS</div>
+                    <div class ="header_2-user-info-1" id="headerUserName2">{{userData.username}}</div>
+                    <div class ="header_2-user-info-2" id="headerUserId2">ID{{slice userData.idNo 0 3}}-{{userData.college}}</div>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function loadUserProfile() {
     if (userData) {
-        document.querySelector('input[placeholder="Username"]').value = userData.username;
+        document.querySelector('input[placeholder="Email"]').value = userData.email;
         document.querySelector('input[placeholder="ID Number"]').value = userData.idNo;
         document.getElementById('college').value = userData.college;
         document.querySelector('input[placeholder="Bio"]').value = userData.bio;
@@ -45,19 +45,19 @@ function loadUserProfile() {
 
 
 function saveChanges() {
-    const usernameInput = document.querySelector('input[placeholder="Username"]');
+    const emailInput = document.querySelector('input[placeholder="Email"]');
     const idNumberInput = document.querySelector('input[placeholder="ID Number"]');
     const collegeSelect = document.getElementById('college');
     const bioInput = document.querySelector('input[placeholder="Bio"');
 
-    const username = usernameInput.value;
+    const email = emailInput.value;
     const idNumber = idNumberInput.value;
     const firstThreeDigits = idNumber.length >= 3 ? idNumber.substring(0, 3) : '';
     const selectedCollege = collegeSelect.value;
     const bio = bioInput.value;
 
     const userProfile = {
-        username: username,
+        email: email,
         idNumber: idNumber,
         college: selectedCollege,
         photo: document.getElementById('preview').src,
@@ -71,7 +71,7 @@ function saveChanges() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, idNo, college, bio, photo})
+        body: JSON.stringify({ email, idNo, college, bio, photo})
     })
     .then(response => {
         if (response.ok) {
@@ -93,7 +93,7 @@ function saveChanges() {
     document.getElementById('headerUserName').innerText = userProfile.username;
     document.getElementById('headerUserId').innerText = `ID${firstThreeDigits}-${selectedCollege}`;
 
-    usernameInput.value = userProfile.username;
+    emailInput.value = userProfile.email;
     idNumberInput.value = userProfile.idNumber;
     collegeSelect.value = userProfile.college;
     bioInput.value = userProfile.bio;

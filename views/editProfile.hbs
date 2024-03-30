@@ -33,7 +33,7 @@
             </div>
             <div class="wrapper-right">
                 <div class="input-box">
-                    <input type="text" placeholder="Username" value="{{userData.username}}" maxlength="15">
+                    <input type="text" placeholder="Email" value="{{userData.email}}" >
                 </div>
                 <div class="input-box">
                     <input type="text" placeholder="ID Number" value="{{userData.idNo}}" maxlength="8">
@@ -51,25 +51,6 @@
     <script src="editProfile.js"></script>
 </body>
 
-<script>
-    // Load user profile data when the script is loaded
-    loadUserProfile();
 
-    function loadUserProfile() {
-        if (userData) {
-            const userProfile = userData;
-
-            // Update header 1 with user profile data
-            document.getElementById('headerUserPic').style.backgroundImage = `url('${userProfile.photo}')`;
-            document.getElementById('headerUserName').innerText = userProfile.username;
-            document.getElementById('headerUserId').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
-
-            // Update header 2 with user profile data
-            document.getElementById('headerUserPic2').style.backgroundImage = `url('${userProfile.photo}')`;
-            document.getElementById('headerUserName2').innerText = userProfile.username;
-            document.getElementById('headerUserId2').innerText = `ID${userProfile.idNumber.substring(0, 3)}-${userProfile.college}`;
-        }
-    }
-</script>
 
 </html>
