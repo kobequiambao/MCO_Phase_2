@@ -1,5 +1,4 @@
 {{!-- MASTER-POSTS --}}
-{{log this}}
 <div class="main_master_post" id="{{postInfoData._id}}">
         
                     <div class="main_master_post-top">
@@ -40,11 +39,12 @@
                                 <span>Save</span>
                             </div>
 
-                            <div class="button-container" id = "editPost" onclick="openLoginForm_edit()">
-                                <div class="main_post-buttons-edit"></div>
-                                <span>Edit</span>
-                                
+                            <div class="button-container" id="editPost" onclick="openLoginForm_edit('{{postInfoData._id}}')">
+                            <div class="main_post-buttons-edit"></div>
+                            <span>Edit</span>
                             </div>
+
+
                             <div class="button-container" onclick="openLoginForm_delete()">
                                 <div class="main_post-buttons-delete"></div>
                                 <span>Delete</span>

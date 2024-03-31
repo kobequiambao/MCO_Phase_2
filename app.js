@@ -14,6 +14,7 @@ Handlebars.registerHelper('json', function(context) {
 });
 const bodyParser = require('body-parser');
 server.use(express.json());
+server.use(express.static('public'));
 server.use(express.urlencoded({ extended: true }));
 server.use(bodyParser.json({ limit: '10mb' }));
 server.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
@@ -296,19 +297,6 @@ server.post('/updateProfile', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 server.get('/admin_post', async function(req, resp) {
     try {
         const postId = req.query.postId;
@@ -458,46 +446,26 @@ server.get('/post/:postId', async (req, resp) => {
     }
   });
 
-
-  server.get('/editPost/:postId', async (req, res) => {
-    try {
-        const postId = req.params.postId;
-        // Fetch the post from the database
-        const post = await PostInfo.findById(postId);
-        if (!post) {
-            return res.status(404).send('Post not found');
-        }
-        // Render the editpost.hbs template with the fetched post data
-        res.render('editPost', {
-            layout: 'index',
-            title: 'Edit Post',
-            postInfoData: post // Send the post data to the editPost template
-        });
-    } catch (error) {
-        console.error('Error retrieving post for editing:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-server.post('/editPost/:postId', async (req, res) => {
+  server.post('/post/:postId', async (req, res) => {
     try {
         const postId = req.params.postId;
         const { title, body } = req.body;
 
-        // Update the post in the database
+        // Find the post by ID and update its title and body
         const updatedPost = await PostInfo.findByIdAndUpdate(postId, { Title: title, Body: body }, { new: true });
 
         if (!updatedPost) {
             return res.status(404).send('Post not found');
         }
 
-        // Redirect to the post page or any other appropriate page
-        res.redirect(`/post/${postId}`);
+        // Respond with a success message or updated post data
+        res.status(200).json(updatedPost);
     } catch (error) {
         console.error('Error updating post:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 const port = 3000;
 server.listen(port, () => {
