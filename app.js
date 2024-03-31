@@ -12,12 +12,25 @@ Handlebars.registerHelper('slice', function(str, start, end) {
 Handlebars.registerHelper('json', function(context) {
     return JSON.stringify(context);
 });
+Handlebars.registerHelper('formatNumber', function(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(0).replace(/\.0$/, '') + 'K';
+    } else {
+        return num.toString();
+    }
+});
+
+
 const bodyParser = require('body-parser');
-server.use(express.json());
+server.use(express.json({ limit: '50mb' }));
+server.use(express.urlencoded({ limit: '50mb', extended: true }));
 server.use(express.static('public'));
-server.use(express.urlencoded({ extended: true }));
-server.use(bodyParser.json({ limit: '10mb' }));
-server.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+server.use(bodyParser.json({ limit: '50mb' }));
+server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({  
     extname: 'hbs',
@@ -43,18 +56,20 @@ db.once('open', function () {
 
 
 const postInfoSchema = new mongoose.Schema({
-    Body: String,
-    College: String,
-    Title: String,
-    Type: String,
+    Title: String, 
+    Body: String, 
+    Type: String, 
+    Image: String, 
+    RGB: String, 
+    Stat: String, 
+    Date: String,
+    College: String, 
     CommentCount: Number,
-    isHidden: Boolean,
     AccountId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account'
-    },
+    }, 
     NumvoteCount: Number,
-    Date: String
 });
 
 const AccountSchema = new mongoose.Schema({
@@ -181,6 +196,45 @@ server.get('/createPost', function(req, resp){
             layout: 'index',
             title: 'Create Post'
         });
+});
+
+
+
+server.post('/createPost', async (req, res) => {
+    try {
+        const {title, body, flair, img, rgbColor, stat, currentDate} = req.body;
+
+        // Assuming userData is retrieved somewhere
+        const userData = await Account.findOne({ username: loggedInUser });
+
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
+
+        const newPost = new PostInfo({
+            Title: title, 
+            Body: body, 
+            Type: flair, 
+            Image: img, 
+            RGB: rgbColor, 
+            Stat: stat, 
+            Date: currentDate,
+            College: userData.college, 
+            CommentCount: 0,
+            AccountId: userData._id, 
+            NumvoteCount: 0,
+        });
+
+        const result = await newPost.save();
+
+        console.log('Data added to the database:', result);
+        
+        res.redirect('/general'); 
+        
+    } catch (error) {
+        console.error('Error adding data to the database:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 

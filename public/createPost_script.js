@@ -94,6 +94,7 @@ $(document).ready(function(){
                         
                         <div class="main_post-desc-title">
                             ${title}
+                            ${stat}
                         </div>
                         <div class="main_post-desc-content">
                             ${body}
@@ -120,6 +121,28 @@ $(document).ready(function(){
                 </div>
             </div>
         `);
+
+        
+        fetch('/createPost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({title, body, flair, img, rgbColor,stat,currentDate})
+        })
+        .then(response => {
+            if (response.ok) {
+                
+                window.location.href = '/general';
+            } else {
+                console.error('Failed to save changes:', response.statusText);
+                
+            }
+        })
+        .catch(error => {
+            console.error('Error saving changes:', error);
+           
+        });
     }
 
 
