@@ -43,6 +43,34 @@
       document.body.style.overflow = ""; 
   }
 
+  function submitEdit(postId) {
+    var updatedTitle = document.getElementById("title").value;
+    var updatedBody = document.getElementById("body").value;
+
+    // Send a POST request to update the post data
+    fetch(`/post/${postId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title: updatedTitle, body: updatedBody })
+    })
+     .then(response => {
+         if (!response.ok) {
+             throw new Error('Failed to update post');
+         }
+         // Handle success
+         console.log('Post updated successfully');
+         // Redirect to the updated post page or any other appropriate action
+         window.location.href = `/post/${postId}`;
+         closeLoginForm_edit();
+     })
+     .catch(error => {
+         // Handle error
+         console.error(error);
+     });
+ }
+
   function openLoginForm_delete() {
     var modal = document.getElementById("loginFormModal-delete");
     modal.style.display = "block";
