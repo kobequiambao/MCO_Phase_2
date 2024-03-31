@@ -42,18 +42,21 @@ db.once('open', function () {
 
 
 const postInfoSchema = new mongoose.Schema({
-    Body: String,
-    College: String,
-    Title: String,
-    Type: String,
+    Title: String, 
+    Body: String, 
+    Type: String, 
+    Image: String, 
+    RGB: String, 
+    Stat: String, 
+    Date: String,
+    College: String, 
     CommentCount: Number,
-    isHidden: Boolean,
+    isHidden: Boolean, 
     AccountId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account'
-    },
+    }, 
     NumvoteCount: Number,
-    Date: String
 });
 
 const AccountSchema = new mongoose.Schema({
@@ -180,6 +183,46 @@ server.get('/createPost', function(req, resp){
             layout: 'index',
             title: 'Create Post'
         });
+});
+
+
+
+server.post('/createPost', async (req, res) => {
+    try {
+        const {title, body, flair, img, rgbColor, stat, currentDate} = req.body;
+
+        // Assuming userData is retrieved somewhere
+        const userData = await Account.findOne({ username: loggedInUser });
+
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
+
+        const newPost = new PostInfo({
+            Title: title, 
+            Body: body, 
+            Type: flair, 
+            Image: img, 
+            RGB: rgbColor, 
+            Stat: stat, 
+            Date: currentDate,
+            College: userData.college, 
+            CommentCount: 0,
+            isHidden: false, 
+            AccountId: userData._id, 
+            NumvoteCount: 0,
+        });
+
+        const result = await newPost.save();
+
+        console.log('Data added to the database:', result);
+        
+        res.redirect('/general'); 
+        
+    } catch (error) {
+        console.error('Error adding data to the database:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 

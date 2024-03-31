@@ -1,40 +1,43 @@
 <div class="main_post" id="{{this._id}}">
-                <div class="main_post-top" onclick="navigateToPost('/post/{{this._id}}')">
-                    <div class="main_post-desc">
-                        <div class="main_post-desc-poster">
-                            <div class="main_post-desc-poster-pic" style = "background-image: url('{{this.AccountId.photo}}')"></div>
-                            <div class="main_post-desc-poster-name">
-                                 u/{{this.AccountId.username}}
-                            </div>
-                            
-                            <div class="main_post-desc-banner" id="{{this.Type}}">{{this.Type}}</div>
-                            <div class="main_post-date">{{this.Date}}</div>
-                        </div>
-                        
-                        <div class="main_post-desc-title">
-                           {{this.Title}}
-                        </div>
-                        <div class="main_post-desc-content">
-                            {{this.Body}}
-                        </div>
-                        <!--${imgContainer}-->
-                    </div>
-                    <div class="main_post-buttons">
-                        <div class="main_vote">
-                            <img class="up_vote" src="/CCAPDEV-LOGO-2/2.png" alt="">
-                            <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden>
-                            <span class="num_vote">{{this.NumvoteCount}}</span>
-                            <img class="down_vote" src="/CCAPDEV-LOGO-2/3.png" alt="">
-                            <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden>
-                        </div>
-                        <div class="button-container">
-                            <div class="main_post-buttons-comment"></div>
-                            <span>Comment</span>
-                        </div>
-                        <div class="button-container">
-                            <div class="main_post-buttons-share"></div>
-                            <span>Share</span>
-                        </div>                    
-                    </div>
+    <div class="main_post-top" onclick="navigateToPost('/post/{{this._id}}')">
+        <div class="main_post-desc">
+            <div class="main_post-desc-poster">
+                <div class="main_post-desc-poster-pic" style="background-image: url('{{this.AccountId.photo}}')"></div>
+                <div class="main_post-desc-poster-name">
+                    u/{{this.AccountId.username}}
                 </div>
+                <div class="main_post-desc-banner" id="{{this.Type}}">{{this.Type}}</div>
+                <div class="main_post-date">{{this.Date}}</div>
             </div>
+            <div class="main_post-desc-title">
+                {{this.Title}}
+            </div>
+            <div class="main_post-desc-content">
+                {{this.Body}}
+            </div>
+            {{#if this.Image}}
+            <div class="main_post-img-container">
+                <div class="blurred-background" style="background-color: {{this.RGB}};"></div>
+                <img class="main_post-img" src="{{this.Image}}" alt="" {{this.Stat}}>
+            </div>
+            {{/if}}
+        </div>
+        <div class="main_post-buttons">
+            <div class="main_vote">
+                <img class="up_vote" src="/CCAPDEV-LOGO-2/2.png" alt="">
+                <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden>
+                <span class="num_vote">{{this.NumvoteCount}}</span>
+                <img class="down_vote" src="/CCAPDEV-LOGO-2/3.png" alt="">
+                <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden>
+            </div>
+            <div class="button-container">
+                <div class="main_post-buttons-comment"></div>
+                <span>Comment</span>
+            </div>
+            <div class="button-container">
+                <div class="main_post-buttons-share"></div>
+                <span>Share</span>
+            </div>
+        </div>
+    </div>
+</div>

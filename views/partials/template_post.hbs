@@ -20,6 +20,12 @@
                 <div class="main_post-desc-content">
                     {{this.Body}}
                 </div>
+                {{#if this.Image}}
+                    <div class="main_post-img-container">
+                        <div class="blurred-background" style="background-color: {{this.RGB}};"></div>
+                        <img class="main_post-img" src="{{this.Image}}" alt="" {{this.Stat}}>
+                    </div>
+                {{/if}}
             </div>
 
             <div class="main_post-buttons">
