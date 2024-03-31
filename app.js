@@ -12,11 +12,30 @@ Handlebars.registerHelper('slice', function(str, start, end) {
 Handlebars.registerHelper('json', function(context) {
     return JSON.stringify(context);
 });
+Handlebars.registerHelper('formatNumber', function(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(0).replace(/\.0$/, '') + 'K';
+    } else {
+        return num.toString();
+    }
+});
+
+
 const bodyParser = require('body-parser');
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
-server.use(bodyParser.json({ limit: '10mb' }));
-server.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+server.use(express.json({ limit: '50mb' }));
+server.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+
+server.use(bodyParser.json({ limit: '50mb' }));
+server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+
+
+
+
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({  
     extname: 'hbs',
