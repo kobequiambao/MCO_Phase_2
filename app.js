@@ -51,7 +51,6 @@ const postInfoSchema = new mongoose.Schema({
     Date: String,
     College: String, 
     CommentCount: Number,
-    isHidden: Boolean, 
     AccountId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account'
@@ -208,7 +207,6 @@ server.post('/createPost', async (req, res) => {
             Date: currentDate,
             College: userData.college, 
             CommentCount: 0,
-            isHidden: false, 
             AccountId: userData._id, 
             NumvoteCount: 0,
         });
