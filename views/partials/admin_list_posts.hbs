@@ -7,7 +7,7 @@
                         <div class = "main_post-desc">
                             <div class = "main_post-desc-poster">
                                 
-                                <div class = "main_post-desc-poster-pic" id="desc-poster-pic"></div>
+                                <div class = "main_post-desc-poster-pic" id="desc-poster-pic" style = "background-image: url('{{this.AccountId.photo}}')"></div>
                                 
                                 <div class = "main_post-desc-poster-name">
                                 u/{{this.AccountId.username}}</div>
@@ -21,6 +21,12 @@
                             <div class = "main_post-desc-content">
                                 {{Body}}
                             </div>
+                            {{#if Image}}
+                                <div class="main_post-img-container">
+                                    <div class="blurred-background" style="background-color: {{RGB}};"></div>
+                                    <img class="main_post-img" src="{{Image}}" alt="" {{Stat}}>
+                                </div>
+                            {{/if}}
                         </div>
                     
                         <div class="main_post-buttons">
