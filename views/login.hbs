@@ -26,12 +26,7 @@
                     if (response.isAdmin) {
                         showAdminPopup();
                     } else {
-                        // Redirect based on user type
-                        if (response.isAdmin) {
-                            window.location.href = '/admin';
-                        } else {
-                            window.location.href = '/general';
-                        }
+                        window.location.href = '/general';
                     }
                 },
                 error: function(xhr, status, error) {
