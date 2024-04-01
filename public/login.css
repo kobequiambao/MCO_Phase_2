@@ -113,3 +113,39 @@ body{
 .btn {
     opacity: 1 !important;
 }
+
+.popup {
+    display: none;
+    position: absolute;
+    top: calc(50% - 380px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00523E;
+    border: 1px solid black;
+    border-radius: 1px;
+    z-index: 9999;
+}
+
+.popup-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-content button {
+    background-color: white;
+    color: #00523E;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-content button.close-button {
+    margin-top: 10px;
+}
+
+.popup-content button:hover {
+    background-color: #ddd;
+}
