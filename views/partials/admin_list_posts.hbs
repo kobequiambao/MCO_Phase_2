@@ -1,52 +1,221 @@
-{{!-- POSTS --}}
-{{#each allPosts}}
-<div class="main_post" id="post-{{_id}}">    
-    
-                    <div class="main_post-top" onclick="navigateToPost('{{_id}}')">
-                    
-                        <div class = "main_post-desc">
-                            <div class = "main_post-desc-poster">
-                                
-                                <div class = "main_post-desc-poster-pic" id="desc-poster-pic" style = "background-image: url('{{this.AccountId.photo}}')"></div>
-                                
-                                <div class = "main_post-desc-poster-name">
-                                u/{{this.AccountId.username}}</div>
-                                <div class = "main_post-desc-banner">{{Type}}</div>
-                                <div class="main_post-date">{{this.Date}}</div>
-                                
-                            </div>
-                            
-                            <div class = "main_post-desc-title">
-                                {{Title}}</div>
-                            <div class = "main_post-desc-content">
-                                {{Body}}
-                            </div>
-                            {{#if Image}}
-                                <div class="main_post-img-container">
-                                    <div class="blurred-background" style="background-color: {{RGB}};"></div>
-                                    <img class="main_post-img" src="{{Image}}" alt="" {{Stat}}>
-                                </div>
-                            {{/if}}
-                        </div>
-                    
-                        <div class="main_post-buttons">
-                            <div class="main_vote">
-                                <img class="uv" src="CCAPDEV-LOGO-2\2.png" alt="">
-                                <span class = "num_vote">{{NumvoteCount}}</span>
-                                <img class="dv" src="CCAPDEV-LOGO-2\3.png" alt="">
-                            </div>
-                            <div class="button-container">
-                                <div class="main_post-buttons-comment"></div>
-                                <span><span class="num_comment">{{CommentCount}}</span>Comment</span>
-                            </div>
+{{!-- MASTER-POSTS --}}
+{{log this}}
+<div class="main_master_post" id="{{post._id}}">
+    <div class="main_master_post-top">
+        <div class="main_post-desc">
+            <div class="main_post-desc-poster">
+                <div class="main_post-desc-poster-pic" style="background-image: url('{{poster.photo}}')"></div>
+                <div class="main_post-desc-poster-name">
+                    u/{{poster.username}}
+                </div>
+                <div class="main_post-desc-banner">{{post.Type}}</div>
+                <div class="main_post-date">{{post.Date}}</div>
+            </div>
 
-                        </div>
+            <div class="main_post-desc-title">{{post.Title}}</div>
+            <div class="main_post-desc-content">{{post.Body}}</div>
+            {{#if post.Image}}
+            <div class="main_post-img-container">
+                <div class="blurred-background" style="background-color: {{post.RGB}};"></div>
+                <img class="main_post-img" src="{{post.Image}}" alt="" {{post.Stat}}>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="main_post-buttons">
+        <div class="main_vote">
+            <img class="uv" src="/CCAPDEV-LOGO-2/2.png" alt="">
+            <span class="num_vote">{{post.NumvoteCount}}</span>
+            <img class="dv" src="/CCAPDEV-LOGO-2/3.png" alt="">
+        </div>
+        <div class="button-container" id="master-comment">
+            <div class="main_post-buttons-comment"></div>
+            <span><span class="num_comment">{{post.CommentCount}}</span>Comment</span>
+        </div>
+        <div class="button-container" id="shareButton">
+            <div class="main_post-buttons-share"></div>
+            <span>Share</span>
+        </div>
+        <div class="button-container" onclick="deletePost('{{post._id}}')">
+            <div class="main_post-buttons-delete"></div>
+            <span>Delete</span>
+        </div>
+    </div>
+
+    <div id="loginFormModal-edit" class="modal">
+        {{>editPost}}
+    </div>
+
+    <div id="loginFormModal-delete" class="modal">
+        {{>deletePost}}
+    </div>
+
+    <div class="sort-search-part">
+        <div class="sort-search-container">
+            <div class="sort-by">
+                <div class="dropdown">
+                    <button class="sort-button" onclick="toggleDropdown()" id="admin_sort-button">Sort By: Best</button>
+                    <div class="dropdown-content" id="sortOptions">
+                        <a class="best" href="#">Best</a>
+                        <a class="new" href="#">New</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#if comments.length}}
+    <div class="comment-section">
+        
+        <div class="comment-container">
+            <div class="comment-profile">
+                <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
+                <span class="threadline">|</span>
+            </div>
+            <div class="comment-info-container">
+                <div class="info-comment">
+                    {{#each ../commenters}}
+                    <p class="comment-by">{{username}}</p>
+                    {{/each}}
+                    <span class="posted-time">&#xb7; {{this.Date}}</span>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">{{this.Body}}</p>
+                </div>
+                <div class="comment-section-icons">
+                    <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                    <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+                    <span class="vote-count">{{this.NumvoteCount}}</span>
+                    <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                    <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+                    <div class="reply-container">
+                        <button class="reply-button">
+                            <span class="reply-text">Reply</span>
+                        </button>
+                    </div>
+                </div>
+                <textarea class="reply-textarea" hidden></textarea>
+                <button class="comment-button" hidden>Comment</button>
+                <button class="cancel-button" hidden>Cancel</button>
+            </div>
+            
+            {{#if replies.length}}
+            <div class="reply-section">
+                <div class="comment-container replied-comment-container">
+                    <div class="comment-profile">
+                        <div class=userpfp style="background-image: ${userPhoto};"></div>
+                        <span class="threadline">|</span>
+                    </div>
+                    <div class="comment-info-container">
+                        <div class="info-comment">
+                            <p class="comment-by">{{CommenterId}}</p> ▸ <span class="replying-to">{{#each ../commenters}}{{username}}{{/each}}</span> <span class="posted-time">&#xb7;{{Date}}</span>
+                        </div>
+                        <div class="comment-body">
+                            <p class="comment-text">{{Body}}</p>
+                        </div>
+                        <div class="comment-section-icons">
+                            <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                            <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+                            <span class="vote-count">{{NumvoteCount}}</span>
+                            <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                            <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+                            <div class="reply-container">
+                                <button class="reply-button">
+                                    <span class="reply-text">Reply</span>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="reply-textarea replied-textarea" hidden></textarea>
+                        <button class="comment-button" hidden>Comment</button>
+                        <button class="cancel-button" hidden>Cancel</button>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            <div class="comment-body">
+                <p class="comment-text">{{this.Body}}</p>
+            </div>
+            <div class="admin_csi">
+                <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
+                <span class="vote-count" id="admin_vc">{{comments.NumvoteCount}}</span>
+                <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
+            </div>
+        </div>
+        
+    </div>/
+    {{/if}}
 </div>
-{{/each}}
+
+<style>
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-top: -10px;
+    }
+</style>
 
 <script>
-    function navigateToPost(postId) {
-        window.location.href = '/admin_post?postId=' + postId;
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("sortOptions");
+        dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.sort-button')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === "block") {
+                    openDropdown.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("sortOptions");
+        dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.sort-button')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === "block") {
+                    openDropdown.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<!-- JavaScript for deletion -->
+<script>
+    function deletePost(postId) {
+        if (confirm("Are you sure you want to delete this post?")) {
+            // Send an AJAX request to the server to delete the post
+            fetch(`/delete-post?postId=${postId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // If deletion is successful, reload the page or handle it appropriately
+                        location.reload();
+                    } else {
+                        // Handle error
+                        console.error('Error deleting post');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
     }
 </script>
