@@ -138,12 +138,12 @@
 
     $(document).ready(function(){
       $('.best').click(function(){
-              $('.sort-button').text('Sort By: Best');
-              var postList = $('.post_list');
+            $('.sort-button').text('Sort By: Best');
+            var postList = $('.post_list');
 
-              var posts = postList.children('.main_post');
+            var posts = postList.children('.main_post');
 
-              posts.sort(function(a, b) {
+            posts.sort(function(a, b) {
                   var numVotesA = parseInt($(a).find('.num_vote').text());
                   var numVotesB = parseInt($(b).find('.num_vote').text());
                   return numVotesB - numVotesA;

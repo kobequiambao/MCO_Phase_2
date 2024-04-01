@@ -158,12 +158,20 @@ server.post('/login', async (req, res) => {
         if (!existingAccount) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
-        res.redirect(`/general`);
+
+        if (existingAccount.isAdmin) {
+            // Redirect to the admin page
+            return res.redirect(`/admin`);
+        } else {
+            // Redirect to the general page
+            return res.redirect(`/general`);
+        }
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 server.get('/general', async (req, res) => {
     try {

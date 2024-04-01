@@ -1,4 +1,7 @@
-
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="public\main.js"></script>
+</head>
 <body>
 
     {{> index_header}}
@@ -70,4 +73,16 @@
     }
 
 </style>
+<script>
+    $(document).ready(function(){
+        var postList = $('.index_main_feed-post');
+        var posts = postList.children('.main_post');
+        posts.sort(function(a, b) {
+            var dateA = parseInt($(a).find('.num_vote').text());
+            var dateB = parseInt($(b).find('.num_vote').text());
+            return dateB - dateA;
+        });
+        postList.empty().append(posts);
+    });
+</script>
 </html>
