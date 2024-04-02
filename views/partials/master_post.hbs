@@ -13,7 +13,7 @@
                                 <div class="main_post-date">{{postInfoData.Date}}</div>
                             </div>
 
-                            <div class="main_post-desc-title">{{postInfoData.Title}}</div>
+                            <div class="main_post-desc-title">{{postInfoData.Title}} {{replyInfoData.length}}</div>
                             <div class="main_post-desc-content">{{postInfoData.Body}}</div>
                             {{#if postInfoData.Image}}
                                 <div class="main_post-img-container">
@@ -97,11 +97,13 @@
 
 
         <div class="comment-section">
+        
         {{#each commentInfoData}}
             {{#if (eq this.PostId ../postInfoData._id)}}
-                {{> comment}}
+                {{> comment commentInfoData=this replyInfoData=../replyInfoData}}
             {{/if}}
         {{/each}}
+
         </div>
 </div>
 

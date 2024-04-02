@@ -1,21 +1,21 @@
 
 <div class="comment-container">
                 <div class="comment-profile">
-                    <img class=userpfp src="{{this.CommenterId.photo}}">
+                    <img class=userpfp src="{{commentInfoData.CommenterId.photo}}">
                     <span class="threadline">|</span>
                 </div>
                 <div class="comment-info-container">
                     <div class="info-comment">
-                        <p class="comment-by">{{this.CommenterId.username}}</p> <span class="posted-time">&#xb7; {{this.Date}}</span>
+                        <p class="comment-by">{{commentInfoData.CommenterId.username}}</p> <span class="posted-time">&#xb7; {{commentInfoData.Date}}</span>
                     </div>
                     <div class="comment-body">
-                        <p class="comment-text">{{this.Body}}</p>
+                        <p class="comment-text">{{commentInfoData.Body}}</p>
                     </div>
                     <div class="comment-section-icons">
                         <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
                         <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
 
-                        <span class="vote-count">{{this.NumvoteCount}}</span>
+                        <span class="vote-count">{{commentInfoData.NumvoteCount}}</span>
 
 
                         <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
@@ -34,7 +34,10 @@
                 </div>
                 <div class="reply-section">
                     {{#each replyInfoData}}
-                        {{> reply}}
+                        {{!-- Reply: {{this.CommentId._id}} Comment:{{../commentInfoData._id}} --}}
+                        {{#if (eq this.CommentId._id ../commentInfoData._id)}}
+                            {{> reply}}
+                        {{/if}}
                     {{/each}}
                 </div>
 </div>
