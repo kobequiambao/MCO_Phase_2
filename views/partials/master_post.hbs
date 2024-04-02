@@ -78,20 +78,21 @@
             <button class="cancel-comment-button">Cancel</button>
         </div>
         
-        <div class="sort-search-part">
-            <div class="sort-search-container">
-                <div class="sort-by">
-                    <div class="dropdown">
-                        <button class="sort-button" onclick="toggleDropdown()">Sort By: Best</button>
-                        <div class="dropdown-content" id="sortOptions">
-                          <a class="best" href="#">Best</a>
-                          <a class="new" href="#">New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {{#if commentInfoData.length}}
+          <div class="sort-search-part">
+              <div class="sort-search-container">
+                  <div class="sort-by">
+                      <div class="dropdown">
+                          <button class="sort-button" onclick="toggleDropdown()">Sort By: Best</button>
+                          <div class="dropdown-content" id="sortOptions">
+                            <a class="best" href="#">Best</a>
+                            <a class="new" href="#">New</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        {{/if}}
 
 
 
