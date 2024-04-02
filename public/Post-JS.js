@@ -75,7 +75,6 @@ $(document).ready(function () {
             const userProfileName = userProfile.username;
       var userName = $(".header_1-user-name").text();
       var comment = $(".comment-box").val();
-
       var currentDate = new Date();
 
       var day = currentDate.getDate();
@@ -84,6 +83,7 @@ $(document).ready(function () {
 
       currentDate = day + " " + month + " " + year;
 
+      var PostId = getPostIdFromURL();
 
       if(comment !== "") {
       $('.comment-section').append(`
@@ -124,6 +124,24 @@ $(document).ready(function () {
               </div>
       `);
 
+    fetch('/comment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({comment, currentDate, PostId})
+    })
+    .then(response => {
+        if (response.ok) {
+        } else {
+            console.error('Failed to save changes:', response.statusText);
+            
+        }
+    })
+    .catch(error => {
+        console.error('Error saving changes:', error);
+       
+    });
       
       $(".num_comment").text(parseInt($(".num_comment").text()) + 1);
       }
@@ -131,6 +149,24 @@ $(document).ready(function () {
       
       $(".comment-box").val("");
     });
+
+    function getPostIdFromURL() {
+    // Get the current URL
+    const url = window.location.href;
+    
+    // Split the URL by '/' and get the last part which should be the postId
+    const parts = url.split('/');
+    const postIdIndex = parts.indexOf('post') + 1;
+
+    // Check if postIdIndex is valid and return the postId if found
+    if (postIdIndex > 0 && postIdIndex < parts.length) {
+        return String(parts[postIdIndex]);
+    } else {
+        // Return null or handle the case where postId is not found in the URL
+        return null;
+    }
+}
+
 
     $(".cancel-comment-button").click(function(){
       $('.comment-box').val('');
@@ -238,6 +274,26 @@ function toggleReply(actionContainer) {
             commentButton.closest(".comment-container").find(".reply-textarea").val(''); // Clear the textarea after submitting.
             var currentCount = parseInt($(".num_comment").text());
             $(".num_comment").text(currentCount + 1); 
+            var PostId = getPostIdFromURL();
+
+            fetch('/reply', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({comment, currentDate, PostId, commentByValue})
+            })
+            .then(response => {
+                if (response.ok) {
+                } else {
+                    console.error('Failed to save changes:', response.statusText);
+                    
+                }
+            })
+            .catch(error => {
+                console.error('Error saving changes:', error);
+               
+            });
         }
     }
     
