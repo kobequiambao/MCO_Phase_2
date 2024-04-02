@@ -529,8 +529,27 @@ server.get('/post/:postId', async (req, resp) => {
     }
 });
 
+server.get('/search', async (req, res) => {
+    try {
+        const searchQuery = req.query.q;
 
-const port = 3000;
+        // Perform a case-insensitive search in the 'Title' and 'Body' fields of the PostInfo collection
+        const searchResults = await PostInfo.find({
+            $or: [
+                { Title: { $regex: searchQuery, $options: 'i' } },
+                { Body: { $regex: searchQuery, $options: 'i' } }
+            ]
+        }).populate('AccountId');
+
+        // Respond with the search results
+        res.json(searchResults);
+    } catch (error) {
+        console.error('Error performing search:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+const port = 3001;
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
