@@ -30,14 +30,6 @@ Handlebars.registerHelper('eq', function(arg1, arg2, options) {
     return strArg1 == strArg2; 
 });
 
-  
-
-
-
-
-
-
-
 
 const bodyParser = require('body-parser');
 server.use(express.json({ limit: '50mb' }));
