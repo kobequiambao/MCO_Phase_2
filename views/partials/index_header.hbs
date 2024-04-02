@@ -1,11 +1,11 @@
-        <div class="header_1">
-            <div class = "header_1-logo" onclick="navigateToPost('/main')"></div>
-            <div class="header_1-search"onclick="toggleDropdown_search()">Search
-                <div class="dropdown-content_search">
-                    <a href="Post4.html">grammarly</a>
-                    <a href="Post3.html">LF peeps to party with lol</a>
-                    <a href="Post1.html">Lf swimming kasama</a>
-                </div>
+ <div class="header_1">
+            <div class = "header_1-logo" onclick="navigateToPost('/general')"></div>
+            <div class="header_1-search">
+                <input type="text" id="searchInput" placeholder="Search" style="width: 100%; background-color: transparent; color: inherit; border: none; outline: none;">
+
+            </div>
+            <div class="dropdown-content_search" id="dropdownSearchResults">
+                <!-- Search results will be dynamically inserted here -->
             </div>
             
             <div class="header_1-button">
@@ -29,3 +29,66 @@
                 </div>
             </div>
         </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', debounce(function(e) {
+      const query = e.target.value.trim();
+      if (query.length > 1) { 
+          fetchSearchResults(query);
+      } else {
+          clearSearchResults();
+      }
+  }, 250)); 
+});
+
+function fetchSearchResults(query) {
+  fetch(`/search?q=${encodeURIComponent(query)}`, {
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+      },
+  })
+  .then(response => response.json())
+  .then(data => {
+      updateSearchResults(data);
+  })
+  .catch(error => {
+      console.error('Error fetching search data:', error);
+  });
+}
+
+function updateSearchResults(results) {
+  const dropdown = document.getElementById('dropdownSearchResults');
+  dropdown.innerHTML = '';
+  results.forEach(item => {
+      const a = document.createElement('a');
+      a.href = '/login';
+      a.textContent = item.Title; 
+      dropdown.appendChild(a);
+  });
+  dropdown.style.display = results.length ? 'block' : 'none';
+}
+
+function clearSearchResults() {
+  const dropdown = document.getElementById('dropdownSearchResults');
+  dropdown.innerHTML = '';
+  dropdown.style.display = 'none';
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+      var context = this, args = arguments;
+      var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+  };
+}
+</script>

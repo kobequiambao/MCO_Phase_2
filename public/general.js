@@ -180,4 +180,67 @@ function loadUserProfile() {
 }
  
   
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', debounce(function(e) {
+      const query = e.target.value.trim();
+      if (query.length > 1) { // Only search if there are 2 or more characters
+          fetchSearchResults(query);
+      } else {
+          clearSearchResults(); // Clear results if the query is too short
+      }
+  }, 250)); // Debounce to reduce the number of requests
+});
+
+function fetchSearchResults(query) {
+  // Adjust the fetch URL to use your server's search route
+  fetch(`/search?q=${encodeURIComponent(query)}`, {
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+      },
+  })
+  .then(response => response.json())
+  .then(data => {
+      updateSearchResults(data);
+  })
+  .catch(error => {
+      console.error('Error fetching search data:', error);
+  });
+}
+
+function updateSearchResults(results) {
+  const dropdown = document.getElementById('dropdownSearchResults');
+  dropdown.innerHTML = ''; // Clear existing results
+  results.forEach(item => {
+      const a = document.createElement('a');
+      // Use the item's URL and title for the search result entry
+      // Modify this part to fit how your search result data is structured
+      a.href = `/post/${item._id}`; // Example URL, adjust based on your routing
+      a.textContent = item.Title; // Assuming your items have a 'Title' property
+      dropdown.appendChild(a);
+  });
+  dropdown.style.display = results.length ? 'block' : 'none';
+}
+
+function clearSearchResults() {
+  const dropdown = document.getElementById('dropdownSearchResults');
+  dropdown.innerHTML = '';
+  dropdown.style.display = 'none';
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+      var context = this, args = arguments;
+      var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+  };
+}
   
