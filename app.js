@@ -31,6 +31,8 @@ Handlebars.registerHelper('eq', function(arg1, arg2, options) {
 });
 
 
+
+
 const bodyParser = require('body-parser');
 server.use(express.json({ limit: '50mb' }));
 server.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -113,12 +115,12 @@ const HiddenSchema = new mongoose.Schema({
 
 const ReplyInfoSchema = new mongoose.Schema({
     Body: String,
-    CommentUsername: String, 
-    Date: String,
-    PostId: {
+    CommentId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'PostInfo'
-    }, 
+        ref: 'CommentInfo'
+    },
+    CommentBy: String,  
+    Date: String,
     isHidden: Boolean,
     NumvoteCount: Number,
     CommenterId: {
@@ -281,11 +283,14 @@ server.post('/comment', async (req, res) => {
             CommenterId: userData._id, 
             NumvoteCount: 0,
         });
-
         const result = await newComment.save();
 
+         // Find the corresponding post and update its NumvoteCount
+        // const updatedPost = await PostInfo.findByIdAndUpdate(PostId, { $inc: { NumvoteCount: 1 } }, { new: true });
+
+
         console.log('Data added to the database:', result); 
-        
+        console.log('Updated post NumvoteCount:', updatedPost.NumvoteCount);
     } catch (error) {
         console.error('Error adding data to the database:', error);
         res.status(500).send('Internal Server Error');
@@ -294,19 +299,27 @@ server.post('/comment', async (req, res) => {
 
 server.post('/reply', async (req, res) => {
     try {
-        const {comment, currentDate, PostId, commentByValue} = req.body;
+        const {comment, currentDate, PostId, commentByValue, commentText, commentVotecount} = req.body;
 
         // Assuming userData is retrieved somewhere
         const userData = await Account.findOne({ username: loggedInUser });
+        const commentorData = await Account.findOne({ username: commentByValue});
+        const commentData = await CommentInfo.findOne({
+            Body: commentText,
+            PostId: PostId,
+            CommenterId: commentorData._id,
+            NumvoteCount: commentVotecount,
+        });
+        
         if (!userData) {
             return res.status(404).send('User not found');
         }
 
         const newReply = new ReplyInfo({
             Body: comment,
-            CommentUsername: commentByValue, //need palitan to kasi alam mo na yan kai
+            CommentId: commentData.id, 
+            CommentBy: commentByValue,
             Date: currentDate,
-            PostId: PostId,
             isHidden: false, 
             NumvoteCount: 0,
             CommenterId: userData._id,
@@ -566,6 +579,7 @@ server.get('/post/:postId', async (req, resp) => {
       const userData = await Account.findOne({ username: loggedInUser });
       // Example of populating CommenterId field when querying comments
       const commentInfoData = await CommentInfo.find().populate('CommenterId');
+      const replyInfoData = await ReplyInfo.find().populate('CommentId').populate('CommenterId');
 
         if (!userData) {
             return resp.status(404).send('User not found');
@@ -580,6 +594,7 @@ server.get('/post/:postId', async (req, resp) => {
         postInfoData,
         userData,
         commentInfoData,
+        replyInfoData,
     });
     } catch (error) {
       console.error('Error retrieving PostInfo data:', error);

@@ -1,0 +1,35 @@
+{{log this}}
+<div class="comment-container replied-comment-container">
+                        <div class="comment-profile">
+                            <div class=userpfp style="background-image: url('{{this.CommenterId.photo}}');"></div>
+                            <span class="threadline">|</span>
+                        </div>
+                        <div class="comment-info-container">
+                            <div class="info-comment">
+                                <p class="comment-by">{{this.CommenterId.username}}</p> ▸ <span class="replying-to">@{{this.CommentBy}}</span>  <span class="posted-time">&#xb7; {{this.Date}}</span>
+                            </div>
+                            <div class="comment-body">
+                                <p class="comment-text">{{this.Body}}{{replyInfoData.length}}</p>
+                            </div>
+                            <div class="comment-section-icons">
+                                <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
+                                <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
+
+                                <span class="vote-count">{{this.NumvoteCount}}</span>
+
+
+                                <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
+                                <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
+
+
+                                <div class="reply-container">
+                                <button class="reply-button">
+                                    <span class="reply-text">Reply</span>
+                                </button>
+                            </div>                   
+                            </div>
+                            <textarea class="reply-textarea replied-textarea" hidden></textarea>
+                            <button class="comment-button" hidden>Comment</button>
+                            <button class="cancel-button" hidden>Cancel</button>
+                        </div>
+</div>

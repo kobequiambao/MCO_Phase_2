@@ -227,6 +227,8 @@ function toggleReply(actionContainer) {
         currentDate = `${day} ${month} ${year}`;
     
         let commentByValue = commentButton.closest(".comment-container").find(".comment-by").first().text();
+        let commentText = commentButton.closest(".comment-container").find(".comment-text").first().text();
+        let commentVotecount = commentButton.closest(".comment-container").find(".vote-count").first().text();
         let comment = commentButton.closest(".comment-container").find(".reply-textarea").val();
     
         if (comment !== "") {
@@ -281,7 +283,7 @@ function toggleReply(actionContainer) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({comment, currentDate, PostId, commentByValue})
+                body: JSON.stringify({comment, currentDate, PostId, commentByValue, commentText, commentVotecount})
             })
             .then(response => {
                 if (response.ok) {
