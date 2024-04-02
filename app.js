@@ -189,11 +189,10 @@ server.post('/login', async (req, res) => {
         }
 
         if (existingAccount.isAdmin) {
-            // Redirect to the admin page
-            return res.redirect(`/admin`);
+            // If user is an admin, send a response indicating admin status
+            return res.status(200).json({ isAdmin: true });
         } else {
-            // Redirect to the general page
-            return res.redirect(`/general`);
+                return res.redirect(`/general`);  
         }
     } catch (error) {
         console.error('Error during login:', error);
