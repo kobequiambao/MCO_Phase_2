@@ -46,16 +46,21 @@
                                 <span>Save</span>
                             </div>
 
-                            <div class="button-container" id="editPost" onclick="openLoginForm_edit('{{postInfoData._id}}')">
-                            <div class="main_post-buttons-edit"></div>
-                            <span>Edit</span>
-                            </div>
+                            {{#if (eq userData._id postInfoData.AccountId._id)}}
+                              <div class="button-container" id="editPost" onclick="openLoginForm_edit('{{postInfoData._id}}')">
+                              <div class="main_post-buttons-edit"></div>
+                              <span>Edit</span>
+                              </div>
 
-
-                            <div class="button-container" onclick="openLoginForm_delete()">
-                                <div class="main_post-buttons-delete"></div>
-                                <span>Delete</span>
-                            </div>                            
+                            
+                              <div class="button-container" onclick="deletePost('{{postInfoData._id}}')">
+                                  <div class="main_post-buttons-delete"></div>
+                                  <span>Delete</span>
+                              </div>          
+                            {{/if}}         
+                    
+  
+                               
                         </div>
                     </div>
 
@@ -166,4 +171,24 @@
     }
 
     console.log(commentInfoData.PostId postInfoData._id)
+</script>
+<script>
+  function deletePost(postId) {
+      if (confirm("Are you sure you want to delete this post?")) {
+          fetch(`/delete-post?postId=${postId}`, {
+              method: 'DELETE'
+          })
+          .then(response => {
+              if (response.ok) {
+                  window.location.href = '/general';
+              } else {
+                  console.error('Error deleting post');
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      }
+  }
+
 </script>
