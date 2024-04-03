@@ -2,6 +2,7 @@ const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongoose').Types;
+const bcrypt = require('bcrypt');
 
 const handlebars = require('express-handlebars');  
 const Handlebars = require('handlebars');
@@ -203,27 +204,55 @@ server.get('/login', function(req, resp){
     });
 });
 
+
+
 server.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
-        loggedInUser = username;
-        const existingAccount = await Account.findOne({ username, password });
+        const existingAccount = await Account.findOne({ username });
 
         if (!existingAccount) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
+        const isHashed = existingAccount.password.startsWith('$2b$');
+        
+        if (isHashed) {
+            const isMatch = await bcrypt.compare(password, existingAccount.password);
+            if (!isMatch) {
+                
+                return res.status(401).json({ error: 'Invalid username or password' });
+            }
+            // Continue with login...
+        } else {
+            // Assume the password is in plaintext and check it
+            if (password !== existingAccount.password) {
+                // Plaintext passwords do not match
+                return res.status(401).json({ error: 'Invalid username or password' });
+            }
+            // If plaintext password matches, hash it and save
+            const hashedPassword = await bcrypt.hash(password, 10);
+            existingAccount.password = hashedPassword;
+            await existingAccount.save();
+            // Log to console or notify the admin that a plaintext password was hashed
+            console.log(`Plaintext password for user ${username} has been hashed.`);
+            // Continue with login...
+        }
+
+        loggedInUser = username; // Handle session or token generation
         if (existingAccount.isAdmin) {
-            // If user is an admin, send a response indicating admin status
+            // If the user is an admin
             return res.status(200).json({ isAdmin: true });
         } else {
-                return res.redirect(`/general`);  
+            // For regular users
+            return res.redirect('/general');
         }
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 
 server.get('/general', async (req, res) => {
@@ -405,16 +434,21 @@ server.post('/signup', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
+        // Check if an account with the same email or username already exists
         const existingAccount = await Account.findOne({ $or: [{ email }, { username }] });
 
         if (existingAccount) {
             return res.status(401).json('An account with the same email or username already exists.');
         }
 
+        // Generate a salt and hash the password
+        const hashedPassword = await bcrypt.hash(password, 10); // using 10 rounds for salt generation
+
+        // Create a new account with the hashed password
         const newAccount = new Account({
             username,
             email,
-            password,
+            password: hashedPassword, // store the hashed password
             bio: '',
             college: '',
             idNo: '',
@@ -422,9 +456,11 @@ server.post('/signup', async (req, res) => {
             photo: 'ADD-ONS/profilepic.jpg',
         });
 
+        // Save the new account to the database
         const result = await newAccount.save();
-
         console.log('Data added to the database:', result);
+
+        // Redirect to the login page after successful signup
         res.redirect('/login');
     } catch (error) {
         console.error('Error adding data to the database:', error);
@@ -526,67 +562,41 @@ server.post('/updateProfile', async (req, res) => {
     }
 });
 
-
 server.get('/admin_post', async function(req, resp) {
     try {
         const postId = req.query.postId;
-        if (!postId) {
-            return resp.status(400).send("Post ID is required");
+        if (!ObjectId.isValid(postId)) {
+            return resp.status(400).send('Invalid post ID');
         }
 
-        // Fetch the post information from the database based on the postId
-        const post = await PostInfo.findById(postId);
-        
-        if (!post) {
-            // Handle case where post is not found
-            return resp.status(404).send("Post not found");
+        const postInfoData = await PostInfo.findById(postId).populate('AccountId');
+        if (!postInfoData) {
+            return resp.status(404).send('Post not found');
         }
 
-        // Fetch comments associated with the specific post from the database using PostId field
-        const comments = await CommentInfo.find({ PostId: postId });
-        
+        // Retrieve the poster's data from the accounts collection
+        const accountId = postInfoData.AccountId;
+        const accountData = await Account.findById(accountId);
+        if (!accountData) {
+            return resp.status(404).send('Poster account not found');
+        }
 
-        const repliesPromises = comments.map(async (comment) => {
-            // Fetch replies for the current comment from replyinfos collection
-            const replies = await ReplyInfo.find({ CommentId: comment._id });
-            return replies;
-        });
-        
-        // Flatten the array of arrays of replies into a single array
-        const replies = (await Promise.all(repliesPromises)).flat();
-        
+        // Example of populating CommenterId field when querying comments
+        const commentInfoData = await CommentInfo.find().populate('CommenterId');
+        const replyInfoData = await ReplyInfo.find().populate('CommentId').populate('CommenterId');
 
-        // Fetch account information for the post's poster
-        const posterAccount = await Account.findById(post.AccountId);
-
-        // Fetch account information for each commenter
-        const commenters = await Promise.all(comments.map(async (comment) => {
-            // Fetch commenter's account information
-            const commenterAccount = await Account.findById(comment.CommenterId);
-            return commenterAccount; // Return commenter's account info
-        }));
-
-        // Log the fetched post, poster, and commenters information to the console
-        console.log("Fetched Post Information:", post);
-        console.log("Fetched Poster Information:", posterAccount);
-        console.log("Fetched Commenters Information:", commenters);
-        console.log("Fetched Replies:", replies);
-        console.log("Fetched Comments:", comments);
-
-        // Render the 'admin_post' template with the fetched post, poster, commenters, and comments
+        // Pass the entire poster's data to the rendering context
         resp.render('admin_post', {
-            layout: 'index',
-            title: 'Post Details',
-            post: post,
-            poster: posterAccount, // Pass the fetched poster information to the template
-            commenters: commenters, // Pass the fetched commenters information to the template
-            comments: comments, // Pass the fetched comments to the template
-            replies: replies // Pass the fetched replies to the template
+            layout: 'index', // Assuming a different layout for admin pages
+            admin_index_title: 'Admin Post',
+            postInfoData,
+            posterData: accountData, // Pass the entire poster's data
+            commentInfoData,
+            replyInfoData,
         });
     } catch (error) {
-        console.error("Error fetching post:", error);
-        // Handle error appropriately, e.g., send an error response
-        resp.status(500).send("Internal Server Error");
+        console.error('Error retrieving data:', error);
+        resp.status(500).send('Internal Server Error');
     }
 });
 

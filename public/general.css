@@ -303,7 +303,7 @@ main {
 
 .main_about{
     margin-top:20px;
-    height:590px;
+    height:850px;
     width:290px;
     background-color:white;
     display:flex;
@@ -315,7 +315,7 @@ main {
 .main_about-info {
     margin: 0;
     padding: 0;
-    height: 590px;
+    height: 850px;
     width: 290px;
     border: 2px solid white;
     border-radius: 10px; 
