@@ -510,67 +510,41 @@ server.post('/updateProfile', async (req, res) => {
     }
 });
 
-
 server.get('/admin_post', async function(req, resp) {
     try {
         const postId = req.query.postId;
-        if (!postId) {
-            return resp.status(400).send("Post ID is required");
+        if (!ObjectId.isValid(postId)) {
+            return resp.status(400).send('Invalid post ID');
         }
 
-        // Fetch the post information from the database based on the postId
-        const post = await PostInfo.findById(postId);
-        
-        if (!post) {
-            // Handle case where post is not found
-            return resp.status(404).send("Post not found");
+        const postInfoData = await PostInfo.findById(postId).populate('AccountId');
+        if (!postInfoData) {
+            return resp.status(404).send('Post not found');
         }
 
-        // Fetch comments associated with the specific post from the database using PostId field
-        const comments = await CommentInfo.find({ PostId: postId });
-        
+        // Retrieve the poster's data from the accounts collection
+        const accountId = postInfoData.AccountId;
+        const accountData = await Account.findById(accountId);
+        if (!accountData) {
+            return resp.status(404).send('Poster account not found');
+        }
 
-        const repliesPromises = comments.map(async (comment) => {
-            // Fetch replies for the current comment from replyinfos collection
-            const replies = await ReplyInfo.find({ CommentId: comment._id });
-            return replies;
-        });
-        
-        // Flatten the array of arrays of replies into a single array
-        const replies = (await Promise.all(repliesPromises)).flat();
-        
+        // Example of populating CommenterId field when querying comments
+        const commentInfoData = await CommentInfo.find().populate('CommenterId');
+        const replyInfoData = await ReplyInfo.find().populate('CommentId').populate('CommenterId');
 
-        // Fetch account information for the post's poster
-        const posterAccount = await Account.findById(post.AccountId);
-
-        // Fetch account information for each commenter
-        const commenters = await Promise.all(comments.map(async (comment) => {
-            // Fetch commenter's account information
-            const commenterAccount = await Account.findById(comment.CommenterId);
-            return commenterAccount; // Return commenter's account info
-        }));
-
-        // Log the fetched post, poster, and commenters information to the console
-        console.log("Fetched Post Information:", post);
-        console.log("Fetched Poster Information:", posterAccount);
-        console.log("Fetched Commenters Information:", commenters);
-        console.log("Fetched Replies:", replies);
-        console.log("Fetched Comments:", comments);
-
-        // Render the 'admin_post' template with the fetched post, poster, commenters, and comments
+        // Pass the entire poster's data to the rendering context
         resp.render('admin_post', {
-            layout: 'index',
-            title: 'Post Details',
-            post: post,
-            poster: posterAccount, // Pass the fetched poster information to the template
-            commenters: commenters, // Pass the fetched commenters information to the template
-            comments: comments, // Pass the fetched comments to the template
-            replies: replies // Pass the fetched replies to the template
+            layout: 'index', // Assuming a different layout for admin pages
+            admin_index_title: 'Admin Post',
+            postInfoData,
+            posterData: accountData, // Pass the entire poster's data
+            commentInfoData,
+            replyInfoData,
         });
     } catch (error) {
-        console.error("Error fetching post:", error);
-        // Handle error appropriately, e.g., send an error response
-        resp.status(500).send("Internal Server Error");
+        console.error('Error retrieving data:', error);
+        resp.status(500).send('Internal Server Error');
     }
 });
 
