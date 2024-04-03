@@ -35,6 +35,8 @@ $(document).ready(function () {
                 $('.num_vote').text(newVoteCount);
             }
         }
+
+        
     });
 
     $('.down_vote, .down_vote_filled').click( function () {
@@ -445,4 +447,8 @@ function toggleReply(actionContainer) {
         $('.comment-section').append(comments);
     }
     
+
+
+    
 });
+

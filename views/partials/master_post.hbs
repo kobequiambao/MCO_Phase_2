@@ -24,12 +24,12 @@
                         </div>
 
                         <div class="main_post-buttons">
-                            <div class="main_vote">
+                            <div class="main_vote" onclick = "vote()">
                                 <img class="up_vote" src="/CCAPDEV-LOGO-2/2.png" alt="">
-                                <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden>
-                                <span class = "num_vote">{{postInfoData.NumvoteCount}}</span>
+                                <img class="up_vote_filled" src="/CCAPDEV-LOGO-2/16.png" alt="" hidden >
+                                <span class = "num_vote" id = "num_vote">{{postInfoData.NumvoteCount}}</span>
                                 <img class="down_vote" src="/CCAPDEV-LOGO-2/3.png" alt="">
-                                <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden>
+                                <img class="down_vote_filled" src="/CCAPDEV-LOGO-2/17.png" alt="" hidden >
                             </div>
                             <div class="button-container" id = "master-comment">
                                 <div class="main_post-buttons-comment"></div>
@@ -195,5 +195,66 @@
   }
 
 
+  
+</script>
+
+<script>
+  function vote() {
+      $('.up_vote, .up_vote_filled').click(function () {
+        $('.up_vote').toggle();
+        $('.up_vote_filled').toggle();
+
+        var currentVoteCount = parseInt($('.num_vote').text());
+        var newVoteCount;
+        
+        if($('.down_vote').is(":hidden")){
+            $('.down_vote').toggle();
+            $('.down_vote_filled').toggle();
+            newVoteCount = currentVoteCount + 2;
+            $('.num_vote').text(newVoteCount);
+            voteCount('{{postInfoData._id}}',2);
+        } else {
+            if($('.up_vote').is(":hidden")){
+                newVoteCount = currentVoteCount + 1;
+                $('.num_vote').text(newVoteCount);
+                voteCount('{{postInfoData._id}}',1);
+            }
+            else {
+                newVoteCount = currentVoteCount - 1;
+                $('.num_vote').text(newVoteCount);
+                voteCount('{{postInfoData._id}}',-1);
+            }
+        }
+
+        
+    });
+
+    $('.down_vote, .down_vote_filled').click( function () {
+        $('.down_vote').toggle();
+        $('.down_vote_filled').toggle();
+
+        var currentVoteCount = parseInt($('.num_vote').text());
+        var newVoteCount;
+        
+        if($('.up_vote').is(":hidden")){
+            $('.up_vote').toggle();
+            $('.up_vote_filled').toggle();
+            newVoteCount = currentVoteCount - 2;
+            $('.num_vote').text(newVoteCount);
+            voteCount('{{postInfoData._id}}',-2);
+        } else {
+            if($('.down_vote').is(":hidden")){
+                newVoteCount = currentVoteCount - 1;
+                $('.num_vote').text(newVoteCount);
+                voteCount('{{postInfoData._id}}',-1);
+            }
+            else {
+                newVoteCount = currentVoteCount + 1;
+                $('.num_vote').text(newVoteCount);
+                voteCount('{{postInfoData._id}}',1);
+            }
+        }
+    });
+  };
   
 </script>

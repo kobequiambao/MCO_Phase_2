@@ -786,6 +786,27 @@ server.get('/search', async (req, res) => {
     }
 });
 
+
+server.post('/vote', async (req, res) => {
+
+    try {
+        const { postId, toAdd } = req.body;
+
+        // Increment the NumvoteCount field of the corresponding post
+        await PostInfo.findByIdAndUpdate(postId, { $inc: { NumvoteCount: toAdd } });
+
+        res.status(200).send('Upvoted successfully');
+    } catch (error) {
+        console.error('Error upvoting post:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
+
+
+
 const port = 3000;
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
