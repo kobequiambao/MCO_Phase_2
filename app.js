@@ -303,32 +303,50 @@ server.post('/reply', async (req, res) => {
 
         // Assuming userData is retrieved somewhere
         const userData = await Account.findOne({ username: loggedInUser });
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
         const commentorData = await Account.findOne({ username: commentByValue});
-        const commentData = await CommentInfo.findOne({
+        let commentData = await CommentInfo.findOne({
             Body: commentText,
             PostId: PostId,
             CommenterId: commentorData._id,
             NumvoteCount: commentVotecount,
         });
-        
-        if (!userData) {
-            return res.status(404).send('User not found');
+        if (!commentData) {
+            commentData = await ReplyInfo.findOne({
+                Body: commentText,
+                CommentBy: commentByValue,
+                CommenterId: commentorData._id,
+            })
+            const newReply = new ReplyInfo({
+                Body: comment,
+                CommentId: commentData.CommentId, 
+                CommentBy: commentByValue,
+                Date: currentDate,
+                isHidden: false, 
+                NumvoteCount: 0,
+                CommenterId: userData._id,
+            });
+    
+            const result = await newReply.save();
+    
+            console.log('Data added to the database:', result); 
+        } else {
+            const newReply = new ReplyInfo({
+                Body: comment,
+                CommentId: commentData._id, 
+                CommentBy: commentByValue,
+                Date: currentDate,
+                isHidden: false, 
+                NumvoteCount: 0,
+                CommenterId: userData._id,
+            });
+    
+            const result = await newReply.save();
+    
+            console.log('Data added to the database:', result); 
         }
-
-        const newReply = new ReplyInfo({
-            Body: comment,
-            CommentId: commentData.id, 
-            CommentBy: commentByValue,
-            Date: currentDate,
-            isHidden: false, 
-            NumvoteCount: 0,
-            CommenterId: userData._id,
-        });
-
-        const result = await newReply.save();
-
-        console.log('Data added to the database:', result); 
-        
     } catch (error) {
         console.error('Error adding data to the database:', error);
         res.status(500).send('Internal Server Error');
