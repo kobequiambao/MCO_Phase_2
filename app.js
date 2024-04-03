@@ -2,6 +2,7 @@ const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongoose').Types;
+const bcrypt = require('bcrypt');
 
 const handlebars = require('express-handlebars');  
 const Handlebars = require('handlebars');
@@ -203,22 +204,44 @@ server.get('/login', function(req, resp){
     });
 });
 
+
+
 server.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
-        loggedInUser = username;
-        const existingAccount = await Account.findOne({ username, password });
+        const existingAccount = await Account.findOne({ username });
 
         if (!existingAccount) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        if (existingAccount.isAdmin) {
-            // If user is an admin, send a response indicating admin status
-            return res.status(200).json({ isAdmin: true });
-        } else {
-                return res.redirect(`/general`);  
-        }
+        // Attempt to use bcrypt to compare the provided password with the hashed password
+        bcrypt.compare(password, existingAccount.password, async (err, isMatch) => {
+            if (err) {
+                console.error('Error during password comparison:', err);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+
+            if (isMatch) {
+                // Password matches, proceed with login
+                loggedInUser = username; // Adjust based on your session handling
+                return res.redirect('/general');
+            } else {
+                // As a fallback, check if the password is stored in plaintext (this should be removed eventually)
+                if (password === existingAccount.password) {
+                    // Consider rehashing the plaintext password here and saving it
+                    const salt = await bcrypt.genSalt(10);
+                    existingAccount.password = await bcrypt.hash(password, salt);
+                    await existingAccount.save();
+
+                    loggedInUser = username; // Adjust based on your session handling
+                    return res.redirect('/general');
+                }
+
+                // If neither hashed nor plaintext passwords matched
+                return res.status(401).json({ error: 'Invalid username or password' });
+            }
+        });
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal Server Error' });
