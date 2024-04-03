@@ -198,63 +198,52 @@
   
 </script>
 
+</script>
+
 <script>
-  function vote() {
-      $('.up_vote, .up_vote_filled').click(function () {
-        $('.up_vote').toggle();
-        $('.up_vote_filled').toggle();
+var upvoted = false;
+var downvoted = false;
 
-        var currentVoteCount = parseInt($('.num_vote').text());
-        var newVoteCount;
-        
-        if($('.down_vote').is(":hidden")){
-            $('.down_vote').toggle();
-            $('.down_vote_filled').toggle();
-            newVoteCount = currentVoteCount + 2;
-            $('.num_vote').text(newVoteCount);
-            voteCount('{{postInfoData._id}}',2);
-        } else {
-            if($('.up_vote').is(":hidden")){
-                newVoteCount = currentVoteCount + 1;
-                $('.num_vote').text(newVoteCount);
-                voteCount('{{postInfoData._id}}',1);
-            }
-            else {
-                newVoteCount = currentVoteCount - 1;
-                $('.num_vote').text(newVoteCount);
-                voteCount('{{postInfoData._id}}',-1);
-            }
-        }
+$('.up_vote, .up_vote_filled').click(function () {
+    if (upvoted) {
+        // Already upvoted, do nothing
+        return;
+    }
+    
+    // Toggle upvote buttons
+    $('.up_vote').toggle();
+    $('.up_vote_filled').toggle();
 
-        
-    });
+    var currentVoteCount = parseInt($('.num_vote').text());
+    var newVoteCount = currentVoteCount + 1;
+    $('.num_vote').text(newVoteCount);
 
-    $('.down_vote, .down_vote_filled').click( function () {
-        $('.down_vote').toggle();
-        $('.down_vote_filled').toggle();
+    // Set upvoted flag to true and downvoted flag to false
+    upvoted = true;
+    downvoted = false;
 
-        var currentVoteCount = parseInt($('.num_vote').text());
-        var newVoteCount;
-        
-        if($('.up_vote').is(":hidden")){
-            $('.up_vote').toggle();
-            $('.up_vote_filled').toggle();
-            newVoteCount = currentVoteCount - 2;
-            $('.num_vote').text(newVoteCount);
-            voteCount('{{postInfoData._id}}',-2);
-        } else {
-            if($('.down_vote').is(":hidden")){
-                newVoteCount = currentVoteCount - 1;
-                $('.num_vote').text(newVoteCount);
-                voteCount('{{postInfoData._id}}',-1);
-            }
-            else {
-                newVoteCount = currentVoteCount + 1;
-                $('.num_vote').text(newVoteCount);
-                voteCount('{{postInfoData._id}}',1);
-            }
-        }
-    });
-  };
+    voteCount('{{postInfoData._id}}', 1);
+});
+
+$('.down_vote, .down_vote_filled').click( function () {
+    if (downvoted) {
+        // Already downvoted, do nothing
+        return;
+    }
+    
+    // Toggle downvote buttons
+    $('.down_vote').toggle();
+    $('.down_vote_filled').toggle();
+
+    var currentVoteCount = parseInt($('.num_vote').text());
+    var newVoteCount = currentVoteCount - 1;
+    $('.num_vote').text(newVoteCount);
+
+    // Set downvoted flag to true and upvoted flag to false
+    downvoted = true;
+    upvoted = false;
+
+    voteCount('{{postInfoData._id}}', -1);
+});
   
 </script>
