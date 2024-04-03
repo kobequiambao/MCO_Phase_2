@@ -268,6 +268,12 @@ server.post('/comment', async (req, res) => {
     try {
         const {comment, currentDate, PostId} = req.body;
 
+        const postData = await PostInfo.findOneAndUpdate(
+            { _id: PostId },
+            { $inc: { CommentCount: 1 } },
+            { new: true }
+        );
+
         // Assuming userData is retrieved somewhere
         const userData = await Account.findOne({ username: loggedInUser });
 
@@ -300,7 +306,11 @@ server.post('/comment', async (req, res) => {
 server.post('/reply', async (req, res) => {
     try {
         const {comment, currentDate, PostId, commentByValue, commentText, commentVotecount} = req.body;
-
+        const postData = await PostInfo.findOneAndUpdate(
+            { _id: PostId },
+            { $inc: { CommentCount: 1 } },
+            { new: true }
+        );
         // Assuming userData is retrieved somewhere
         const userData = await Account.findOne({ username: loggedInUser });
         if (!userData) {
