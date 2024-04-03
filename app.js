@@ -215,38 +215,46 @@ server.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Attempt to use bcrypt to compare the provided password with the hashed password
-        bcrypt.compare(password, existingAccount.password, async (err, isMatch) => {
-            if (err) {
-                console.error('Error during password comparison:', err);
-                return res.status(500).json({ error: 'Internal Server Error' });
-            }
-
-            if (isMatch) {
-                // Password matches, proceed with login
-                loggedInUser = username; // Adjust based on your session handling
-                return res.redirect('/general');
-            } else {
-                // As a fallback, check if the password is stored in plaintext (this should be removed eventually)
-                if (password === existingAccount.password) {
-                    // Consider rehashing the plaintext password here and saving it
-                    const salt = await bcrypt.genSalt(10);
-                    existingAccount.password = await bcrypt.hash(password, salt);
-                    await existingAccount.save();
-
-                    loggedInUser = username; // Adjust based on your session handling
-                    return res.redirect('/general');
-                }
-
-                // If neither hashed nor plaintext passwords matched
+        // Check if the password in the database is already hashed
+        const isHashed = existingAccount.password.startsWith('$2b$');
+        
+        if (isHashed) {
+            // If the password is hashed, use bcrypt to compare
+            const isMatch = await bcrypt.compare(password, existingAccount.password);
+            if (!isMatch) {
+                // Passwords do not match
                 return res.status(401).json({ error: 'Invalid username or password' });
             }
-        });
+            // Continue with login...
+        } else {
+            // Assume the password is in plaintext and check it
+            if (password !== existingAccount.password) {
+                // Plaintext passwords do not match
+                return res.status(401).json({ error: 'Invalid username or password' });
+            }
+            // If plaintext password matches, hash it and save
+            const hashedPassword = await bcrypt.hash(password, 10);
+            existingAccount.password = hashedPassword;
+            await existingAccount.save();
+            // Log to console or notify the admin that a plaintext password was hashed
+            console.log(`Plaintext password for user ${username} has been hashed.`);
+            // Continue with login...
+        }
+
+        loggedInUser = username; // Handle session or token generation
+        if (existingAccount.isAdmin) {
+            // If the user is an admin
+            return res.status(200).json({ isAdmin: true });
+        } else {
+            // For regular users
+            return res.redirect('/general');
+        }
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 
 server.get('/general', async (req, res) => {
@@ -428,16 +436,21 @@ server.post('/signup', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
+        // Check if an account with the same email or username already exists
         const existingAccount = await Account.findOne({ $or: [{ email }, { username }] });
 
         if (existingAccount) {
             return res.status(401).json('An account with the same email or username already exists.');
         }
 
+        // Generate a salt and hash the password
+        const hashedPassword = await bcrypt.hash(password, 10); // using 10 rounds for salt generation
+
+        // Create a new account with the hashed password
         const newAccount = new Account({
             username,
             email,
-            password,
+            password: hashedPassword, // store the hashed password
             bio: '',
             college: '',
             idNo: '',
@@ -445,9 +458,11 @@ server.post('/signup', async (req, res) => {
             photo: 'ADD-ONS/profilepic.jpg',
         });
 
+        // Save the new account to the database
         const result = await newAccount.save();
-
         console.log('Data added to the database:', result);
+
+        // Redirect to the login page after successful signup
         res.redirect('/login');
     } catch (error) {
         console.error('Error adding data to the database:', error);
