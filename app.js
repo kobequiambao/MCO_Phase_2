@@ -770,7 +770,6 @@ server.get('/search', async (req, res) => {
     try {
         const searchQuery = req.query.q;
 
-        // Perform a case-insensitive search in the 'Title' and 'Body' fields of the PostInfo collection
         const searchResults = await PostInfo.find({
             $or: [
                 { Title: { $regex: searchQuery, $options: 'i' } },
