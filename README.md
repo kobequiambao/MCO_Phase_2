@@ -26,11 +26,11 @@ DLSYOU Forum was born out of a desire to provide the De La Salle University comm
 
 - **User-Friendly Design:** DLSYOU Forum boasts a user-friendly interface, making navigation and participation intuitive for all users.
 
-###NPM Packages:
--**Express: Helps you build the server-side part of your web applications quickly.
--**Mongoose: Makes working with MongoDB databases easier and more structured.
--**bcrypt:  Used for securely hashing passwords before they're stored in your database.
--**express-handlebars and handlebars: Both are used together to build and render dynamic HTML pages based on templates, making your web application's user interface dynamic and data-driven.
+### NPM Packages:
+- **Express: Helps you build the server-side part of your web applications quickly.
+- **Mongoose: Makes working with MongoDB databases easier and more structured.
+- **bcrypt:  Used for securely hashing passwords before they're stored in your database.
+- **express-handlebars and handlebars: Both are used together to build and render dynamic HTML pages based on templates, making your web application's user interface dynamic and data-driven.
 
 ### Meet the Programmers
 
