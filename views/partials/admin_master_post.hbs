@@ -1,23 +1,23 @@
 {{!-- MASTER-POSTS --}}
 {{!-- {{log this}} --}}
-<div class="main_master_post" id="{{post._id}}">
+<div class="main_master_post" id="{{postInfoData._id}}">
     <div class="main_master_post-top">
         <div class="main_post-desc">
             <div class="main_post-desc-poster">
-                <div class="main_post-desc-poster-pic" style="background-image: url('{{poster.photo}}')"></div>
+                <div class="main_post-desc-poster-pic" style="background-image: url('{{posterData.photo}}')"></div>
                 <div class="main_post-desc-poster-name">
-                    u/{{poster.username}}
+                    u/{{posterData.username}}
                 </div>
-                <div class="main_post-desc-banner">{{post.Type}}</div>
-                <div class="main_post-date">{{post.Date}}</div>
+                <div class="main_post-desc-banner">{{postInfoData.Type}}</div>
+                <div class="main_post-date">{{postInfoData.Date}}</div>
             </div>
 
-            <div class="main_post-desc-title">{{post.Title}}</div>
-            <div class="main_post-desc-content">{{post.Body}}</div>
-            {{#if post.Image}}
+            <div class="main_post-desc-title">{{postInfoData.Title}}</div>
+            <div class="main_post-desc-content">{{postInfoData.Body}}</div>
+            {{#if postInfoData.Image}}
             <div class="main_post-img-container">
-                <div class="blurred-background" style="background-color: {{post.RGB}};"></div>
-                <img class="main_post-img" src="{{post.Image}}" alt="" {{post.Stat}}>
+                <div class="blurred-background" style="background-color: {{postInfoData.RGB}};"></div>
+                <img class="main_post-img" src="{{postInfoData.Image}}" alt="" {{postInfoData.Stat}}>
             </div>
             {{/if}}
         </div>
@@ -26,18 +26,18 @@
     <div class="main_post-buttons">
         <div class="main_vote">
             <img class="uv" src="/CCAPDEV-LOGO-2/2.png" alt="">
-            <span class="num_vote">{{post.NumvoteCount}}</span>
+            <span class="num_vote">{{postInfoData.NumvoteCount}}</span>
             <img class="dv" src="/CCAPDEV-LOGO-2/3.png" alt="">
         </div>
         <div class="button-container" id="master-comment">
             <div class="main_post-buttons-comment"></div>
-            <span><span class="num_comment">{{post.CommentCount}}</span>Comment</span>
+            <span><span class="num_comment">{{postInfoData.CommentCount}}</span>Comment</span>
         </div>
         <div class="button-container" id="shareButton">
             <div class="main_post-buttons-share"></div>
             <span>Share</span>
         </div>
-        <div class="button-container" onclick="deletePost('{{post._id}}')">
+        <div class="button-container" onclick="deletePost('{{postInfoData._id}}')">
             <div class="main_post-buttons-delete"></div>
             <span>Delete</span>
         </div>
@@ -65,86 +65,16 @@
         </div>
     </div>
 
-    {{#if comments.length}}
     <div class="comment-section">
-        
-        <div class="comment-container">
-            <div class="comment-profile">
-                <img class=userpfp src="/CCAPDEV-LOGO-2/user1.png">
-                <span class="threadline">|</span>
-            </div>
-            <div class="comment-info-container">
-                <div class="info-comment">
-                    {{#each ../commenters}}
-                    <p class="comment-by">{{username}}</p>
-                    {{/each}}
-                    <span class="posted-time">&#xb7; {{this.Date}}</span>
-                </div>
-                <div class="comment-body">
-                    <p class="comment-text">{{this.Body}}</p>
-                </div>
-                <div class="comment-section-icons">
-                    <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
-                    <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
-                    <span class="vote-count">{{this.NumvoteCount}}</span>
-                    <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
-                    <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
-                    <div class="reply-container">
-                        <button class="reply-button">
-                            <span class="reply-text">Reply</span>
-                        </button>
-                    </div>
-                </div>
-                <textarea class="reply-textarea" hidden></textarea>
-                <button class="comment-button" hidden>Comment</button>
-                <button class="cancel-button" hidden>Cancel</button>
-            </div>
-            
-            {{#if replies.length}}
-            <div class="reply-section">
-                <div class="comment-container replied-comment-container">
-                    <div class="comment-profile">
-                        <div class=userpfp style="background-image: ${userPhoto};"></div>
-                        <span class="threadline">|</span>
-                    </div>
-                    <div class="comment-info-container">
-                        <div class="info-comment">
-                            <p class="comment-by">{{CommenterId}}</p> ▸ <span class="replying-to">{{#each ../commenters}}{{username}}{{/each}}</span> <span class="posted-time">&#xb7;{{Date}}</span>
-                        </div>
-                        <div class="comment-body">
-                            <p class="comment-text">{{Body}}</p>
-                        </div>
-                        <div class="comment-section-icons">
-                            <img class="upvote-icon" src="/CCAPDEV-LOGO-2/2.png">
-                            <img class="upvote-icon-filled" src="/CCAPDEV-LOGO-2/16.png" hidden>
-                            <span class="vote-count">{{NumvoteCount}}</span>
-                            <img class="downvote-icon" src="/CCAPDEV-LOGO-2/3.png">
-                            <img class="downvote-icon-filled" src="/CCAPDEV-LOGO-2/17.png" hidden>
-                            <div class="reply-container">
-                                <button class="reply-button">
-                                    <span class="reply-text">Reply</span>
-                                </button>
-                            </div>
-                        </div>
-                        <textarea class="reply-textarea replied-textarea" hidden></textarea>
-                        <button class="comment-button" hidden>Comment</button>
-                        <button class="cancel-button" hidden>Cancel</button>
-                    </div>
-                </div>
-            </div>
+            {{#each commentInfoData}}
+            {{#if (eq this.PostId ../postInfoData._id)}}
+                {{> comment commentInfoData=this replyInfoData=../replyInfoData}}
             {{/if}}
-            <div class="comment-body">
-                <p class="comment-text">{{this.Body}}</p>
-            </div>
-            <div class="admin_csi">
-                <img class="uv" src="/CCAPDEV-LOGO-2/2.png">
-                <span class="vote-count" id="admin_vc">{{comments.NumvoteCount}}</span>
-                <img class="dv" src="/CCAPDEV-LOGO-2/3.png">
-            </div>
-        </div>
+        {{/each}}
+
         
-    </div>/
-    {{/if}}
+    </div>
+
 </div>
 
 <style>
@@ -156,6 +86,9 @@
         z-index: 1;
         margin-top: -10px;
     }
+
+   
+    
 </style>
 
 <script>
