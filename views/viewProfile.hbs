@@ -22,7 +22,9 @@
 </script>
 
 <script id="template-comment" type="text/x-handlebars-template">
-    {{!-- {{> template_post2}} --}}
+    {{#if (eq this.PostId ../postInfoData._id)}}
+                {{> comment commentInfoData=this replyInfoData=../replyInfoData}}
+    {{/if}}
 </script>
 <script id="template-save" type="text/x-handlebars-template">
     {{!-- {{> template_post2}} --}}
