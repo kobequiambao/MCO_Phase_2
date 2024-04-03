@@ -64,8 +64,7 @@ $(document).ready(function () {
     $("#save").click(function(){
         $('.main_post-buttons-save').toggle();
         $('.main_post-buttons-save-filled').toggle();
-
-        
+  
       });
     
       
