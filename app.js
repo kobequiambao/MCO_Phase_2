@@ -778,7 +778,6 @@ server.get('/search', async (req, res) => {
             ]
         }).populate('AccountId');
 
-        // Respond with the search results
         res.json(searchResults);
     } catch (error) {
         console.error('Error performing search:', error);
