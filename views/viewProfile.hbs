@@ -4,25 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Profile</title>
-<link rel="stylesheet" href="view.css">
-<link rel="stylesheet" href="general.css"> 
+<link rel="stylesheet" href="/view.css">
+<link rel="stylesheet" href="/general.css"> 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="general.js"></script>
 <script type="text/javascript" src="template_post_script.js"></script>
-<script type="text/javascript" src="general.js"></script>
 <script id="template-post" type="text/x-handlebars-template">
-    {{!-- {{> template_post2}} --}}
+  
+    <div class="main_feed">
+        <div class="main_feed-post">
+   {{#each userPosts}}
+            {{> general_post}}
+        {{/each}} 
+
+         </div>
+    </div>
 </script>
+
 <script id="template-comment" type="text/x-handlebars-template">
     {{!-- {{> template_post2}} --}}
 </script>
 <script id="template-save" type="text/x-handlebars-template">
-    {{!-- {{> template_post2}} --}}
-</script>
-<script id="template-hidden" type="text/x-handlebars-template">
-    {{!-- {{> template_post2}} --}}
-</script>
-<script id="template-interactions" type="text/x-handlebars-template">
     {{!-- {{> template_post2}} --}}
 </script>
 
@@ -35,14 +37,17 @@
         <a href="#" class="nav-link active" data-target="posts">POSTS</a>
         <a href="#" class="nav-link" data-target="comments">COMMENTS</a>
         <a href="#" class="nav-link" data-target="saved">SAVED</a>
-        <a href="#" class="nav-link" data-target="hidden">HIDDEN</a>
-        <a href="#" class="nav-link" data-target="interactions">INTERACTIONS</a>
     </div>
 
     <ul class="post-list" id="template-container">
         <!-- Content will be dynamically added here -->
+        
     </ul>
 
 </body>
-
+<style>
+    .main_feed, .main_feed_post{
+        background-color: white;
+    }
+</style>
 </html>

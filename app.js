@@ -65,6 +65,7 @@ db.once('open', function () {
 
 
 
+
 const postInfoSchema = new mongoose.Schema({
     Title: String, 
     Body: String, 
@@ -109,8 +110,36 @@ const CommentInfoSchema = new mongoose.Schema({
 });
 
 const HiddenSchema = new mongoose.Schema({
-    AccountId: String,
-    PostId: String,
+    AccountId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account'
+    },
+    PostId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PostInfo'
+    }
+});
+
+const numvotedSchema = new mongoose.Schema({
+    AccountId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account'
+    },
+    PostId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PostInfo'
+    }
+});
+
+const savedSchema = new mongoose.Schema({
+    AccountId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account'
+    },
+    PostId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PostInfo'
+    }
 });
 
 const ReplyInfoSchema = new mongoose.Schema({
@@ -128,13 +157,15 @@ const ReplyInfoSchema = new mongoose.Schema({
         ref: 'Account'
     },
  });
+ 
+ const Numvoted = mongoose.model('numvoted', numvotedSchema);
+ const Saved = mongoose.model('saved', savedSchema);
 
  const Account = mongoose.model('Account', AccountSchema);
  const CommentInfo = mongoose.model('CommentInfo', CommentInfoSchema);
  const Hidden = mongoose.model('Hidden', HiddenSchema);
  const PostInfo = mongoose.model('PostInfo', postInfoSchema);
  const ReplyInfo = mongoose.model('ReplyInfo', ReplyInfoSchema);
- 
  
 server.get('/', async (req, res) => {
     try {
@@ -403,23 +434,29 @@ server.post('/signup', async (req, res) => {
 
 server.get('/viewProfile', async (req, res) => {
     try {
+        // Find posts made by the logged-in user
         const userData = await Account.findOne({ username: loggedInUser });
-
+    
         if (!userData) {
             return res.status(404).send('User not found');
         }
-
+    
+        // Retrieve posts associated with the logged-in user
         const userPosts = await PostInfo.find({ AccountId: userData._id }).populate('AccountId');
+        const userComments = await CommentInfo.find({ CommenterId: userData._id });
+        const savedPosts = await Saved.find({ AccountId: userData._id });
+
 
         res.render('viewProfile', {
             layout: 'index',
             title: 'View Profile',
             userData,
-            userPosts
+            userPosts,
+            userComments,
+            savedPosts
         });
-
     } catch (error) {
-        console.error('Error rendering editProfile template:', error);
+        console.error('Error rendering general template:', error);
         res.status(500).send('Internal Server Error');
     }
 });
