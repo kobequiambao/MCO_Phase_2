@@ -22,9 +22,13 @@
 </script>
 
 <script id="template-comment" type="text/x-handlebars-template">
-    {{#if (eq this.PostId ../postInfoData._id)}}
-                {{> comment commentInfoData=this replyInfoData=../replyInfoData}}
-    {{/if}}
+    <div class = "main_feed"> 
+            <div class = "main_feed-post">
+            {{#each postInfoData}}
+                    {{> general_post}}
+                {{/each}}
+            </div>
+        </div>  
 </script>
 <script id="template-save" type="text/x-handlebars-template">
     {{!-- {{> template_post2}} --}}
@@ -52,4 +56,5 @@
         background-color: white;
     }
 </style>
+
 </html>

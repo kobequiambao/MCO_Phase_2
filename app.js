@@ -433,32 +433,48 @@ server.post('/signup', async (req, res) => {
 });
 
 server.get('/viewProfile', async (req, res) => {
-    try {
-        // Find posts made by the logged-in user
-        const userData = await Account.findOne({ username: loggedInUser });
-    
-        if (!userData) {
-            return res.status(404).send('User not found');
-        }
-    
-        // Retrieve posts associated with the logged-in user
-        const userPosts = await PostInfo.find({ AccountId: userData._id }).populate('AccountId');
-        const userComments = await CommentInfo.find({ CommenterId: userData._id });
-        const savedPosts = await Saved.find({ AccountId: userData._id });
+try {
+    // Find posts made by the logged-in user
+    const userData = await Account.findOne({ username: loggedInUser });
+    const postInfoData = await PostInfo.find().populate('AccountId');
 
-
-        res.render('viewProfile', {
-            layout: 'index',
-            title: 'View Profile',
-            userData,
-            userPosts,
-            userComments,
-            savedPosts
-        });
-    } catch (error) {
-        console.error('Error rendering general template:', error);
-        res.status(500).send('Internal Server Error');
+    if (!userData) {
+        return res.status(404).send('User not found');
     }
+    
+    // Retrieve posts associated with the logged-in user
+    const userPosts = await PostInfo.find({ AccountId: userData._id }).populate('AccountId');
+    const userComments = await CommentInfo.find({ CommenterId: userData._id });
+    const savedPosts = await Saved.find({ AccountId: userData._id });
+
+    const userReplies = await Reply.find({ CommenterId: userData._id });
+    const repliedCommentIds = userReplies.map(reply => reply.commentId);
+    const repliedComments = await CommentInfo.find({ _id: { $in: repliedCommentIds } });
+
+    // Filter posts that the user has commented on or replied to
+    const postsWithUserInteraction = postInfoData.filter(post => {
+        // Check if the post has a comment made by the logged-in user
+        const hasUserComment = userComments.some(comment => comment.PostId.equals(post._id));
+        
+
+        const hasUserReply = repliedComments.some(comment => comment.PostId.equals(post._id));
+        // Return true if either the post has a comment or a reply made by the user
+        return hasUserComment || hasUserReply;
+    });
+
+    res.render('viewProfile', {
+        layout: 'index',
+        title: 'View Profile',
+        userData,
+        userPosts,
+        userComments,
+        savedPosts,
+        postInfoData: postsWithUserComment, // Send only the posts with user comments to the view
+    });
+} catch (error) {
+    console.error('Error rendering general template:', error);
+    res.status(500).send('Internal Server Error');
+}
 });
 
 server.get('/editProfile', async (req, res) => {
