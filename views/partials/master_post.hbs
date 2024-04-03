@@ -40,11 +40,17 @@
                                 <span>Share</span>
                             </div>
                           
-                            <div class="button-container" id ="save">
-                                <div class="main_post-buttons-save"></div>
-                                <div class="main_post-buttons-save-filled" hidden></div>
-                                <span>Save</span>
-                            </div>
+                           <div class="button-container" id="save">
+                          {{#if isSaved}}
+                              <div class="main_post-buttons-save-filled"></div>
+                              <div class="main_post-buttons-save" hidden></div>
+                          {{else}}
+                              <div class="main_post-buttons-save"></div>
+                              <div class="main_post-buttons-save-filled" hidden></div>
+                          {{/if}}
+                          <span>Save</span>
+                          </div>
+
 
                             {{#if (eq userData._id postInfoData.AccountId._id)}}
                               <div class="button-container" id="editPost" onclick="openLoginForm_edit('{{postInfoData._id}}')">
@@ -58,9 +64,7 @@
                                   <span>Delete</span>
                               </div>          
                             {{/if}}         
-                    
-  
-                               
+
                         </div>
                     </div>
 
