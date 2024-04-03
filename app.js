@@ -215,14 +215,12 @@ server.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Check if the password in the database is already hashed
         const isHashed = existingAccount.password.startsWith('$2b$');
         
         if (isHashed) {
-            // If the password is hashed, use bcrypt to compare
             const isMatch = await bcrypt.compare(password, existingAccount.password);
             if (!isMatch) {
-                // Passwords do not match
+                
                 return res.status(401).json({ error: 'Invalid username or password' });
             }
             // Continue with login...
