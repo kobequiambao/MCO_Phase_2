@@ -469,35 +469,47 @@ server.post('/signup', async (req, res) => {
 });
 
 server.get('/viewProfile', async (req, res) => {
-try {
-    // Find posts made by the logged-in user
-    const userData = await Account.findOne({ username: loggedInUser });
-    const postInfoData = await PostInfo.find().populate('AccountId');
+    try {
+        // Find user data for the logged-in user
+        const userData = await Account.findOne({ username: loggedInUser });
+        
+        if (!userData) {
+            return res.status(404).send('User not found');
+        }
 
-    if (!userData) {
-        return res.status(404).send('User not found');
-    }
-    
-    // Retrieve posts associated with the logged-in user
-    const userPosts = await PostInfo.find({ AccountId: userData._id }).populate('AccountId');
-    const userComments = await CommentInfo.find({ CommenterId: userData._id });
-    const savedPosts = await Saved.find({ AccountId: userData._id });
-    // Filter posts that the user has commented on or replied to
-    const postsWithUserInteraction = postInfoData.filter(post => {
-        const hasUserComment = userComments.some(comment => comment.PostId.equals(post._id));
+        // Retrieve posts made by the logged-in user
+        const userPosts = await PostInfo.find({ AccountId: userData._id }).populate('AccountId');
+        
+        // Retrieve comments made by the logged-in user
+        const userComments = await CommentInfo.find({ CommenterId: userData._id });
+        
+        // Retrieve saved posts of the logged-in user
+        const savedPosts = await Saved.find({ AccountId: userData._id });
 
-        return hasUserComment;
-    });
+        // Retrieve all posts from the database
+        const allPosts = await PostInfo.find().populate('AccountId');
 
-    res.render('viewProfile', {
-        layout: 'index',
-        title: 'View Profile',
-        userData,
-        userPosts,
-        userComments,
-        savedPosts,
-        postInfoData: postsWithUserInteraction, // Send only the posts with user comments to the view
-    });
+
+
+        // Filter posts that the user has interacted with (commented on or saved)
+        const postsWithUserInteraction = allPosts.filter(post => {
+            const hasUserComment = userComments.some(comment => comment.PostId.equals(post._id));
+            return hasUserComment;
+        });
+
+        // Filter saved posts separately
+        const savedPostIds = savedPosts.map(savedPost => savedPost.PostId.toString());
+        const savedPostsOnly = allPosts.filter(post => savedPostIds.includes(post._id.toString()));
+
+        res.render('viewProfile', {
+            layout: 'index',
+            title: 'View Profile',
+            userData,
+            userPosts,
+            userComments,
+            savedPosts: savedPostsOnly, // Separate constant for saved posts
+            postInfoData: postsWithUserInteraction, // Send only the posts with user comments or saved by the user to the view
+        });
 } catch (error) {
     console.error('Error rendering general template:', error);
     res.status(500).send('Internal Server Error');
@@ -649,46 +661,55 @@ server.get('/admin_account', function(req, resp){
         title: 'Admin Accounts'   
     });
 });
-
 server.get('/post/:postId', async (req, resp) => {
     try {
-      const postId = req.params.postId;
-      if (!ObjectId.isValid(postId)) {
-        return resp.status(400).send('Invalid post ID');
-      }
-  
-      const postInfoData = await PostInfo.findById(postId).populate('AccountId');
-      const userData = await Account.findOne({ username: loggedInUser });
-      // Example of populating CommenterId field when querying comments
-      const commentInfoData = await CommentInfo.find().populate('CommenterId');
-      const replyInfoData = await ReplyInfo.find().populate('CommentId').populate('CommenterId');
+        const postId = req.params.postId;
+        if (!ObjectId.isValid(postId)) {
+            return resp.status(400).send('Invalid post ID');
+        }
+
+        const postInfoData = await PostInfo.findById(postId).populate('AccountId');
+        const userData = await Account.findOne({ username: loggedInUser });
+        // Example of populating CommenterId field when querying comments
+        const commentInfoData = await CommentInfo.find().populate('CommenterId');
+        const replyInfoData = await ReplyInfo.find().populate('CommentId').populate('CommenterId');
 
         if (!userData) {
             return resp.status(404).send('User not found');
         }
-      if (!postInfoData) {
-        return resp.status(404).send('Post not found');
-      }
-  
-      resp.render('post', {
-        layout: 'index',
-        index_title: 'Post',
-        postInfoData,
-        userData,
-        commentInfoData,
-        replyInfoData,
-    });
+        if (!postInfoData) {
+            return resp.status(404).send('Post not found');
+        }
+
+        // Check if the post is saved by the current user
+        const isSaved = await Saved.exists({ AccountId: userData._id, PostId: postId });
+        if (isSaved) {
+            // Code to execute if isSaved is true
+            console.log("Post is saved");
+        } else {
+            // Code to execute if isSaved is false
+            console.log("Post is not saved");
+        }
+        resp.render('post', {
+            layout: 'index',
+            index_title: 'Post',
+            postInfoData,
+            userData,
+            commentInfoData,
+            replyInfoData,
+            isSaved // Pass isSaved to the template
+        });
     } catch (error) {
-      console.error('Error retrieving PostInfo data:', error);
-      resp.status(500).send('Internal Server Error');
+        console.error('Error retrieving PostInfo data:', error);
+        resp.status(500).send('Internal Server Error');
     }
-  });
+});
 
   server.post('/post/:postId', async (req, res) => {
     try {
         const postId = req.params.postId;
         const { title, body } = req.body;
-
+        
         // Find the post by ID and update its title and body
         const updatedPost = await PostInfo.findByIdAndUpdate(postId, { Title: title, Body: body }, { new: true });
 
@@ -703,6 +724,47 @@ server.get('/post/:postId', async (req, resp) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+server.route('/post/:postId/save')
+    .post(async (req, res) => {
+        try {
+            const { PostIdSaved } = req.body;
+            const userData = await Account.findOne({ username: loggedInUser });
+            const newSaved = new Saved({
+                AccountId: userData._id, 
+                PostId: PostIdSaved
+            });
+
+            const result = await newSaved.save();
+
+            console.log('Data added to the database:', result);
+            res.status(200).json(result); // Send a success response if needed
+        } catch (error) {
+            console.error('Error adding data to the database:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    })
+    .delete(async (req, res) => {
+        try {
+            const { postId } = req.params;
+            const userData = await Account.findOne({ username: loggedInUser });
+
+            // Find and delete the saved post
+            const result = await Saved.findOneAndDelete({ AccountId: userData._id, PostId: postId });
+
+            if (!result) {
+                console.error('Failed to find or delete saved post');
+                return res.status(404).send('Saved post not found');
+            }
+
+            console.log('Data deleted from the database:', result);
+            res.status(200).json(result); // Send a success response if needed
+        } catch (error) {
+            console.error('Error deleting data from the database:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
 
 server.get('/search', async (req, res) => {
     try {

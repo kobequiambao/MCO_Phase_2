@@ -61,11 +61,59 @@ $(document).ready(function () {
         }
     });
       
-    $("#save").click(function(){
-        $('.main_post-buttons-save').toggle();
-        $('.main_post-buttons-save-filled').toggle();
-  
-      });
+    $("#save").click(function() {
+        // Check if the save-filled button is visible
+        const isSaved = $('.main_post-buttons-save-filled').is(':visible');
+    
+        // Get the postId from the post's data attribute
+        const postId = $(this).closest('.main_master_post').attr('id');
+    
+        // If the post is already saved, send a DELETE request to remove it from the database
+        if (isSaved) {
+            fetch(`/post/${postId}/save`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Toggle the visibility of save buttons
+                    $('.main_post-buttons-save').toggle();
+                    $('.main_post-buttons-save-filled').toggle();
+                    console.log('Post unsaved');
+                } else {
+                    console.error('Failed to unsave post:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error unsaving post:', error);
+            });
+        } else {
+            // Toggle the visibility of save buttons
+            $('.main_post-buttons-save').toggle();
+            $('.main_post-buttons-save-filled').toggle();
+    
+            // Prepare the data to send to the server
+            const data = {
+                PostIdSaved: postId
+            };
+    
+            // Send POST request to save the post
+            fetch(`/post/${postId}/save`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Failed to save post:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving post:', error);
+            });
+        }
+    });
     
       
     $(".submit-comment-button").click(function(){

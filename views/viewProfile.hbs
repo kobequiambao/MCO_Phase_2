@@ -31,7 +31,13 @@
         </div>  
 </script>
 <script id="template-save" type="text/x-handlebars-template">
-    {{!-- {{> template_post2}} --}}
+    <div class = "main_feed"> 
+            <div class = "main_feed-post">
+            {{#each savedPosts}}
+                    {{> general_post}}
+                {{/each}}
+            </div>
+        </div>  
 </script>
 
 </head>
